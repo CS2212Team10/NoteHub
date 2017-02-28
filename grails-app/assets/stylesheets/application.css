@@ -10,6 +10,7 @@
 *= require /bootstrap/bootstrap
 *= require grails
 *= require main
+*= require style
 *= require mobile
 *= require_self
 */

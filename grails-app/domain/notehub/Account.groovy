@@ -1,5 +1,6 @@
 package notehub
 
+
 /**
  * A class that represents a user's account in NoteHub
  * @author Cameron Nicolle
@@ -12,10 +13,10 @@ class Account {
      * @param password  Password for account
      * @param name      Name of user
      */
-    Account(String email, String password, String name) {
+    Account(String email, String password, String name, byte[] picture) {
         this.setEmail(email)
         this.setPassword(password)
-        this.setUser(name)
+        this.setUser(new User(name, picture))
     }
 
     /**

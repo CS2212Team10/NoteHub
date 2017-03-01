@@ -8,18 +8,6 @@ package notehub
 class Account {
 
     /**
-     * Constructor for Account which also creates a User
-     * @param email     Email of account
-     * @param password  Password for account
-     * @param name      Name of user
-     */
-    Account(String email, String password, String name, byte[] picture) {
-        this.setEmail(email)
-        this.setPassword(password)
-        this.setUser(new User(name, picture))
-    }
-
-    /**
      * Constructor for Account
      * @param email     Email of account
      * @param password  Password for account

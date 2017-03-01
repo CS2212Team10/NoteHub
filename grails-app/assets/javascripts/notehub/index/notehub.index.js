@@ -13,15 +13,4 @@ angular.module("notehub.index", [
     "ui.bootstrap.dropdown",
     "ui.bootstrap.collapse",
     "ui.router"
-])
-.config(config);
-
-function config($stateProvider, $urlRouterProvider) {
-    $stateProvider
-        .state('index', {
-            url: "/",
-            templateUrl: "/notehub/index/index.html"
-        });
-
-    $urlRouterProvider.otherwise('/');
-}
+]);

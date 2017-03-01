@@ -10,12 +10,36 @@
 //= require_tree templates
 
 
-angular.module("notehub", [
+var app = angular.module("notehub", [
         "notehub.core",
         "notehub.index",
         "noteList"
     ]);
 
+app.config(config);
+
+function config($stateProvider, $urlRouterProvider) {
+    console.log("angrailsfest load complete.");
+    $stateProvider
+        .state('index', {
+            url: "/",
+            templateUrl: "/notehub/index/index.html"
+        }).state('class', {
+        url: "/class",
+        templateUrl: "/notehub/class/class.html"
+    }).state('home.paragraph', {
+        url: '/paragraph',
+        template: 'I could sure use a drink right now.'
+    });
+
+    $urlRouterProvider.otherwise('/');
+}
+
+
+
 try { angular.module("noteList");
     console.log('Something loaded');
 } catch(err) { console.log('Something didnt load') }
+try { angular.module("notehub.class");
+    console.log('notehub class loaded');
+} catch(err) { console.log('notehub class didnt load') }

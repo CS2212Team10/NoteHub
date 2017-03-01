@@ -12,15 +12,11 @@ class Post {
      * Constructor for Post
      * @param title     Title of post
      * @param content   Content of post
-     * @param author    Author of post
-     * @param group     Group that contains post
      */
-    Post(String title, byte[] content, User author, UserGroup group) {
+    Post(String title, byte[] content) {
         this.setTitle(title)
         this.setTime(new Date())
         this.setContent(new SerialBlob(content))
-        this.setAuthor(author)
-        this.setGroup(group)
     }
 
     Date time

@@ -80,14 +80,15 @@ class PostController extends RestfulController {
     /**
      * Default POST action for posts
      * Accessed at /post/
-     * Provide JSON with title, author id, group id, and content (encoded in base64) fields
+     * Provide JSON with title, author id, and content (encoded in base64) fields
      * @return      Renders 200 or 400
      */
     def save(){
         // get JSON data
         String title = request.JSON.title
         Long authorId = Long.parseLong(request.JSON.author.toString())
-        Long groupId = Long.parseLong(request.JSON.group.toString())
+        //Default group, id = 1
+        Long groupId = 1
         byte[] content = request.JSON.content.toString().decodeBase64()
 
         //validate data

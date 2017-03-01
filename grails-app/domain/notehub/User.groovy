@@ -1,5 +1,7 @@
 package notehub
 
+import javax.sql.rowset.serial.SerialBlob
+
 /**
  * A class that represents a user in NoteHub
  * @author Cameron Nicolle
@@ -10,8 +12,9 @@ class User {
      * Constructor for User
      * @param name  Name of user
      */
-    User(String name) {
+    User(String name, byte[] picture) {
         this.setName(name)
+        this.setPicture(new SerialBlob(picture))
     }
 
     /**
@@ -20,12 +23,14 @@ class User {
      * @param email     Email of account
      * @param password  Password of account
      */
-    User(String name, String email, String password) {
+    User(String name, byte[] picture, String email, String password) {
         this.setName(name)
+        this.setPicture(new SerialBlob(picture))
         this.setAccount(new Account(email, password))
     }
 
     String name
+    SerialBlob picture
 
 
     static hasMany = [circles: UserGroup, posts: Post, stars: UserStar]

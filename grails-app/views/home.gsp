@@ -12,33 +12,27 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title> NoteHub - CLASS NAME HERE</title>
+    <title> NoteHub - Home Page!</title>
 </head>
 <body  >
 
-    <!-- CONTENT HERE-->
+<!-- CONTENT HERE-->
 <div ng-app="notehub">
-
-    <div></div>
-
     <!-- Create New Post -->  <!-- TODO: Link it to create something -->
     <a class="btn btn-default" href="/"style="margin-top: 20px;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> BACK</a>
 
-    <h1>{{className}}</h1>
+    <!-- CONTENT HERE-->
+    <h1>Home</h1>
     <div class="row">
 
-        <div class="col-md-4">
-            <note-list></note-list>
+        <div class="col-md-6">
+            <h2>Your Circles</h2>
+            <circles></circles>
         </div>
 
-        <div class="col-md-4">
-            <h2>Sub-Circles</h2>
-
-        </div>
-
-        <div class="col-md-4">
-            <h2>News</h2>
-
+        <div class="col-md-6">
+            <h2>Circle News</h2>
+            {{TODOBOX}}
         </div>
     </div>
 </div>

@@ -1,0 +1,59 @@
+<div class="content">
+    <!-- header for notes content -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Notes</h2>
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-default btn-block">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Create Note</button>
+        </div>
+    </div>
+
+
+    <!-- List Filtering Features -->
+    <div class="row options">
+        <!-- Search Feature -->
+        <div class="col-md-6">
+            <!-- <span class="mobile-hide" >Search: </span>  --><!-- TODO: need a subtitle? -->
+            <input placeholder="Search" ng-model="$ctrl.query" class="ng-pristine ng-untouched ng-valid ng-empty">
+        </div>
+
+        <!-- Ordering Feature -->
+        <div class="col-md-6">
+            <!-- <span class="mobile-hide" >Order by:</span> --> <!-- TODO: need a subtitle? -->
+            <select placeholder="Sort By" ng-model="$ctrl.orderProp" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <option value="" disabled selected hidden>Sort By...</option>
+                <option value="title">Title (ascending)</option>
+                <option value="-title">Title (descending)</option>
+                <option value="author">First Name (ascending)</option>
+                <option value="-author">First Name (descending)</option>
+                <option value="-rating">Highest Rating</option>
+                <option value="rating">Lowest Rating</option>
+                <option value="dateCreated">Newest</option>
+                <option value="-dateCreated">Oldest</option>
+            </select>
+        </div>
+    </div>
+
+    <ul class= content-list>
+        <!--<li>{{wow}}</li>-->
+        <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="#"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+            <h3>{{post.title}}</h3>
+            <div class="details">
+                By: <span>{{ post.author }}</span> <br>
+                Created: <span>{{ post.dateCreated }}</span><br>
+                Rating: <span> {{ post.rating }}
+                <div ng-repeat = "a in vm.getNumber(post.rating) track by $index">
+                    <span class="glyphicon glyphicon-star" style="float: left;" aria-hidden="true"></span>
+                </div>
+                <div ng-repeat = "a in vm.getNumber(5 - post.rating) track by $index">
+                    <span class="glyphicon glyphicon-star-empty" style="float: left;" aria-hidden="true"></span>
+                </div>
+    </span>
+            </div>
+        </a>
+        </li>
+    </ul>
+</div>

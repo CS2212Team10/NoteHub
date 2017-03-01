@@ -35,9 +35,11 @@ class User {
 
     static hasMany = [circles: UserGroup, posts: Post, stars: UserStar]
     static hasOne = [account: Account]
+    static belongsTo = [Account]
 
     static constraints = {
         name(nullable: false, blank: false)
+        picture(nullable: false)
         circles(nullable: true)
         posts(nullable: true)
         stars(nullable: true)

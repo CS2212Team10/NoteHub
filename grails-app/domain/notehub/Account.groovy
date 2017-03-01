@@ -31,13 +31,12 @@ class Account {
 
     String email
     String password
-
-    static hasOne = [user: User]
+    User user
 
     static constraints = {
         email(nullable: false, blank: false, email: true, unique: true)
         password(nullable: false, blank: false)
-        user(nullable: false)
+        user(nullable: true)
     }
 
     @Override

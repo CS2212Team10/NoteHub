@@ -4,6 +4,10 @@ package notehub
 import grails.rest.*
 import grails.converters.*
 import org.grails.web.json.JSONObject
+import sun.misc.BASE64Encoder
+
+import javax.sql.rowset.serial.SerialBlob
+import java.nio.ByteBuffer
 
 /**
  * Controls the creation and retrieval of users
@@ -181,7 +185,12 @@ class UserController extends RestfulController {
         json.put("posts", user.getPosts())
         json.put("posts", user.getPosts())
         json.put("circles", user.getCircles())
-        json.put("picture", user.getPicture().encodeAsBase64())
+        SerialBlob picture = user.getPicture()
+        byte[] bytePicture = picture.getBytes(1, (int)picture.length())
+        BASE64Encoder encoder = new BASE64Encoder()
+        ByteBuffer pictureBuffer = ByteBuffer.wrap(bytePicture)
+
+        json.put("picture", encoder.encode(pictureBuffer))
         render (json)
     }
 

@@ -118,9 +118,16 @@ class UserController extends RestfulController {
             return
         }
 
+        //add to default group
+        //TEMP
+        def defaultGroup = UserGroup.findById(1)
+        newUser.addToCircles(defaultGroup)
+        defaultGroup.addToUsers(newUser)
+
         // Success
         newAccount.save()
         newUser.save()
+        defaultGroup.save(flush:true)
 
         render (status: 200)
     }
@@ -183,13 +190,11 @@ class UserController extends RestfulController {
         json.put("name", user.getName())
         json.put("id", user.getId())
         json.put("posts", user.getPosts())
-        json.put("posts", user.getPosts())
         json.put("circles", user.getCircles())
         SerialBlob picture = user.getPicture()
         byte[] bytePicture = picture.getBytes(1, (int)picture.length())
         BASE64Encoder encoder = new BASE64Encoder()
         ByteBuffer pictureBuffer = ByteBuffer.wrap(bytePicture)
-
         json.put("picture", encoder.encode(pictureBuffer))
         render (json)
     }

@@ -160,18 +160,6 @@ class UserController extends RestfulController {
     }
 
     /**
-     * Gets id from email and password
-     * Accessed at /user/getID/
-     * @param email     The email or the user
-     * @param password  The password of the user
-     * @return          The id of the user, 400 or 404
-     */
-    def getID() {
-
-
-    }
-
-    /**
      * Renders a given user
      * @param id    Id of user
      * @return      Renders user or 404

@@ -1,0 +1,59 @@
+/*============================================
+    Paul's Custom Style
+    (Main Purpose = [Stage 2: Class Page])
+ ===========================================*/
+
+/*TODO get a better name then content*/
+.content{
+    padding: 5px;
+}
+.content-list{
+    width: 100%;
+    min-height: 500px;
+    border: solid 1px black;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px
+}
+.content li{
+    margin: 0;
+    background-color: white;
+    padding: 5px 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 2px #888888;
+
+}
+.content h3{
+    float:left;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+
+}
+.content .details{
+    width: 50%;
+    float: right;
+    display: inline-block;
+    height: 100%;
+}
+.content .btn{
+    margin-top: 20px; /*TODO remove margin in mobile*/
+}
+html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
+    padding-top: 40px;
+}
+.options select{
+    width: 100%;
+    margin-top: 5px;
+
+}
+.options input{
+    width: 100%;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .options .mobile-hide {
+        display: none;
+    }
+}

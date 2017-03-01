@@ -41,6 +41,6 @@ class Post {
 
     @Override
     String toString() {
-        return this.content + " @ " + this.time.toString()
+        return this.getId()
     }
 }

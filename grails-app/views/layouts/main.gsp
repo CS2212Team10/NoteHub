@@ -111,6 +111,5 @@
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
     <asset:javascript src="/notehub/notehub.js" />
-
 </body>
 </html>

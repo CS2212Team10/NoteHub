@@ -14,20 +14,19 @@
     <meta name="layout" content="main"/>
     <title> NoteHub - CLASS NAME HERE</title>
 </head>
-<body ng-app="notehub">
+<body  >
 
     <!-- CONTENT HERE-->
-
+<div ng-app="notehub" ng-controller="">
     <!-- Create New Post -->  <!-- TODO: Link it to create something -->
     <button type="button" class="btn btn-default" style="margin-top: 20px;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> BACK</button>
 
-    <h1> CLASS NAME HERE </h1>
-
-    <!-- Main Body/Content -->
+<!-- CONTENT HERE-->
+    <h1>{{className}}</h1>
     <div class="row">
 
         <div class="col-md-4">
-            <note-list></note-list> <!-- Using note-list component -->
+            <note-list></note-list>
         </div>
 
         <div class="col-md-4">
@@ -40,6 +39,6 @@
 
         </div>
     </div>
-
+</div>
 </body>
 </html>

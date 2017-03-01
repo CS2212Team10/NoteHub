@@ -34,6 +34,6 @@ class UserGroup {
 
     @Override
     String toString() {
-        return this.getName()
+        return this.getId()
     }
 }

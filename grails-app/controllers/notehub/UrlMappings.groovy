@@ -15,6 +15,5 @@ class UrlMappings {
         "404"(view: '/notFound')
         "/class"(view: '/class')
         "/home"(view: '/home')
-        "/paragraph "(view: '/paragraph')
     }
 }

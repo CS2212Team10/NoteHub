@@ -12,5 +12,6 @@
 *= require main
 *= require style
 *= require mobile
+*= require font-awesome
 *= require_self
 */

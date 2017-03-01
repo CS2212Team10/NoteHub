@@ -13,20 +13,14 @@
             <!-- <span class="mobile-hide" >Order by:</span> --> <!-- TODO: need a subtitle? -->
             <select placeholder="Sort By" ng-model="$ctrl.orderProp" class="ng-pristine ng-untouched ng-valid ng-not-empty">
                 <option value="" disabled selected hidden>Sort By...</option>
-                <option value="title">Title (ascending)</option>
-                <option value="-title">Title (descending)</option>
-                <option value="author">First Name (ascending)</option>
-                <option value="-author">First Name (descending)</option>
-                <option value="-rating">Highest Rating</option>
-                <option value="rating">Lowest Rating</option>
-                <option value="dateCreated">Newest</option>
-                <option value="-dateCreated">Oldest</option>
+                <option value="name">Name (ascending)</option>
+                <option value="-name">Name (descending)</option>
             </select>
         </div>
     </div>
 
     <ul class= content-list>
-        <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="#"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+        <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="/class"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
             <h2>{{circle.name}}</h2>
             <small class = "description">{{circle.desc}}</small>
         </a>

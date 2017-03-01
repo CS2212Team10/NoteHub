@@ -27,10 +27,10 @@ class UserController extends RestfulController {
     /**
      * Default get action for user
      * Accessed at /user/
-     * @params id   Id of user
+     * @params id       Id of user
      * or
-     * @params username
-     * @params paw
+     * @params email    Email of user
+     * @params password Password of user
      * @return      Renders user, 404 or 400
      */
     def index() {

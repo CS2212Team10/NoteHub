@@ -123,7 +123,7 @@ class UserController extends RestfulController {
 
     /**
      * Default DELETE action for user
-     * Accessed at /user/
+     * Accessed at /user/id
      * @param id    Id of user
      * @return      Renders 400, 404 or 200
      */

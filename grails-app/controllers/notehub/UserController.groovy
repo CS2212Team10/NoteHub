@@ -199,6 +199,7 @@ class UserController extends RestfulController {
         json.put("id", user.getId())
         json.put("posts", user.getPosts())
         json.put("circles", user.getCircles())
+        json.put("stars", user.getStars())
         SerialBlob picture = user.getPicture()
         byte[] bytePicture = picture.getBytes(1, (int)picture.length())
         BASE64Encoder encoder = new BASE64Encoder()

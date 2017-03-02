@@ -1,5 +1,7 @@
 package notehub
 
+import org.grails.web.json.JSONObject
+
 /**
  * A class that represents a star in NoteHub
  * @author Cameron Nicolle
@@ -29,6 +31,8 @@ class UserStar {
 
     @Override
     String toString() {
-        return this.getUser().toString() + " * " + this.getPost().toString()
+        JSONObject json = new JSONObject()
+        json.put("id", this.getId().toString())
+        return json.toString()
     }
 }

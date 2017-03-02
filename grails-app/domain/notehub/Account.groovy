@@ -1,5 +1,7 @@
 package notehub
 
+import org.grails.web.json.JSONObject
+
 
 /**
  * A class that represents a user's account in NoteHub
@@ -29,6 +31,8 @@ class Account {
 
     @Override
     String toString(){
-        return this.getUser().toString()
+        JSONObject json = new JSONObject()
+        json.put("id", this.getId().toString())
+        return json.toString()
     }
 }

@@ -1,5 +1,7 @@
 package notehub
 
+import org.grails.web.json.JSONObject
+
 import javax.sql.rowset.serial.SerialBlob
 
 /**
@@ -36,6 +38,8 @@ class User {
 
     @Override
     String toString(){
-        return this.name
+        JSONObject json = new JSONObject()
+        json.put("id", this.getId().toString())
+        return json.toString()
     }
 }

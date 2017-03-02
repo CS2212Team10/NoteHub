@@ -51,12 +51,15 @@ class UserGroupController extends RestfulController{
             return
         }
 
+        String name
+        String description
+        Long creatorId
 
         // get JSON data
         try {
-            String name = request.JSON.name
-            String description = request.JSON.description
-            Long creatorId = Long.parseLong(request.JSON.creator.toString())
+            name = request.JSON.name
+            description = request.JSON.description
+            creatorId = Long.parseLong(request.JSON.creator.toString())
         } catch (NumberFormatException e) {
             render(status: 400)
             return

@@ -81,10 +81,12 @@ class UserStarController extends RestfulController{
             return
         }
 
+        Long userId
+        Long postId
         // get JSON data
         try {
-            Long userId = Long.parseLong(request.JSON.user.toString())
-            Long postId = Long.parseLong(request.JSON.post.toString())
+            userId = Long.parseLong(request.JSON.user.toString())
+            postId = Long.parseLong(request.JSON.post.toString())
         } catch (NumberFormatException e) {
             render(status:400)
             return

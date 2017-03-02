@@ -5,9 +5,9 @@
             <h2>Notes</h2>
         </div>
         <div class="col-md-6">
-            <button type="button" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                Create Note</button>
+            <a type="button" class="btn btn-default btn-block btn-create">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span>Create Note</span></a>
         </div>
     </div>
 
@@ -44,14 +44,14 @@
             <div class="details">
                 By: <span>{{ post.author }}</span> <br>
                 Created: <span>{{ post.dateCreated }}</span><br>
-                Rating: <span> {{ post.rating }}
-                <div ng-repeat = "a in vm.getNumber(post.rating) track by $index">
-                    <span class="glyphicon glyphicon-star" style="float: left;" aria-hidden="true"></span>
+                <span>
+                <div ng-repeat = "a in vm.getNumber(post.rating) track by $index"> <!-- TODO: can implement half stars -->
+                    <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
                 <div ng-repeat = "a in vm.getNumber(5 - post.rating) track by $index">
-                    <span class="glyphicon glyphicon-star-empty" style="float: left;" aria-hidden="true"></span>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
                 </div>
-    </span>
+                </span>
             </div>
         </a>
         </li>

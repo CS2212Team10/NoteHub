@@ -89,17 +89,17 @@ class UserController extends RestfulController {
      * @return      Renders 200 or 400
      */
     def save() {
+        // validate JSON data
+        if (request.JSON.name == null || request.JSON.email == null || request.JSON.password == null || request.JSON.picture == null){
+            render (status: 400)
+            return
+        }
+
         // get JSON data
         String name = request.JSON.name
         String email = request.JSON.email
         String password = request.JSON.password
         byte[] picture = request.JSON.picture.toString().decodeBase64()
-
-        // validate JSON data
-        if (name == null || email == null || password == null || picture == null){
-            render (status: 400)
-            return
-        }
 
 
         def newUser = new User(name, picture)

@@ -74,14 +74,23 @@ class UserStarController extends RestfulController{
      *  @return      Renders 200, 404, or 400
      */
     def save(){
-        Long userId = Long.parseLong(request.JSON.user.toString())
-        Long postId = Long.parseLong(request.JSON.post.toString())
 
         // validation
-        if(userId == null || postId == null){
+        if(request.JSON.user == null || request.JSON.post == null){
             render(status:400)
             return
         }
+
+        // get JSON data
+        try {
+            Long userId = Long.parseLong(request.JSON.user.toString())
+            Long postId = Long.parseLong(request.JSON.post.toString())
+        } catch (NumberFormatException e) {
+            render(status:400)
+            return
+        }
+
+
 
         // generate reference
         def user = User.findById(userId)

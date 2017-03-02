@@ -84,18 +84,25 @@ class PostController extends RestfulController {
      * @return      Renders 200 or 400
      */
     def save(){
-        // get JSON data
-        String title = request.JSON.title
-        Long authorId = Long.parseLong(request.JSON.author.toString())
-        //Default group, id = 1
-        Long groupId = 1
-        byte[] content = request.JSON.content.toString().decodeBase64()
-
         //validate data
-        if(title == null || authorId == null || groupId == null || content == null){
+        if(request.JSON.title == null || request.JSON.author == null || request.JSON.group == null || request.JSON.content == null){
             render(status: 400)
             return
         }
+
+        // get JSON data
+        try {
+            String title = request.JSON.title
+            Long authorId = Long.parseLong(request.JSON.author.toString())
+            //Default group, id = 1
+            Long groupId = 1
+            byte[] content = request.JSON.content.toString().decodeBase64()
+        } catch (NumberFormatException e) {
+            render(status: 400)
+            return
+        }
+
+
 
         def author = User.findById(authorId)
         def group = UserGroup.findById(groupId)

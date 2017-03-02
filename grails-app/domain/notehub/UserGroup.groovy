@@ -1,5 +1,7 @@
 package notehub
 
+import org.grails.web.json.JSONObject
+
 /**
  * A class that represents a group in NoteHub
  * @author Cameron Nicolle
@@ -34,6 +36,8 @@ class UserGroup {
 
     @Override
     String toString() {
-        return this.getId()
+        JSONObject json = new JSONObject()
+        json.put("id", this.getId().toString())
+        return json.toString()
     }
 }

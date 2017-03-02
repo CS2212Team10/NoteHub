@@ -27,7 +27,13 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        def userGroup = UserGroup.findById(params.id)
+        def userGroup
+        try {
+            userGroup = UserGroup.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         //Content not found
         if(userGroup == null){
@@ -101,7 +107,13 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        def userGroup = UserGroup.findById(params.id)
+        def userGroup
+        try {
+            userGroup = UserGroup.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         if(userGroup == null){
             render(status:404)
@@ -129,7 +141,13 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        def userGroup = UserGroup.findById(params.id)
+        def userGroup
+        try {
+            userGroup = UserGroup.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         //Content not found
         if(userGroup == null){

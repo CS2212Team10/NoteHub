@@ -30,7 +30,13 @@ class UserStarController extends RestfulController{
         }
 
         //generate reference
-        def userStar = UserStar.findById(params.id)
+        def userStar
+        try {
+            userStar = UserStar.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         //object not found
         if(userStar == null){
@@ -56,7 +62,13 @@ class UserStarController extends RestfulController{
         }
 
         //generate reference
-        def userStar = UserStar.findById(params.id)
+        def userStar
+        try {
+            userStar = UserStar.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         //object not found
         if(userStar == null){
@@ -134,7 +146,13 @@ class UserStarController extends RestfulController{
             return
         }
 
-        def userStar = UserStar.findById(params.id)
+        def userStar
+        try {
+            userStar = UserStar.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         // not found
         if(userStar == null){

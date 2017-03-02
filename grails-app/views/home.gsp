@@ -19,7 +19,7 @@
 <!-- CONTENT HERE-->
 <div ng-app="notehub">
     <!-- Create New Post -->  <!-- TODO: Link it to create something -->
-    <a class="btn btn-default" href="/"style="margin-top: 20px;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> BACK</a>
+    <a class="btn btn-default" href="/"style="margin-top: 20px;"><i class="fa fa-chevron-left" aria-hidden="true"></i> BACK</a>
 
     <!-- CONTENT HERE-->
     <h1>Home</h1>

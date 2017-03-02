@@ -81,6 +81,7 @@ class PostController extends RestfulController {
         json.put("time", post.getTime().dateTimeString)
         json.put("author", post.getAuthor())
         json.put("group", post.getGroup())
+        json.put("stars", post.getStars())
         SerialBlob content = post.getContent()
         byte[] byteContent = content.getBytes(1, (int)content.length())
         BASE64Encoder encoder = new BASE64Encoder()

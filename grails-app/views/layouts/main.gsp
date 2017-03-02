@@ -18,7 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title><g:layoutTitle default="NoteHub"/></title> <!-- TODO: Title -->
+        <title><g:layoutTitle default="NoteHub"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content=""> <!-- TODO: Description -->
 
@@ -46,11 +46,13 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please
         <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+
     <!-- Nav Bar --> <!-- TODO: Fix LOGO and Nav Bar -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
 
-            <!-- Brand and toggle get grouped for better mobile display -->
+            <!-- mobile display navbar -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -62,28 +64,17 @@
             </div>
 
 
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Full Nav Bar Items -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+                <!-- Left side of Nav Bar -->
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
                 </ul>
 
-                <!-- Right side of Nav Full View -->
+
+                <!-- Right side of Nav Bar-->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Link</a></li>
                     <li>
@@ -93,23 +84,33 @@
                     </li>
                 </ul>
 
+
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 
+    <!-- content body -->
     <g:layoutBody/>
+
 
 
     <!-- Footer -->
     <div id="footer">
-        <p>Copyright © 2011 Hubert A. Klein Ikkink - <a href="http://www.mrhaki.com">mrhaki</a></p>
+        <p>Notehub 2017 | <a href="http://cs2212team10.github.io">Source</a></p>
     </div>
+    <!-- /.Footer -->
 
 
-    <!-- Loading some JS -->
+    <!----------------
+    -    Loading     -
+    ------------------>
+
+    <!-- Loading JS -->
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
+
+    <!-- Load angular app -->
     <asset:javascript src="/notehub/notehub.js" />
 </body>
 </html>

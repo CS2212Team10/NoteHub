@@ -63,6 +63,9 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
 .content .btn-create i{
     margin: 4px;
 }
+.btn-back{
+    margin: 20px 10px 10px 10px;
+}
 @media screen and (max-width: 480px) {
     .options .mobile-hide {
         display: none;

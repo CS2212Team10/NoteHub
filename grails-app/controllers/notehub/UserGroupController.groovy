@@ -45,13 +45,20 @@ class UserGroupController extends RestfulController{
      *  @return      Renders 200, 404, or 400
      */
     def save(){
-
-        String name = request.JSON.name
-        String description = request.JSON.description
-        Long creatorId = Long.parseLong(request.JSON.creator.toString())
-
-        if(name == null || description == null || creatorId == null){
+        //validate data
+        if(request.JSON.name == null || request.JSON.description == null || request.JSON.creator == null){
             render(status:400)
+            return
+        }
+
+
+        // get JSON data
+        try {
+            String name = request.JSON.name
+            String description = request.JSON.description
+            Long creatorId = Long.parseLong(request.JSON.creator.toString())
+        } catch (NumberFormatException e) {
+            render(status: 400)
             return
         }
 

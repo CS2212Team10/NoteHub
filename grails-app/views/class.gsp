@@ -22,11 +22,10 @@
     <div></div>
 
     <!-- Create New Post -->  <!-- TODO: Link it to create something -->
-    <a class="btn btn-default" href="/"style="margin-top: 20px;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> BACK</a>
+    <a class="btn btn-default" href="/home"style="margin-top: 20px;"><i class="fa fa-chevron-left" aria-hidden="true"></i> BACK</a>
 
     <h1>{{className}}</h1>
     <div class="row">
-
         <div class="col-md-4">
             <note-list></note-list>
         </div>

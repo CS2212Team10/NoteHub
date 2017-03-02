@@ -46,7 +46,7 @@ function circles() {
                 name: "CS2209 Circle",
                 desc: "Logic Logic Logic"
             },{
-                name: "CS2209 Circle",
+                name: "CS2208 Circle",
                 desc: "1010101000111"
             }
         ]

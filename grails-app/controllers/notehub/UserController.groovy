@@ -62,7 +62,14 @@ class UserController extends RestfulController {
             return
         }
 
-        this.renderUser(Long.parseLong(params.id))
+
+        try{
+            this.renderUser(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status: 400)
+            return
+        }
+
     }
 
     /**
@@ -79,7 +86,12 @@ class UserController extends RestfulController {
             return
         }
 
-        this.renderUser(Long.parseLong(params.id))
+        try{
+            this.renderUser(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status: 400)
+            return
+        }
     }
 
     /**
@@ -145,7 +157,15 @@ class UserController extends RestfulController {
             return
         }
 
-        def user = User.findById(Long.parseLong(params.id))
+        // find user
+        def user
+        try{
+            user = User.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status: 400)
+            return
+        }
+
         // user not found
         if (user == null){
             render (status: 404)

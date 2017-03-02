@@ -34,7 +34,14 @@ class PostController extends RestfulController {
             render(status: 400)
             return
         }
-        this.renderPost(Long.parseLong(params.id))
+
+        try {
+            this.renderPost(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
+
     }
 
     /**
@@ -48,7 +55,12 @@ class PostController extends RestfulController {
             render(status: 400)
             return
         }
-        this.renderPost(Long.parseLong(params.id))
+        try {
+            this.renderPost(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
     }
 
     /**
@@ -90,13 +102,19 @@ class PostController extends RestfulController {
             return
         }
 
+        String title
+        Long authorId
+        Long groupId
+        byte[] content
+
+
         // get JSON data
         try {
-            String title = request.JSON.title
-            Long authorId = Long.parseLong(request.JSON.author.toString())
+            title = request.JSON.title
+            authorId = Long.parseLong(request.JSON.author.toString())
             //Default group, id = 1
-            Long groupId = 1
-            byte[] content = request.JSON.content.toString().decodeBase64()
+            groupId = 1
+            content = request.JSON.content.toString().decodeBase64()
         } catch (NumberFormatException e) {
             render(status: 400)
             return
@@ -139,7 +157,14 @@ class PostController extends RestfulController {
             return
         }
 
-        def post = Post.findById(Long.parseLong(params.id))
+        def post
+        try {
+            post = Post.findById(Long.parseLong(params.id))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
+
 
         if (post == null){
             render (status: 404) //post not found

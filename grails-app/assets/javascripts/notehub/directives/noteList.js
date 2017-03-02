@@ -1,4 +1,16 @@
 //= wrapped
+
+/*********************************************
+ @author Paul Li
+ @date Feb, 28, 2017
+ @version 2.0 (Stage 2)
+
+ Note List
+ ============================================
+ declaring a information for the directive
+    - controller
+ ********************************************/
+
 console.log('hello');
 angular
     .module("notehub")

@@ -71,3 +71,31 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
         display: none;
     }
 }
+/* Star Rating Highlight */
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+
+
+}
+.rating > i {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.3;
+}
+.rating > i:hover,
+.rating > i:hover ~ i {
+    color: transparent;
+    opacity: 1;
+}
+.rating > i:hover:before,
+.rating > i:hover ~ i:before {
+    position: relative;
+    left: 0;
+    color: gold;
+
+}
+
+

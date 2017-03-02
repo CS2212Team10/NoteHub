@@ -41,6 +41,18 @@
         <div class="col-md-6">
             <h2>Circle News</h2>
             {{TODOBOX}}
+
+    <!--
+    <div class="rating">
+        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+    </div> -->
+
+
+
         </div> <!-- /.col2/2 -->
     </div> <!-- /.row -->
 </div> <!-- /.ng-app: noteHub -->

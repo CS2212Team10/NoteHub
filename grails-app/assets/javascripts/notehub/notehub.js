@@ -38,8 +38,5 @@ function config($stateProvider, $urlRouterProvider) {
 
 
 try { angular.module("noteList");
-    console.log('Something loaded');
-} catch(err) { console.log('Something didnt load') }
-try { angular.module("notehub.class");
-    console.log('notehub class loaded');
-} catch(err) { console.log('notehub class didnt load') }
+    console.log('noteList Loaded');
+} catch(err) { console.log('noteList didnt load') }

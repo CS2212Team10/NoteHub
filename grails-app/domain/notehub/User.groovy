@@ -33,7 +33,6 @@ class User {
     }
 
     static mapping = {
-        circles(cascade: "all-delete-orphan")
         posts(cascade: "all-delete-orphan")
         stars(cascade: "all-delete-orphan")
     }

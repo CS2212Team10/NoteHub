@@ -3,7 +3,7 @@ package notehub
 class BootStrap {
 
     def init = { servletContext ->
-        def testUser = new User("Bob","AAA".decodeBase64())
+        def testUser = new User("Bob","AAA")
         def testAccount = new Account("bob@bob.com", "bob")
         testAccount.setUser(testUser)
         testUser.setAccount(testAccount)

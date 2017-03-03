@@ -22,7 +22,7 @@ Delete User Group | DELETE | /userGroup/userGroupID | <ul><li>400</li> <li>404</
 ## Post
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create Post | POST | /post/ | <ul><li>400</li> <li>200</li></ul> | `{"group":"userGroupId","user":"userId"}`
+Create Post | POST | /post/ | <ul><li>400</li> <li>200</li></ul> | `{"title":"postTitle","content":"contentInBase64","group":"userGroupId","author":"userId"}`
 Get Post | GET | /post/postID | <ul><li>400</li> <li>404</li> <li>`{"id":"postId","title":"postTitle","author":"authorUserId","group":"userGroupId","content":"contentInBase64","time":"timeOfPost","stars":"listOfStarIds"}`</li></ul> | None
 Get Post | GET | /post/?id=postID | <ul><li>400</li> <li>404</li> <li>`{"id":"postId","title":"postTitle","author":"authorUserId","group":"userGroupId","content":"contentInBase64","time":"timeOfPost","stars":"listOfStarIds"}`</li></ul> | None
 Delete Post | DELETE | /post/postID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None

@@ -34,6 +34,10 @@ class UserGroup {
         posts(nullable: true)
     }
 
+    static mapping = {
+        posts(cascade: "all-delete-orphan")
+    }
+
     @Override
     String toString() {
         JSONObject json = new JSONObject()

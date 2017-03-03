@@ -32,6 +32,12 @@ class User {
         account(nullable: false)
     }
 
+    static mapping = {
+        circles(cascade: "all-delete-orphan")
+        posts(cascade: "all-delete-orphan")
+        stars(cascade: "all-delete-orphan")
+    }
+
     @Override
     String toString(){
         return this.getName()

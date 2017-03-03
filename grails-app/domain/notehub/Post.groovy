@@ -36,6 +36,10 @@ class Post {
         stars(nullable: true)
     }
 
+    static mapping = {
+        stars(cascade: "all-delete-orphan")
+    }
+
     @Override
     String toString() {
         JSONObject json = new JSONObject()

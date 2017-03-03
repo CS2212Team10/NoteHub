@@ -168,6 +168,12 @@ class UserController extends RestfulController {
         }
 
         //success
+        user.getCircles().each {
+            it.removeFromUsers(user)
+            if (it.users.empty){
+                it.delete(flush: true)
+            }
+        }
         user.getAccount().delete(flush: true)
         render (status: 200)
 

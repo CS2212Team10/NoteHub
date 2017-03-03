@@ -2,11 +2,7 @@ package notehub
 
 
 import grails.rest.*
-import org.grails.web.json.JSONObject
-import sun.misc.BASE64Encoder
-
-import javax.sql.rowset.serial.SerialBlob
-import java.nio.ByteBuffer
+import grails.converters.*
 
 /**
  * Controller for post - creates, deletes, and shows posts
@@ -75,19 +71,7 @@ class PostController extends RestfulController {
             return
         }
         // render json
-        JSONObject json = new JSONObject()
-        json.put("title", post.getTitle())
-        json.put("id", post.getId())
-        json.put("time", post.getTime().dateTimeString)
-        json.put("author", post.getAuthor())
-        json.put("group", post.getGroup())
-        json.put("stars", post.getStars())
-        SerialBlob content = post.getContent()
-        byte[] byteContent = content.getBytes(1, (int)content.length())
-        BASE64Encoder encoder = new BASE64Encoder()
-        ByteBuffer contentBuffer = ByteBuffer.wrap(byteContent)
-        json.put("content", encoder.encode(contentBuffer))
-        render (json)
+        render (post as JSON)
     }
 
     /**
@@ -106,7 +90,7 @@ class PostController extends RestfulController {
         String title
         Long authorId
         Long groupId
-        byte[] content
+        String content
 
 
         // get JSON data
@@ -115,7 +99,7 @@ class PostController extends RestfulController {
             authorId = Long.parseLong(request.JSON.author.toString())
             //Default group, id = 1
             groupId = 1
-            content = request.JSON.content.toString().decodeBase64()
+            content = request.JSON.content.toString()
         } catch (NumberFormatException e) {
             render(status: 400)
             return

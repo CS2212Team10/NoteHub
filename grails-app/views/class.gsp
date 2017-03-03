@@ -16,15 +16,15 @@
 </head>
 <body>
 
-<div>
+<div ng-controller="ClassController">
 
     <!-- TODO: Link it to create something -->
-    <a class="btn btn-default btn-back" href="/home">
+    <a class="btn btn-default btn-back" href="/home?user={{userId}}">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         <span>BACK</span>
     </a>
 
-    <h1>{{className}}</h1> <!-- TODO: controller for this page -->
+    <h1>{{title}}</h1> <!-- TODO: controller for this page -->
 
     <!-- Grid System -->
     <div class="row">

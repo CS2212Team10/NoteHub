@@ -18,12 +18,13 @@
 
 <body>
 
-<div>
+<div ng-controller="HomeController">
     <!-- TODO: Link it to create post-->
+    <!-- DONT need a back button on the home page yet
     <a class="btn btn-default btn-back" href="/home">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         <span>BACK</span>
-    </a>
+    </a> -->
 
     <!-- Page Title --> <!-- TODO: controller for the page-->
     <h1>Home</h1>

@@ -54,6 +54,7 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
     margin-top: 5px;
 }
 .content i{
+    margin: 4px 10px 4px 4px;
     display: inline-block;
     float: left;
 }

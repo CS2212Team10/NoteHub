@@ -36,25 +36,26 @@ i{
 
 
 <body>
-<div class="content">
 
-<button class="button btn" onclick=/class >Back</button>
+<div class="content" ng-controller="DocViewController">
+
+    <a class="btn btn-default btn-back" href="/class?id={{id}}&user={{userId}}">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <span>BACK</span>
+    </a>
+
 <h1>Circle Name</h1>
-<p>Document Title</p>
+<p>{{title}}</p>
 
+<h2>Student Rating: {{starListCount}}</h2>
 
-
-<h2>Student Rating</h2>
-
-<textarea rows="4" cols="50">
-Document Text Will Be Displayed Here...
-</textarea>
+<textarea rows="4" cols="50">{{content}}</textarea>
 
 <h2>Your Rating</h2>
 
 
-<i class ="fa fa-floppy-o" aria-hidden="true"></i>
-<button class="button">Download</button>
+
+<button class="button"><i class ="fa fa-floppy-o" aria-hidden="true"></i> Download</button>
 
 </div>
 

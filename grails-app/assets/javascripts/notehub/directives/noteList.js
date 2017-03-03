@@ -35,46 +35,43 @@ function noteList() {
 
         var vm = this;
 
-        var goto = $location.absUrl();
-        var parser = document.createElement('a');
-        parser.href = goto;
-        var queryString = parser.search;
         var idNum = getQueryVariable('id'); // gets query variable
-
+        vm.userId = getQueryVariable('user'); // gets query variable
+        vm.id = getQueryVariable('id');
+        vm.postId;
         //console.log(idNum);
-        vm.getId = goto;
 
         vm.orderProp = 'dateCreated';
 
         // used for ng-repeat num number of times.
         vm.getNumber = function(num) {
             return new Array(num);
-        }
+        };
 
 
 
         var classData =  null;
         vm.posts = [];
+        var someAuthor = 'null';
 
-        $http.get('/userGroup/?id=1').then(function(response) {
+        $http.get('/userGroup/?id='+vm.id).then(function(response) {
             classData = response.data;
-            console.log(classData.name);
-            console.log(classData.posts);
-            console.log("hello");
             //console.log(classData);
             var postIdList = classData.posts;
-            console.log("hello2");
-
 
             var i;
             for (i = 0; i < postIdList.length; i++) {
                 console.log(i);
                 $http.get('/post/?id='+postIdList[i].id).then(function(response) {
-                    console.log(response.data);
+                    console.log('test'+response.data.author.id);
+                    $http.get('/user/?id='+response.data.author.id).then(function(response) {
+                        vm.author = response.data.name;
+                    });
                     vm.posts.push(response.data);
                 });
             }
         });
+
 
 
 
@@ -109,6 +106,8 @@ function noteList() {
         ]*/
     }
 }
+
+    //TODO: add a global function of this
 function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split('&');

@@ -35,6 +35,7 @@ function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 }
 
+//debugging purposes
 try { angular.module("noteList");
     console.log('noteList Loaded');
 } catch(err) { console.log('noteList didnt load') }

@@ -5,7 +5,7 @@
             <h2>Notes</h2>
         </div>
         <div class="col-md-6">
-            <a type="button" class="btn btn-default btn-block btn-create" href="/create-post">
+            <a type="button" class="btn btn-default btn-block btn-create" href="/create-post?id={{vm.id}}&user={{vm.userId}}">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span>Create Note</span></a>
         </div>
@@ -39,18 +39,24 @@
 
     <ul class= content-list>
         <!--<li>{{wow}}</li>-->
-        <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="/class?id={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+        <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+            <a href="/document?id={{vm.id}}&user={{vm.userId}}&post={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
             <h3>{{post.title}}</h3>
             <div class="details">
-                By: <span>{{ post.author }}</span> <br>
-                Created: <span>{{ post.dateCreated }}</span><br>
+                By: <span>{{ vm.author }}</span> <br>
+                Created: <span>{{ post.time }}</span><br>
                 <span>
-                <div ng-repeat = "a in vm.getNumber(post.rating) track by $index"> <!-- TODO: can implement half stars -->
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <div ng-repeat = "a in vm.getNumber(5 - post.rating) track by $index">
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                </div>
+                    <i class="fa fa-star" aria-hidden="true"></i> - {{post.stars.length}}
+                    <!-- TODO: can implement half stars -->
+                <!--
+
+                <div ng-repeat = "a in vm.getNumber(post.rating) track by $index">
+
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div ng-repeat = "a in vm.getNumber(5 - post.rating) track by $index">
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </div>-->
                 </span>
             </div>
         </a>

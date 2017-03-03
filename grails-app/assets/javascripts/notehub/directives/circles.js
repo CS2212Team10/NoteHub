@@ -12,8 +12,6 @@
  ********************************************/
 
 
-console.log('loaded circles'); <!-- TODO: remove (used for debugging purposes) -->
-
 angular
     .module("notehub")
     .directive("circles", circles);
@@ -43,11 +41,11 @@ function circles() {
             return new Array(num);
         };
 
-
+        vm.userId = getQueryVariable('user');
         var userData =  null;
         vm.usersCircles = [];
 
-        $http.get('/user/?id=1').then(function(response) {
+        $http.get('/user/?id='+vm.userId).then(function(response) {
             userData = response.data;
             console.log(userData.name);
             console.log(userData.circles);
@@ -55,11 +53,6 @@ function circles() {
             console.log("hello");
             //console.log(classData);
             var circleIdList = userData.circles;
-            console.log("hello2");
-            console.log(circleIdList[0]);
-            console.log(circleIdList[1]);
-            console.log(circleIdList[2]);
-
 
             var i;
             for (i = 0; i < circleIdList.length; i++) {
@@ -89,4 +82,16 @@ function circles() {
         ]
         */
     }
+}
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
 }

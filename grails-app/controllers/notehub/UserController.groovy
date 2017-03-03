@@ -3,11 +3,6 @@ package notehub
 
 import grails.rest.*
 import grails.converters.*
-import org.grails.web.json.JSONObject
-import sun.misc.BASE64Encoder
-
-import javax.sql.rowset.serial.SerialBlob
-import java.nio.ByteBuffer
 
 /**
  * Controls the creation and retrieval of users
@@ -62,7 +57,14 @@ class UserController extends RestfulController {
             return
         }
 
-        this.renderUser(Long.parseLong(params.id))
+
+        try{
+            this.renderUser(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status: 400)
+            return
+        }
+
     }
 
     /**
@@ -79,7 +81,12 @@ class UserController extends RestfulController {
             return
         }
 
-        this.renderUser(Long.parseLong(params.id))
+        try{
+            this.renderUser(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status: 400)
+            return
+        }
     }
 
     /**
@@ -89,17 +96,17 @@ class UserController extends RestfulController {
      * @return      Renders 200 or 400
      */
     def save() {
+        // validate JSON data
+        if (request.JSON.name == null || request.JSON.email == null || request.JSON.password == null || request.JSON.picture == null){
+            render (status: 400)
+            return
+        }
+
         // get JSON data
         String name = request.JSON.name
         String email = request.JSON.email
         String password = request.JSON.password
-        byte[] picture = request.JSON.picture.toString().decodeBase64()
-
-        // validate JSON data
-        if (name == null || email == null || password == null || picture == null){
-            render (status: 400)
-            return
-        }
+        String picture = request.JSON.picture.toString()
 
 
         def newUser = new User(name, picture)
@@ -145,7 +152,15 @@ class UserController extends RestfulController {
             return
         }
 
-        def user = User.findById(Long.parseLong(params.id))
+        // find user
+        def user
+        try{
+            user = User.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status: 400)
+            return
+        }
+
         // user not found
         if (user == null){
             render (status: 404)
@@ -174,17 +189,8 @@ class UserController extends RestfulController {
         }
 
         // build json
-        JSONObject json = new JSONObject()
-        json.put("name", user.getName())
-        json.put("id", user.getId())
-        json.put("posts", user.getPosts())
-        json.put("circles", user.getCircles())
-        SerialBlob picture = user.getPicture()
-        byte[] bytePicture = picture.getBytes(1, (int)picture.length())
-        BASE64Encoder encoder = new BASE64Encoder()
-        ByteBuffer pictureBuffer = ByteBuffer.wrap(bytePicture)
-        json.put("picture", encoder.encode(pictureBuffer))
-        render (json)
+
+        render (user as JSON)
     }
 
 

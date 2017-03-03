@@ -2,11 +2,7 @@ package notehub
 
 
 import grails.rest.*
-import org.grails.web.json.JSONObject
-import sun.misc.BASE64Encoder
-
-import javax.sql.rowset.serial.SerialBlob
-import java.nio.ByteBuffer
+import grails.converters.*
 
 /**
  * Controller for post - creates, deletes, and shows posts
@@ -34,7 +30,14 @@ class PostController extends RestfulController {
             render(status: 400)
             return
         }
-        this.renderPost(Long.parseLong(params.id))
+
+        try {
+            this.renderPost(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
+
     }
 
     /**
@@ -48,7 +51,12 @@ class PostController extends RestfulController {
             render(status: 400)
             return
         }
-        this.renderPost(Long.parseLong(params.id))
+        try {
+            this.renderPost(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
     }
 
     /**
@@ -63,38 +71,41 @@ class PostController extends RestfulController {
             return
         }
         // render json
-        JSONObject json = new JSONObject()
-        json.put("title", post.getTitle())
-        json.put("id", post.getId())
-        json.put("time", post.getTime().dateTimeString)
-        json.put("author", post.getAuthor())
-        json.put("group", post.getGroup())
-        SerialBlob content = post.getContent()
-        byte[] byteContent = content.getBytes(1, (int)content.length())
-        BASE64Encoder encoder = new BASE64Encoder()
-        ByteBuffer contentBuffer = ByteBuffer.wrap(byteContent)
-        json.put("content", encoder.encode(contentBuffer))
-        render (json)
+        render (post as JSON)
     }
 
     /**
      * Default POST action for posts
      * Accessed at /post/
-     * Provide JSON with title, author id, group id, and content (encoded in base64) fields
+     * Provide JSON with title, author id, and content (encoded in base64) fields
      * @return      Renders 200 or 400
      */
     def save(){
-        // get JSON data
-        String title = request.JSON.title
-        Long authorId = Long.parseLong(request.JSON.author.toString())
-        Long groupId = Long.parseLong(request.JSON.group.toString())
-        byte[] content = request.JSON.content.toString().decodeBase64()
-
         //validate data
-        if(title == null || authorId == null || groupId == null || content == null){
+        if(request.JSON.title == null || request.JSON.author == null || request.JSON.group == null || request.JSON.content == null){
             render(status: 400)
             return
         }
+
+        String title
+        Long authorId
+        Long groupId
+        String content
+
+
+        // get JSON data
+        try {
+            title = request.JSON.title
+            authorId = Long.parseLong(request.JSON.author.toString())
+            //Default group, id = 1
+            groupId = 1
+            content = request.JSON.content.toString()
+        } catch (NumberFormatException e) {
+            render(status: 400)
+            return
+        }
+
+
 
         def author = User.findById(authorId)
         def group = UserGroup.findById(groupId)
@@ -131,7 +142,14 @@ class PostController extends RestfulController {
             return
         }
 
-        def post = Post.findById(Long.parseLong(params.id))
+        def post
+        try {
+            post = Post.findById(Long.parseLong(params.id))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
+
 
         if (post == null){
             render (status: 404) //post not found

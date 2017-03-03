@@ -27,7 +27,13 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        def userGroup = UserGroup.findById(params.id)
+        def userGroup
+        try {
+            userGroup = UserGroup.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         //Content not found
         if(userGroup == null){
@@ -45,13 +51,23 @@ class UserGroupController extends RestfulController{
      *  @return      Renders 200, 404, or 400
      */
     def save(){
-
-        String name = request.JSON.name
-        String description = request.JSON.description
-        Long creatorId = Long.parseLong(request.JSON.creator.toString())
-
-        if(name == null || description == null || creatorId == null){
+        //validate data
+        if(request.JSON.name == null || request.JSON.description == null || request.JSON.creator == null){
             render(status:400)
+            return
+        }
+
+        String name
+        String description
+        Long creatorId
+
+        // get JSON data
+        try {
+            name = request.JSON.name
+            description = request.JSON.description
+            creatorId = Long.parseLong(request.JSON.creator.toString())
+        } catch (NumberFormatException e) {
+            render(status: 400)
             return
         }
 
@@ -91,7 +107,13 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        def userGroup = UserGroup.findById(params.id)
+        def userGroup
+        try {
+            userGroup = UserGroup.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         if(userGroup == null){
             render(status:404)
@@ -119,7 +141,13 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        def userGroup = UserGroup.findById(params.id)
+        def userGroup
+        try {
+            userGroup = UserGroup.findById(Long.parseLong(params.id.toString()))
+        } catch (NumberFormatException e){
+            render(status:400)
+            return
+        }
 
         //Content not found
         if(userGroup == null){

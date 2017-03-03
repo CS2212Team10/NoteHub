@@ -1,6 +1,7 @@
 package notehub
 
-import javax.sql.rowset.serial.SerialBlob
+import org.grails.web.json.JSONObject
+
 
 /**
  * A class that represents a post in NoteHub
@@ -13,15 +14,15 @@ class Post {
      * @param title     Title of post
      * @param content   Content of post
      */
-    Post(String title, byte[] content) {
+    Post(String title, String content) {
         this.setTitle(title)
         this.setTime(new Date())
-        this.setContent(new SerialBlob(content))
+        this.setContent(content)
     }
 
     Date time
     String title
-    SerialBlob content
+    String content
 
     static hasOne = [author: User, group: UserGroup]
     static hasMany = [stars: UserStar]
@@ -37,6 +38,8 @@ class Post {
 
     @Override
     String toString() {
-        return this.getId()
+        JSONObject json = new JSONObject()
+        json.put("id", this.getId().toString())
+        return json.toString()
     }
 }

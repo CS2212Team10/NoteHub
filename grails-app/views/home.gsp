@@ -18,7 +18,7 @@
 
 <body>
 
-<div ng-app="notehub">
+<div>
     <!-- TODO: Link it to create post-->
     <a class="btn btn-default btn-back" href="/home">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -42,14 +42,13 @@
             <h2>Circle News</h2>
             {{TODOBOX}}
 
-    <!--
-    <div class="rating">
-        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
-        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
-        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
-        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
-        <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
-    </div> -->
+        <div class="rating">
+            <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1" onclick='console.log("Hello")'></i>
+            <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+            <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+            <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+            <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1"></i>
+        </div>
 
 
 

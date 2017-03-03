@@ -5,7 +5,7 @@
             <h2>Notes</h2>
         </div>
         <div class="col-md-6">
-            <a type="button" class="btn btn-default btn-block btn-create">
+            <a type="button" class="btn btn-default btn-block btn-create" href="/create-post">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span>Create Note</span></a>
         </div>
@@ -39,7 +39,7 @@
 
     <ul class= content-list>
         <!--<li>{{wow}}</li>-->
-        <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="#"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+        <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="/class?id={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
             <h3>{{post.title}}</h3>
             <div class="details">
                 By: <span>{{ post.author }}</span> <br>
@@ -56,4 +56,6 @@
         </a>
         </li>
     </ul>
+
+    {{vm.getId}}
 </div>

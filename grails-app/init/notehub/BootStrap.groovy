@@ -12,7 +12,13 @@ class BootStrap {
         testUser.save()
 
         def testUserGroup = new UserGroup("Default Group", "Default Group", testUser)
+        testUserGroup.addToUsers(testUser)
+        def testPost = new Post("test post","abc123".decodeBase64())
+        testPost.setAuthor(testUser)
+        testPost.setGroup(testUserGroup)
         testUserGroup.save()
+        testUser.save(flush: true)
+        testPost.save()
     }
     def destroy = {
     }

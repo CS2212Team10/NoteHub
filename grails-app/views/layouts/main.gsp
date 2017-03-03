@@ -40,7 +40,7 @@
     </head>
 
 
-<body>
+<body ng-app="notehub">
 
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please
@@ -49,7 +49,7 @@
 
 
     <!-- Nav Bar --> <!-- TODO: Fix LOGO and Nav Bar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top clearfix">
         <div class="container-fluid">
 
             <!-- mobile display navbar -->
@@ -88,6 +88,7 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+    <span style="height: 50px;display:inline-block;width:100%;margin-bottom: 10px;"></span>
 
     <!-- content body -->
     <g:layoutBody/>

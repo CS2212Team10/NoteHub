@@ -43,15 +43,38 @@ function circles() {
             return new Array(num);
         };
 
-        /* Fetching JSON Data.
-         $http.get('SOMEJSONFILE.json').then(function(response) {
-         self.phones = response.data;
-         });
-         */
+
+        var userData =  null;
+        vm.usersCircles = [];
+
+        $http.get('/user/?id=1').then(function(response) {
+            userData = response.data;
+            console.log(userData.name);
+            console.log(userData.circles);
+            console.log(userData.posts);
+            console.log("hello");
+            //console.log(classData);
+            var circleIdList = userData.circles;
+            console.log("hello2");
+            console.log(circleIdList[0]);
+            console.log(circleIdList[1]);
+            console.log(circleIdList[2]);
+
+
+            var i;
+            for (i = 0; i < circleIdList.length; i++) {
+                console.log(i);
+                $http.get('/userGroup/?id='+circleIdList[i].id).then(function(response) {
+                    console.log(response.data);
+                    vm.usersCircles.push(response.data);
+                });
+            }
+        });
 
         vm.title = " "; // should be in the page controller
 
         //Dummy Data
+        /*
         vm.usersCircles =[
             {
                 name: "Default Circle",
@@ -64,5 +87,6 @@ function circles() {
                 desc: "1010101000111"
             }
         ]
+        */
     }
 }

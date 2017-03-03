@@ -41,7 +41,7 @@ function noteList() {
         var queryString = parser.search;
         var idNum = getQueryVariable('id'); // gets query variable
 
-        console.log(idNum);
+        //console.log(idNum);
         vm.getId = goto;
 
         vm.orderProp = 'dateCreated';
@@ -50,35 +50,63 @@ function noteList() {
         vm.getNumber = function(num) {
             return new Array(num);
         }
-        /* Fetching JSON Data.
+
+
+
+        var classData =  null;
+        vm.posts = [];
+
+        $http.get('/userGroup/?id=1').then(function(response) {
+            classData = response.data;
+            console.log(classData.name);
+            console.log(classData.posts);
+            console.log("hello");
+            //console.log(classData);
+            var postIdList = classData.posts;
+            console.log("hello2");
+
+
+            var i;
+            for (i = 0; i < postIdList.length; i++) {
+                console.log(i);
+                $http.get('/post/?id='+postIdList[i].id).then(function(response) {
+                    console.log(response.data);
+                    vm.posts.push(response.data);
+                });
+            }
+        });
+
+
+
+
+
+        /* Fetching JSON Data
          $http.get('SOMEJSONFILE.json').then(function(response) {
          self.phones = response.data;
          });
-         */
+         .*/
         vm.title = "hello this is WORKING!";
 
         //Dummy Data
+        /*
         vm.posts =[
             {
                 id: 2,
                 title: "Java Tutorial",
                 author: "Paul Li",
-                dateCreated: "11/11/16",
                 rating: 5
             },{
                 id: 3,
                 title: "Calculus 101",
                 author: "Bob Ross",
-                dateCreated: "10/9/16",
                 rating: 4
             },{
                 id: 4,
                 title: "French for Dummies",
                 author: "Will Smith",
-                dateCreated: "10/8/16",
                 rating: 2
             }
-        ]
+        ]*/
     }
 }
 function getQueryVariable(variable) {

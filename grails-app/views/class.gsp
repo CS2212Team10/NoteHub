@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div ng-app="notehub">
+<div>
 
     <!-- TODO: Link it to create something -->
     <a class="btn btn-default btn-back" href="/home">

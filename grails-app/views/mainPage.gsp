@@ -23,10 +23,10 @@
 
     <form method="post" enctype="multipart/form-data" style="margin-left: 60px">
 
-        <a style="border:0; width:275px; height:30px; margin-bottom: 10px; background-color:#3399FF; color:#FFF;" href="/class?id={{id}}&signIn={{userId}}" class="btn">
+        <a style="border:0; width:275px; height:30px; margin-bottom: 10px; background-color:#3399FF; color:#FFF;" href="signIn" class="btn">
             Sign In
         </a>​
-        <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="/class?id={{id}}&signUp={{userId}}" class="btn">
+        <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="signUp" class="btn">
             Sign Up
         </a>​
     </form>

@@ -34,7 +34,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
         <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Note Name" value="" placeholder="Password" ng-model="titles"><br>
     </form>
     <br>
-    <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="/class?id={{id}}&home={{userId}}" class="btn">
+    <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="home" class="btn">
             Sign In
     </a>​
 

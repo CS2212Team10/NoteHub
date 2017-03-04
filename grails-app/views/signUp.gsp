@@ -63,6 +63,10 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
         <input id="file-upload" style="display:none" type="file">
 
     </div>
+    <br>
+        <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="home" class="btn">
+                Sign Up
+        </a>​
 
 </div>
 </body>

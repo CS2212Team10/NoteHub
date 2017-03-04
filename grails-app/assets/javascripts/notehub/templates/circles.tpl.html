@@ -19,10 +19,12 @@
         </div>
     </div>
 
+    <!-- Display Circle Content-->
     <ul class= content-list>
-        <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp"><a href="/class"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+        <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+            <a href="/class?id={{ circle.id }}&user={{vm.userId}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
             <h2>{{circle.name}}</h2>
-            <small class = "description">{{circle.desc}}</small>
+            <small class = "descrption">{{circle.desc}}</small>
         </a>
         </li>
     </ul>

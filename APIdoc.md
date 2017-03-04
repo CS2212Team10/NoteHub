@@ -22,7 +22,7 @@ Delete User Group | DELETE | /userGroup/userGroupID | <ul><li>400</li> <li>404</
 ## Post
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create Post | POST | /post/ | <ul><li>400</li> <li>200</li></ul> | `{"group":"userGroupId","user":"userId"}`
+Create Post | POST | /post/ | <ul><li>400</li> <li>200</li></ul> | `{"title":"postTitle","content":"contentInBase64","group":"userGroupId","author":"userId"}`
 Get Post | GET | /post/postID | <ul><li>400</li> <li>404</li> <li>`{"id":"postId","title":"postTitle","author":"authorUserId","group":"userGroupId","content":"contentInBase64","time":"timeOfPost","stars":"listOfStarIds"}`</li></ul> | None
 Get Post | GET | /post/?id=postID | <ul><li>400</li> <li>404</li> <li>`{"id":"postId","title":"postTitle","author":"authorUserId","group":"userGroupId","content":"contentInBase64","time":"timeOfPost","stars":"listOfStarIds"}`</li></ul> | None
 Delete Post | DELETE | /post/postID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
@@ -31,7 +31,7 @@ Delete Post | DELETE | /post/postID | <ul><li>400</li> <li>404</li> <li>200</li>
 ## User Star
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create User Star | POST | /userStar/ | <ul><li>400</li> <li>200</li></ul> | `{"author":"authorUserId","user":"userId"}`
+Create User Star | POST | /userStar/ | <ul><li>400</li> <li>200</li></ul> | `{"post":"postId","user":"userId"}`
 Get User Star | GET | /userStar/userStarID | <ul><li>400</li> <li>404</li> <li>`{"id":"userStarID","author":"authorUserId","user":"userId","time":"timeOfUserStar"}`</li></ul> | None
 Get User Star | GET | /userStar/?id=userStarID | <ul><li>400</li> <li>404</li> <li>`{"id":"userStarID","author":"authorUserId","user":"userId","time":"timeOfUserStar"}`</li></ul> | None
 Delete User Star | DELETE | /userStar/userStarID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None

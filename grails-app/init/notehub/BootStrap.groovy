@@ -19,6 +19,7 @@ class BootStrap {
         // create 100 profiles
         for (i in (1..100)) {
             testUser = new User("TestUser ${i}", "TestUser${i}Picture")
+
             testAccount = new Account("TestUser${i}@test.com", "password")
             testAccount.setUser(testUser)
             testUser.setAccount(testAccount)
@@ -29,6 +30,7 @@ class BootStrap {
             // create 100 posts
             for (j in (1..100)) {
                 def testPost = new Post("TestPost ${i * j}", "TestPost ${i * j} content")
+
                 testPost.setGroup(testUserGroup)
                 testPost.setAuthor(testUser)
                 testPost.save()

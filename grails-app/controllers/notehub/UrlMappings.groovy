@@ -17,5 +17,8 @@ class UrlMappings {
         "/class"(view: '/class')
         "/home"(view: '/home')
         "/document"(view: '/docViewPage')
+        "/mainPage"(view: '/mainPage')
+        "/signUp"(view: '/signUp')
+        "/signIn"(view: '/signIn')
     }
 }

@@ -35,7 +35,6 @@ function noteList() {
 
         var vm = this;
 
-        var idNum = getQueryVariable('id'); // gets query variable
         vm.userId = getQueryVariable('user'); // gets query variable
         vm.id = getQueryVariable('id');
         vm.postId;
@@ -52,26 +51,29 @@ function noteList() {
 
         var classData =  null;
         vm.posts = [];
-        var someAuthor = 'null';
 
         $http.get('/userGroup/?id='+vm.id).then(function(response) {
             classData = response.data;
-            //console.log(classData);
             var postIdList = classData.posts;
 
             var i;
             for (i = 0; i < postIdList.length; i++) {
                 console.log(i);
                 $http.get('/post/?id='+postIdList[i].id).then(function(response) {
-                    console.log('test'+response.data.author.id);
-                    $http.get('/user/?id='+response.data.author.id).then(function(response) {
-                        vm.author = response.data.name;
-                    });
                     vm.posts.push(response.data);
                 });
             }
         });
-
+        /* breaks the server possibly to much refreshing?
+        vm.getAuthor = function (authorId) {
+            var author = 0;
+            console.log("WOWO"+authorId);
+            $http.get('/user/?id='+authorId).then(function(response) {
+                author = response.data.name;
+                console.log("WOWO"+author);
+            });
+            return author;
+        }*/
 
 
 

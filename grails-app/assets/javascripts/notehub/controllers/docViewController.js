@@ -15,6 +15,114 @@ function DocViewController($http, $scope) {
     $scope.starList = [];
     $scope.starListCount = 0;
 
+    /*
+    $scope.ratePost = function(){
+        console.log("Rated Post!");
+        //fetches up to date, data on the post
+        $http.get('/post/?id='+$scope.postId).then(function(response) {
+            postData = response.data;
+            $scope.title = postData.title;
+            $scope.author = postData.author;
+            $scope.groupId = postData.group;
+            $scope.content = postData.content;
+            $scope.starList = postData.stars;
+            $scope.starListCount = postData.stars.length;
+        });
+
+        /*
+        $http.get('/post/?id='+$scope.postId).then(function(response) {
+            postData = response.data;
+            $scope.theAuthor = postData.author;
+        });*/
+
+    /*
+        // Find if they are in there
+        var pos;
+        var found = false;
+
+        for(pos = 0; pos < $scope.starList.length && !found; pos++){
+            var tempAuthor = 0;
+            $http.get('/userStar/?id='+$scope.starList[pos]).then(function(response) {
+                postData = response.data;
+                tempAuthor = postData.author;
+            });
+            if(tempAuthor == $scope.userId){
+                found = true;
+            }
+        }
+
+        if(!found) {
+            // creates new star data
+            var starData = {
+                post: parseInt($scope.postId),
+                user: parseInt($scope.userId)
+
+            };
+
+            // add star data
+            $http.post('/userStar/', JSON.stringify(starData)).then(function (response) {
+                console.log("User Star Added");
+                if (response.data)
+                    $scope.msg = "Put Data Method Executed Successfully!";
+                console.log($scope.msg);
+            }, function (response) {
+                $scope.msg = "User Star Failed To Add" + JSON.stringify(starData);
+                console.log($scope.msg);
+                $scope.statusval = response.status;
+                $scope.statustext = response.statusText;
+                $scope.headers = response.headers();
+            });
+            var starId = 0;
+            found = false;
+            var i;
+            for(i = 0; i < $scope.starList.length && !found; i++){
+                var tempAuthor = 0;
+                var tempStar = 0;
+                $http.get('/userStar/?id='+$scope.starList[i]).then(function(response) {
+                    postData = response.data;
+                    tempAuthor = postData.author;
+                    tempStar = postData.id;
+                });
+                if(tempAuthor == $scope.userId){
+                    found = true;
+                    starId = tempStar;
+                }
+            }
+
+            $scope.starList.push(starId);
+            console.log("ADDED");
+        }
+        // remove from post
+        else {
+            $scope.starList.splice(pos, 1);
+            console.log("REMOVED");
+        }
+
+        //new data
+        var data = {
+            title: $scope.title,
+            author: $scope.author,
+            group: $scope.groupId,
+            content: $scope.content,
+            stars: $scope.starList   //the one thing that changes
+        };
+        //update the with the new data
+        $http.post('/post/', JSON.stringify(data)).then(function (response) {
+            console.log(response.data);
+            if (response.data)
+                $scope.msg = "Put Data Method Executed Successfully!";
+            console.log($scope.msg);
+        }, function (response) {
+            $scope.msg = "Service not Exists";
+            console.log($scope.msg);
+            $scope.statusval = response.status;
+            $scope.statustext = response.statusText;
+            $scope.headers = response.headers();
+        });
+    };
+    */
+
+
     var postData = null;
 
         $http.get('/post/?id='+$scope.postId).then(function(response) {

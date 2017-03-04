@@ -27,12 +27,12 @@
                 <option value="" disabled selected hidden>Sort By...</option>
                 <option value="title">Title (ascending)</option>
                 <option value="-title">Title (descending)</option>
-                <option value="author">First Name (ascending)</option>
-                <option value="-author">First Name (descending)</option>
+                <!-- <option value="author">First Name (ascending)</option>
+                <option value="-author">First Name (descending)</option> -->
                 <option value="-rating">Highest Rating</option>
                 <option value="rating">Lowest Rating</option>
-                <option value="dateCreated">Newest</option>
-                <option value="-dateCreated">Oldest</option>
+                <option value="-time">Newest</option>
+                <option value="time">Oldest</option>
             </select>
         </div>
     </div>
@@ -43,10 +43,10 @@
             <a href="/document?id={{vm.id}}&user={{vm.userId}}&post={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
             <h3>{{post.title}}</h3>
             <div class="details">
-                By: <span>{{ vm.author }}</span> <br>
+                <!--By: <span>{{ post.author.id }}</span> <br> TODO: figure out a proper way to get author title-->
                 Created: <span>{{ post.time }}</span><br>
                 <span>
-                    <i class="fa fa-star" aria-hidden="true"></i> - {{post.stars.length}}
+                    <i class="fa fa-star" aria-hidden="true"></i> - {{post.stars.length}}</span>
                     <!-- TODO: can implement half stars -->
                 <!--
 
@@ -57,7 +57,7 @@
                     <div ng-repeat = "a in vm.getNumber(5 - post.rating) track by $index">
                         <i class="fa fa-star-o" aria-hidden="true"></i>
                     </div>-->
-                </span>
+
             </div>
         </a>
         </li>

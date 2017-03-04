@@ -44,19 +44,23 @@ i{
         <span>BACK</span>
     </a>
 
-<h1>Circle Name</h1>
-<p>{{title}}</p>
+<h1 style="font-weight: bold">{{ groupName }}</h1>
+<p style="font-weight: bold">{{title}}</p>
 
 <h2>Student Rating: {{starListCount}}</h2>
 
 <textarea rows="4" cols="50">{{content}}</textarea>
 
+    <!--
 <h2>Your Rating</h2>
+-->
 
 
-
-<button class="button"><i class ="fa fa-floppy-o" aria-hidden="true"></i> Download</button>
-
+<!-- TODO: fix download functionality
+<button class="button"><i class ="fa fa-floppy-o" aria-hidden="true"></i> Download</button>-->
+    <!-- TODO: fix the data structure and relation between
+    <button class="btn" ng-click="ratePost()"><i class="fa fa-star" aria-hidden="true"></i></button>
+-->
 </div>
 
 </body>

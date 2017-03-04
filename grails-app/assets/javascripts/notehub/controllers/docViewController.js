@@ -12,8 +12,11 @@ function DocViewController($http, $scope) {
     $scope.title = 'NULL';
     $scope.author = 'NULL';
     $scope.content = 'NULL';
+    $scope.group = 0;
     $scope.starList = [];
     $scope.starListCount = 0;
+
+    $scope.groupName = 'NULL';
 
     /*
     $scope.ratePost = function(){
@@ -130,8 +133,10 @@ function DocViewController($http, $scope) {
             $scope.title = postData.title;
             $scope.author = postData.author;
             $scope.content = postData.content;
+            $scope.group = postData.group;
             $scope.starList = postData.stars;
             $scope.starListCount = postData.stars.length;
+
             /*this stuff was used to get a bunch of star data
             var i;
             var starTotal = 0;
@@ -140,7 +145,14 @@ function DocViewController($http, $scope) {
                 $http.get('/userStar/?id=' + vm.starList[i].id).then(function (response) {
                 });
             }*/
+            console.log($scope.group.id);
+
+            $http.get('/userGroup/?id='+$scope.group.id).then(function(response) {
+                postData = response.data;
+                $scope.groupName = postData.name;
+            });
         });
+
 }
 
 

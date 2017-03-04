@@ -11,7 +11,11 @@ class UrlMappings {
         patch "/$controller/$id(.$format)?"(action:"patch")
 
         "/"(view: '/index')
+        "/create-post" (view: '/createPost')
         "500"(view: '/error')
         "404"(view: '/notFound')
+        "/class"(view: '/class')
+        "/home"(view: '/home')
+        "/document"(view: '/docViewPage')
     }
 }

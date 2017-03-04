@@ -1,0 +1,102 @@
+/*============================================
+    Paul's Custom Style
+    (Main Purpose = [Stage 2: Class Page])
+ ===========================================*/
+
+/*TODO get a better name then content*/
+.content{
+    padding: 5px;
+}
+.content-list{
+    width: 100%;
+    min-height: 500px;
+    border: solid 1px black;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.content li{
+    margin: 0;
+    background-color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    box-shadow: 0 2px 2px #888888;
+
+}
+.content h3{
+    float:left;
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+
+}
+.content h2{
+}
+.content .details{
+    width: 50%;
+    float: right;
+    display: inline-block;
+    height: 100%;
+}
+.content .btn{
+    margin-top: 20px; /*TODO remove margin in mobile*/
+}
+html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
+    padding-top: 0px;
+}
+.options select{
+    width: 100%;
+    margin-top: 5px;
+
+}
+.options input{
+    width: 100%;
+    margin-top: 5px;
+}
+.content i{
+    margin: 4px 10px 4px 4px;
+    display: inline-block;
+    float: left;
+}
+.content .btn-create{
+    text-align: left;
+}
+.content .btn-create i{
+    margin: 4px;
+}
+.btn-back{
+    margin: 20px 10px 10px 10px;
+}
+@media screen and (max-width: 480px) {
+    .options .mobile-hide {
+        display: none;
+    }
+}
+/* Star Rating Highlight */
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+
+
+}
+.rating > i {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.3;
+}
+.rating > i:hover,
+.rating > i:hover ~ i {
+    color: transparent;
+    opacity: 1;
+}
+.rating > i:hover:before,
+.rating > i:hover ~ i:before {
+    position: relative;
+    left: 0;
+    color: gold;
+
+}
+
+

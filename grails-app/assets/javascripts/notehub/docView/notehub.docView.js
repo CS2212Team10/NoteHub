@@ -5,11 +5,11 @@
 //= require_self
 //= require_tree services
 //= require_tree controllers
-//= require_tree components
 //= require_tree directives
+//= require_tree components
 //= require_tree templates
 
-angular.module("notehub.class", [
+angular.module("notehub.docView", [
     "notehub.core",
     "ui.bootstrap.dropdown",
     "ui.bootstrap.collapse",

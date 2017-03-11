@@ -18,7 +18,7 @@
 
 <body>
 
-<div ng-controller="HomeController">
+<div ng-controller="homeController">
     <!-- TODO: Link it to create post-->
     <!-- DONT need a back button on the home page yet
     <a class="btn btn-default btn-back" href="/home">
@@ -35,7 +35,7 @@
         <!-- User's Circles -->
         <div class="col-md-6">
             <h2>Your Circles</h2>
-            <circles></circles>
+            <circle-list></circle-list>
         </div> <!-- /.col1/1-->
 
         <!-- Circle News -->

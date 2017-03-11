@@ -17,7 +17,7 @@ class BootStrap {
         testUserGroup.save()
 
         // create 100 profiles
-        for (i in (1..100)) {
+        for (i in (1..2)) {
             testUser = new User("TestUser ${i}", "TestUser${i}Picture")
 
             testAccount = new Account("TestUser${i}@test.com", "password")
@@ -28,7 +28,7 @@ class BootStrap {
             testUser.save()
 
             // create 100 posts
-            for (j in (1..100)) {
+            for (j in (1..5)) {
                 def testPost = new Post("TestPost ${i * j}", "TestPost ${i * j} content")
 
                 testPost.setGroup(testUserGroup)
@@ -37,7 +37,7 @@ class BootStrap {
             }
 
             // create 50 stars
-            for (j in (1..50)) {
+            for (j in (1..5)) {
                 def starId = (Long) (Math.random() * (i * 100))
                 def testStar = new UserStar(testUser, Post.findById(starId))
                 if (testStar.validate()) {

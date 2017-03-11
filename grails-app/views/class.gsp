@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div ng-controller="ClassController">
+<div ng-controller="classController">
 
     <!-- TODO: Link it to create something -->
     <a class="btn btn-default btn-back" href="/home?user={{userId}}">

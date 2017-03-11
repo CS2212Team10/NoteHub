@@ -14,7 +14,7 @@
 
 angular
     .module("notehub")
-    .directive("circles", circles);
+    .directive("circlesxxx", circles);
 
 function circles() {
     var directive = {

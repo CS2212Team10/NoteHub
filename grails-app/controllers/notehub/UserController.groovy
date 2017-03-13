@@ -3,11 +3,13 @@ package notehub
 
 import grails.rest.*
 import grails.converters.*
+import grails.plugin.springsecurity.annotation.Secured
 
 /**
  * Controls the creation and retrieval of users
  * @author Cameron Nicolle
  */
+@Secured(['ROLE_USER'])
 class UserController extends RestfulController {
 	static responseFormats = ['json']
 

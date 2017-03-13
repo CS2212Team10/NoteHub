@@ -1,6 +1,6 @@
 package notehub
 
-
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.*
 import grails.converters.*
 
@@ -8,6 +8,7 @@ import grails.converters.*
  * Controller for post - creates, deletes, and shows posts
  * @author Emma Henriksen-Willis
  */
+@Secured(['ROLE_USER'])
 class PostController extends RestfulController {
 	static responseFormats = ['json']
 

@@ -1,5 +1,6 @@
 package notehub
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.*
 import grails.converters.*
 
@@ -7,6 +8,7 @@ import grails.converters.*
  * Controls the creation and retrieval of a User group (ie. Circle)
  * @author Yusra Al-Sharafi
  */
+@Secured(['ROLE_USER'])
 class UserGroupController extends RestfulController{
 	static responseFormats = ['json']
 

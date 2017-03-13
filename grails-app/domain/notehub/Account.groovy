@@ -1,38 +1,59 @@
 package notehub
 
-import org.grails.web.json.JSONObject
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
+class Account implements Serializable {
 
-/**
- * A class that represents a user's account in NoteHub
- * @author Cameron Nicolle
- */
-class Account {
+	private static final long serialVersionUID = 1
 
-    /**
-     * Constructor for Account
-     * @param email     Email of account
-     * @param password  Password for account
-     */
-    Account(String email, String password) {
-        this.setEmail(email)
-        this.setPassword(password)
-    }
+	transient springSecurityService
 
+	String username
+	String password
+	boolean enabled = true
+	boolean accountExpired
+	boolean accountLocked
+	boolean passwordExpired
+    
     String email
-    String password
     User user
 
-    static constraints = {
-        email(nullable: false, blank: false, email: true, unique: true)
-        password(nullable: false, blank: false)
-        user(nullable: true)
-    }
+	Account(String username, String password) {
+		this()
+		this.username = username
+        this.email = username
+		this.password = password
+	}
 
-    @Override
-    String toString(){
-        JSONObject json = new JSONObject()
-        json.put("id", this.getId().toString())
-        return json.toString()
-    }
+	Set<Role> getAuthorities() {
+		AccountRole.findAllByAccount(this)*.role
+	}
+
+	def beforeInsert() {
+		encodePassword()
+	}
+
+	def beforeUpdate() {
+		if (isDirty('password')) {
+			encodePassword()
+		}
+	}
+
+	protected void encodePassword() {
+		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
+	}
+
+	static transients = ['springSecurityService']
+
+	static constraints = {
+		username blank: false, unique: true
+		password blank: false
+	}
+
+	static mapping = {
+		password column: '`password`'
+	}
 }

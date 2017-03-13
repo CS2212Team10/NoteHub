@@ -1,6 +1,6 @@
 package notehub
 
-
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.*
 import grails.converters.*
 
@@ -9,6 +9,7 @@ import grails.converters.*
  * Controller for toggling and de-toggling stars on posts
  * @author Yu Guo
  */
+@Secured(['ROLE_USER'])
 class UserStarController extends RestfulController{
 	static responseFormats = ['json']
 

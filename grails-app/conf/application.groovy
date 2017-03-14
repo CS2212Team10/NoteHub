@@ -4,6 +4,8 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'notehub.Account'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'notehub.AccountRole'
 grails.plugin.springsecurity.authority.className = 'notehub.Role'
+grails.plugin.springsecurity.rest.login.usernamePropertyName = 'email'
+grails.plugin.springsecurity.rest.token.rendering.usernamePropertyName = 'email'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],

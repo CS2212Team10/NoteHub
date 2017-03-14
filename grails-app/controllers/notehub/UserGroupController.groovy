@@ -11,6 +11,7 @@ import grails.converters.*
 @Secured(['ROLE_USER'])
 class UserGroupController extends RestfulController{
 	static responseFormats = ['json']
+    def springSecurityService
 
     UserGroupController(){
         super(UserGroup)
@@ -20,7 +21,7 @@ class UserGroupController extends RestfulController{
      *  Default GET action for userGroup
      *  Accessed at /userGroup/
      *  @params id   Id of userGroup
-     *  @return      Renders userGroup, 404 or 400
+     *  @return      Renders userGroup, 404, 401 or 400
      */
     def index() {
         //User group not found
@@ -43,44 +44,43 @@ class UserGroupController extends RestfulController{
             return
         }
 
+        // Does not have access
+        if (!userGroup.hasAccess(this.springSecurityService.currentUser)){
+            render(status: 401)
+            return
+        }
+
         render(userGroup as JSON)
     }
 
     /**
      *  Default SAVE action for userGroup
      *  Accessed at /userGroup/
-     *  Provide JSON with name, description, and a the Creator user's id
+     *  Provide JSON with name and description
      *  @return      Renders 200, 404, or 400
      */
     def save(){
         //validate data
-        if(request.JSON.name == null || request.JSON.description == null || request.JSON.creator == null){
+        if(request.JSON.name == null || request.JSON.description == null){
             render(status:400)
             return
         }
 
         String name
         String description
-        Long creatorId
 
         // get JSON data
         try {
             name = request.JSON.name
             description = request.JSON.description
-            creatorId = Long.parseLong(request.JSON.creator.toString())
         } catch (NumberFormatException e) {
             render(status: 400)
             return
         }
 
-        //find creator by Id
-        User creator = User.findById(creatorId)
-
-        //creator not found
-        if(creator == null){
-            render(status:404)
-            return
-        }
+        //find creator
+        Account creatorAccount = this.springSecurityService.currentUser
+        User creator = creatorAccount.getUser()
 
         def newUserGroup = new UserGroup(name, description, creator)
 
@@ -100,7 +100,7 @@ class UserGroupController extends RestfulController{
      *  Default DELETE action for userGroup
      *  Accessed at /userGroup/id
      *  @param id    Id of userGroup
-     *  @return      Renders 400, 404 or 200
+     *  @return      Renders 400, 404, 401 or 200
      */
     def delete(){
         //Id  doesn't exist
@@ -122,6 +122,12 @@ class UserGroupController extends RestfulController{
             return
         }
 
+        // Does not have access
+        if (!userGroup.hasAccess(this.springSecurityService.currentUser)){
+            render(status: 401)
+            return
+        }
+
         //Removes users from the UserGroup
         userGroup.getUsers().each {userGroup.removeFromUsers(it)}
 
@@ -134,7 +140,7 @@ class UserGroupController extends RestfulController{
      *  The GET action for userGroup
      *  Accessed at /userGroup/id
      *  @param id    Id of userGroup
-     *  @return      Renders 400, 404 or 200
+     *  @return      Renders 400, 404, 401 or 200
      */
     def show(){
         //User group not found
@@ -157,9 +163,9 @@ class UserGroupController extends RestfulController{
             return
         }
 
-        //Ensuring validity of data
-        if(params.id == null){
-            render(status:400)
+        // Does not have access
+        if (!userGroup.hasAccess(this.springSecurityService.currentUser)){
+            render(status: 401)
             return
         }
 

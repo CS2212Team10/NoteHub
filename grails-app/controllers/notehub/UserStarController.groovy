@@ -12,6 +12,7 @@ import grails.converters.*
 @Secured(['ROLE_USER'])
 class UserStarController extends RestfulController{
 	static responseFormats = ['json']
+    def springSecurityService
 
     //
     UserStarController(){
@@ -21,7 +22,7 @@ class UserStarController extends RestfulController{
      *  Default GET action for userStar
      *  Accessed at /userStar/
      *  @params id   Id of userStar
-     *  @return      Renders userStar, 404 or 400
+     *  @return      Renders userStar, 404, 401 or 400
      */
     def index() {
         //id not found
@@ -45,6 +46,12 @@ class UserStarController extends RestfulController{
             return
         }
 
+        // Does not have access
+        if (!userStar.hasAccess(this.springSecurityService.currentUser)){
+            render(status: 401)
+            return
+        }
+
         //render
         render(userStar as JSON)
 
@@ -53,7 +60,7 @@ class UserStarController extends RestfulController{
      * Show get action for userStar
      * Accessed at /userStar/id
      * @params id   Id of userStar
-     * @return      Renders userStar, 404 or 400
+     * @return      Renders userStar, 404, 401 or 400
      */
     def show(){
         //id not found
@@ -77,28 +84,32 @@ class UserStarController extends RestfulController{
             return
         }
 
+        // Does not have access
+        if (!userStar.hasAccess(this.springSecurityService.currentUser)){
+            render(status: 401)
+            return
+        }
+
         render(userStar as JSON)
     }
 
     /**
      *  Default POST action for userStar
      *  Accessed at /userStar/
-     *  Provide JSON with user's id and post's id
+     *  Provide JSON with post's id
      *  @return      Renders 200, 404, or 400
      */
     def save(){
 
         // validation
-        if(request.JSON.user == null || request.JSON.post == null){
+        if(request.JSON.post == null){
             render(status:400)
             return
         }
 
-        Long userId
         Long postId
         // get JSON data
         try {
-            userId = Long.parseLong(request.JSON.user.toString())
             postId = Long.parseLong(request.JSON.post.toString())
         } catch (NumberFormatException e) {
             render(status:400)
@@ -108,12 +119,19 @@ class UserStarController extends RestfulController{
 
 
         // generate reference
-        def user = User.findById(userId)
+        Account userAccount = this.springSecurityService.currentUser
+        def user = userAccount.getUser()
         def post = Post.findById(postId)
 
         // if object not found
         if( user == null || post == null){
             render(status:404)
+            return
+        }
+
+        // Does not have access
+        if (!post.hasAccess(this.springSecurityService.currentUser)){
+            render(status: 401)
             return
         }
 
@@ -158,6 +176,12 @@ class UserStarController extends RestfulController{
         // not found
         if(userStar == null){
             render(status:404)
+            return
+        }
+
+        // Does not have access
+        if (userStar.getUserId() != this.springSecurityService.currentUser.getUserId() ){
+            render(status: 401)
             return
         }
 

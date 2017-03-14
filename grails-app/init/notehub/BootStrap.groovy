@@ -51,6 +51,9 @@ class BootStrap {
                 }
 
             }
+
+            def group = new UserGroup("bob", "bob", User.findById(2))
+            group.save(flush: true)
         }
     }
     def destroy = {

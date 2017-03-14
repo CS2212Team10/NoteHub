@@ -21,8 +21,7 @@ class Account implements Serializable {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-    
-    String email
+
     User user
 
     /**
@@ -33,7 +32,6 @@ class Account implements Serializable {
 	Account(String username, String password) {
 		this()
 		this.username = username
-        this.email = username
 		this.password = password
 	}
 
@@ -73,8 +71,8 @@ class Account implements Serializable {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		username blank: false, unique: true
-		password blank: false
+		username(blank: false, unique: true, email: true)
+		password(blank: false)
 	}
 
 	static mapping = {

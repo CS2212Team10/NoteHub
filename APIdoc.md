@@ -5,7 +5,7 @@
 ## Authentication
 Action | HTTP Request| Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create User | POST | /user/ | <ul><li>401</li> <li>`{"email":"user@ema.il", "roles":"listOfRoles","token_type":"Bearer", "access_token":"token", "expires_in":"timeBeforeExpires", "refresh_token":"token" }`</li> </ul> | `{"email":"user@ema.il", "password":"userPassword"}`
+Create User | POST | /api/login | <ul><li>401</li> <li>`{"email":"user@ema.il", "roles":"listOfRoles","token_type":"Bearer", "access_token":"token", "expires_in":"timeBeforeExpires", "refresh_token":"token" }`</li> </ul> | `{"email":"user@ema.il", "password":"userPassword"}`
 
 ## User
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request

@@ -32,7 +32,7 @@ class UserGroup {
      * @return  Whether a Account has access of not
      */
     boolean hasAccess(Account a){
-        return this.users.contains(a.getUser())
+        return this.getUsers().any {it.getId() == a.getUserId()}
     }
 
     static constraints = {

@@ -33,7 +33,7 @@ class Post {
      * @return  Whether a Account has access of not
      */
     boolean hasAccess(Account a){
-        return (this.getAuthor() == a.getUser()) || this.getGroup().hasAccess(a)
+        return (this.getAuthorId() == a.getUserId()) || this.getGroup().hasAccess(a)
     }
 
     static constraints = {

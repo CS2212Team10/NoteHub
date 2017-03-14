@@ -29,7 +29,7 @@ class UserStar {
      * @return  Whether a Account has access of not
      */
     boolean hasAccess(Account a){
-        return (this.getUser() == a.getUser()) || this.getPost().hasAccess(a)
+        return (this.getUserId() == a.getUserId()) || this.getPost().hasAccess(a)
     }
 
     static constraints = {

@@ -1,5 +1,16 @@
 <div class="content">
 
+    <div class="row">
+        <div class="col-md-6">
+            <h2>HOME?</h2> <!-- TODO WHAT GOES HERE? -->
+        </div>
+        <div class="col-md-6">
+            <a type="button" class="btn btn-default btn-block btn-create hvr-back-pulse" href="#">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span>Create Note</span></a>
+        </div>
+    </div>
+
     <!-- List Filtering Features -->
     <div class="row options">
         <!-- Search Feature -->
@@ -20,9 +31,9 @@
     </div>
 
     <!-- Display Circle Content-->
-    <ul class= content-list>
+    <ul class= "content-list">
         <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-            <a href="/class?id={{ circle.id }}&user={{vm.userId}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+            <a class="hvr-bounce-to-bottom" href="/class?id={{ circle.id }}&user={{vm.userId}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
                 <h2>{{circle.name}}</h2>
                 <small class = "description">{{circle.desc}}</small>
             </a>

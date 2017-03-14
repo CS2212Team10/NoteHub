@@ -5,7 +5,7 @@
             <h2>Notes</h2>
         </div>
         <div class="col-md-6">
-            <a type="button" class="btn btn-default btn-block btn-create" href="/create-post?id={{vm.id}}&user={{vm.userId}}">
+            <a type="button" class="btn btn-default btn-block btn-create hvr-back-pulse" href="/create-post?id={{vm.id}}&user={{vm.userId}}">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span>Create Note</span></a>
         </div>
@@ -37,10 +37,10 @@
         </div>
     </div>
 
-    <ul class= content-list>
+    <ul class= "content-list">
         <!--<li>{{wow}}</li>-->
         <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-            <a href="/document?id={{vm.id}}&user={{vm.userId}}&post={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+            <a class="hvr-bounce-to-bottom" href="/document?id={{vm.id}}&user={{vm.userId}}&post={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
                 <h3>{{post.title}}</h3>
                 <div class="details">
                     <!--By: <span>{{ post.author.id }}</span> <br> TODO: figure out a proper way to get author title-->

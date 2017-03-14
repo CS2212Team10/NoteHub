@@ -3,6 +3,10 @@ package notehub
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
+/**
+ * Class that represents an account in NoteHub
+ * @author Cameron Nicolle
+ */
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
 class Account implements Serializable {
@@ -21,6 +25,11 @@ class Account implements Serializable {
     String email
     User user
 
+    /**
+     * Constructor for Account
+     * @param username  Username of Account
+     * @param password  Password of account
+     */
 	Account(String username, String password) {
 		this()
 		this.username = username
@@ -28,20 +37,35 @@ class Account implements Serializable {
 		this.password = password
 	}
 
+    /**
+     * Getter for role that are a user has
+     * @return  Set of roles
+     */
 	Set<Role> getAuthorities() {
 		AccountRole.findAllByAccount(this)*.role
 	}
 
+    /**
+     * Automatically encode password when a new account is created
+     * @return
+     */
 	def beforeInsert() {
 		encodePassword()
 	}
 
+    /**
+     * Automatically encode password when a account is updated
+     * @return
+     */
 	def beforeUpdate() {
 		if (isDirty('password')) {
 			encodePassword()
 		}
 	}
 
+    /**
+     * Encodes password
+     */
 	protected void encodePassword() {
 		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 	}

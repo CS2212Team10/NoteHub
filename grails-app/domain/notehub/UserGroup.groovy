@@ -26,6 +26,14 @@ class UserGroup {
     static hasMany = [users: User, posts: Post]
     static belongsTo = [User]
 
+    /**
+     * Checks if a given Account has access
+     * @param a Account to check
+     * @return  Whether a Account has access of not
+     */
+    boolean hasAccess(Account a){
+        return this.users.contains(a.getUser())
+    }
 
     static constraints = {
         name(nullable: false, blank: false)

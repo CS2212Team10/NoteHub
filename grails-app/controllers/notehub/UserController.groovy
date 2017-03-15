@@ -129,6 +129,7 @@ class UserController extends RestfulController {
         newAccount.save()
         newUser.save()
         defaultGroup.save(flush:true)
+        AccountRole.create(newAccount, Role.findByAuthority("ROLE_USER"), true)
 
         render (status: 200)
     }

@@ -48,36 +48,10 @@
     <![endif]-->
 
 
-    <!-- Nav Bar --> <!-- TODO: Fix LOGO and Nav Bar -->
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">NoteHub</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="disabled"><a href="#">Home</a></li>
-            <li class="disabled"><a href="#">Page 1</a></li>
-            <li class="disabled"><a href="#">Page 2</a></li>
-            <li class="disabled"><a href="#">Page 3</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="disabled"><a href="#">Sign Out</a></li>
-        </ul>
-    </div>
-</nav>
-
     <span style="height: 50px;display:inline-block;width:100%;margin-bottom: 10px;"></span>
 
     <!-- content body -->
     <g:layoutBody/>
-
-
-
-    <!-- Footer -->
-    <div id="footer">
-        <p>Notehub 2017 | <a href="http://cs2212team10.github.io">Source</a></p>
-    </div>
-    <!-- /.Footer -->
 
 
     <!----------------

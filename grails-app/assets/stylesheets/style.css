@@ -42,7 +42,7 @@
     margin-top: 20px; /*TODO remove margin in mobile*/
 }
 html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
-    padding-top: 40px;
+    padding-top: 0px;
 }
 .options select{
     width: 100%;
@@ -54,6 +54,7 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
     margin-top: 5px;
 }
 .content i{
+    margin: 4px 10px 4px 4px;
     display: inline-block;
     float: left;
 }
@@ -63,8 +64,39 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
 .content .btn-create i{
     margin: 4px;
 }
+.btn-back{
+    margin: 20px 10px 10px 10px;
+}
 @media screen and (max-width: 480px) {
     .options .mobile-hide {
         display: none;
     }
 }
+/* Star Rating Highlight */
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+
+
+}
+.rating > i {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    opacity: 0.3;
+}
+.rating > i:hover,
+.rating > i:hover ~ i {
+    color: transparent;
+    opacity: 1;
+}
+.rating > i:hover:before,
+.rating > i:hover ~ i:before {
+    position: relative;
+    left: 0;
+    color: gold;
+
+}
+
+

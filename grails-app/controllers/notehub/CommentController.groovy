@@ -5,25 +5,25 @@ import grails.rest.*
 import grails.converters.*
 
 /**
- * Controller for post - creates, deletes, and shows posts
+ * Controller for comment - creates, deletes, and shows comments
  * @author Emma Henriksen-Willis
  */
-class PostController extends RestfulController {
+class CommentController extends RestfulController{
 	static responseFormats = ['json']
 
     /**
-     * Constructor for post controller
+     * Constructor for comment controller
      */
-    PostController(){
-        super(Post)
+    CommentController(){
+        super(Comment)
     }
 
 
     /**
-     * Default get action for post
-     * Accessed at /post/
-     * @params id       Id of post
-     * @return      Renders post, 404 or 400
+     * Default get action for comment
+     * Accessed at /comment/
+     * @params id       Id of comment
+     * @return      Renders comment, 404 or 400
      */
     def index(){
         if(params.id == null){
@@ -32,7 +32,7 @@ class PostController extends RestfulController {
         }
 
         try {
-            this.renderPost(Long.parseLong(params.id.toString()))
+            this.renderComment(Long.parseLong(params.id.toString()))
         } catch (NumberFormatException e){
             render(status:400)
             return
@@ -41,9 +41,9 @@ class PostController extends RestfulController {
     }
 
     /**
-     * Show get action for post(alternate to index) - method renders a json representation of a post
-     * Accessed at /post/id
-     * @params id   Id of post
+     * Show get action for comment(alternate to index) - method renders a json representation of a comment
+     * Accessed at /comment/id
+     * @params id   Id of comment
      * @return      Renders post, 404, or 400
      */
     def show(){
@@ -52,7 +52,7 @@ class PostController extends RestfulController {
             return
         }
         try {
-            this.renderPost(Long.parseLong(params.id.toString()))
+            this.renderComment(Long.parseLong(params.id.toString()))
         } catch (NumberFormatException e){
             render(status:400)
             return
@@ -60,80 +60,74 @@ class PostController extends RestfulController {
     }
 
     /**
-     * Helper method for show and index - renders a given post
-     * @param id    Id of post
-     * @return      Renders post or 404
+     * Helper method for show and index - renders a given comment
+     * @param id    Id of comment
+     * @return      Renders comment or 404
      */
-    private renderPost(long id){
-        def post = Post.findById(id)
-        if (post == null) {
+    private renderComment(long id){
+        def comment = Comment.findById(id)
+        if (comment == null) {
             render(status: 404) //id not found
             return
         }
         // render json
-        render (post as JSON)
+        render (comment as JSON)
     }
 
     /**
-     * Default POST action for posts
-     * Accessed at /post/
-     * Provide JSON with title, author id, group id, and content (encoded in base64) fields
+     * Default POST action for comments
+     * Accessed at /comment/
+     * Provide JSON with author id, post id, and content (encoded in base64) fields
      * @return      Renders 200 or 400
      */
     def save(){
         //validate data
-        if(request.JSON.title == null || request.JSON.author == null || request.JSON.group == null || request.JSON.content == null){
+        if(request.JSON.author == null || request.JSON.post == null || request.JSON.content == null){
             render(status: 400)
             return
         }
 
-        String title
         Long authorId
-        Long groupId
+        Long postId
         String content
-
 
         // get JSON data
         try {
-            title = request.JSON.title
             authorId = Long.parseLong(request.JSON.author.toString())
-            //Default group, id = 1
-            groupId = 1
+            postId = Long.parseLong(request.JSON.post.toString())
             content = request.JSON.content.toString()
         } catch (NumberFormatException e) {
             render(status: 400)
             return
         }
 
-
-
         def author = User.findById(authorId)
-        def group = UserGroup.findById(groupId)
-        if(author == null || group == null){
+        def post = Post.findById(postId)
+        if(author == null || post == null){
             render(status: 404)
             return
         }
-        def post = new Post(title, content)
-        post.setAuthor(author)
-        post.setGroup(group)
-        author.addToPosts(post)
-        group.addToPosts(post)
+        def comment = new Comment(content)
+        comment.setAuthor(author)
+        comment.setPost(post)
+        author.addToComments(comment)
+        post.addToComments(comment)
 
-        //validate new post
-        if (!post.validate()){
+        //validate new comment
+        if (!comment.validate()){
             render (status: 400)
             return
         }
-        post.save()
+        comment.save()
         author.save(flush: true)
-        group.save(flush: true)
+        post.save(flush: true)
         render(status: 200)
     }
 
     /**
-     * Default DELETE action for post
-     * Accessed at /post/id
-     * @param id    Id of post
+     * Default DELETE action for comment
+     * Accessed at /comment/id
+     * @param id    Id of comment
      * @return      Renders 400, 404 or 200
      */
     def delete(){
@@ -142,21 +136,19 @@ class PostController extends RestfulController {
             return
         }
 
-        def post
+        def comment
         try {
-            post = Post.findById(Long.parseLong(params.id))
+            comment = Comment.findById(Long.parseLong(params.id))
         } catch (NumberFormatException e){
             render(status:400)
             return
         }
 
-
-        if (post == null){
+        if (comment == null){
             render (status: 404) //post not found
             return
         }
-        post.delete(flush: true)
+        comment.delete(flush: true)
         render (status: 200)
     }
-
 }

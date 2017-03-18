@@ -2,44 +2,32 @@ package notehub
 
 import org.grails.web.json.JSONObject
 
-
 /**
- * A class that represents a post in NoteHub
- * @author Cameron Nicolle
+ * Class representing a comment on a post
+ * @author Emma Henriksen-Willis
  */
-class Post {
+class Comment {
 
     /**
-     * Constructor for Post
+     * Constructor for Comment
      * @param title     Title of post
      * @param content   Content of post
      */
-    Post(String title, String content) {
-        this.setTitle(title)
+    Comment(String content) {
         this.setTime(new Date())
         this.setContent(content)
     }
 
     Date time
-    String title
     String content
 
-    static hasOne = [author: User, group: UserGroup]
-    static hasMany = [stars: UserStar, comments: Comment]
+    static hasOne = [author: User, post: Post]
 
     static constraints = {
         time(nullable: false)
-        title(nullable: false)
         content(nullable: false)
         author(nullable: false)
-        group(nullable: false)
-        stars(nullable: true)
-        comments(nullable:true)
-    }
-
-    static mapping = {
-        stars(cascade: "all-delete-orphan")
-        comments(cascade: "all-delete-orphan")
+        post(nullable: false)
     }
 
     @Override

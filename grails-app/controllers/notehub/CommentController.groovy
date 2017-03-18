@@ -1,6 +1,7 @@
 package notehub
 
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.*
 import grails.converters.*
 
@@ -8,6 +9,7 @@ import grails.converters.*
  * Controller for comment - creates, deletes, and shows comments
  * @author Emma Henriksen-Willis
  */
+@Secured(['ROLE_USER'])
 class CommentController extends RestfulController{
 	static responseFormats = ['json']
 
@@ -70,6 +72,12 @@ class CommentController extends RestfulController{
             render(status: 404) //id not found
             return
         }
+
+        if (!comment.hasAccess(this.springSecurityService.currentUser)){ //current user doesn't have access to comment they're requesting
+            render(status: 401)
+            return
+        }
+
         // render json
         render (comment as JSON)
     }
@@ -77,23 +85,21 @@ class CommentController extends RestfulController{
     /**
      * Default POST action for comments
      * Accessed at /comment/
-     * Provide JSON with author id, post id, and content (encoded in base64) fields
+     * Provide JSON with post id and content (encoded in base64) fields
      * @return      Renders 200 or 400
      */
     def save(){
         //validate data
-        if(request.JSON.author == null || request.JSON.post == null || request.JSON.content == null){
+        if(request.JSON.post == null || request.JSON.content == null){
             render(status: 400)
             return
         }
 
-        Long authorId
         Long postId
         String content
 
         // get JSON data
         try {
-            authorId = Long.parseLong(request.JSON.author.toString())
             postId = Long.parseLong(request.JSON.post.toString())
             content = request.JSON.content.toString()
         } catch (NumberFormatException e) {
@@ -101,7 +107,13 @@ class CommentController extends RestfulController{
             return
         }
 
-        def author = User.findById(authorId)
+        Long author = springSecurityService.currentUser     //author defaults to current user
+        // Does not have access
+        if (!post.hasAccess(author)){
+            render(status: 401)
+            return
+        }
+
         def post = Post.findById(postId)
         if(author == null || post == null){
             render(status: 404)
@@ -146,6 +158,11 @@ class CommentController extends RestfulController{
 
         if (comment == null){
             render (status: 404) //post not found
+            return
+        }
+
+        if (comment.getAuthorId() != this.springSecurityService.currentUser.getUserId() ){ // user cannot delete comments they didn't create
+            render(status: 401)
             return
         }
         comment.delete(flush: true)

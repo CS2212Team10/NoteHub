@@ -30,6 +30,15 @@ class Comment {
         post(nullable: false)
     }
 
+    /**
+     * Checks if a given Account has access (current user is author of the post or has access to the post)
+     * @param a Account to check
+     * @return  Whether a Account has access of not
+     */
+    boolean hasAccess(Account a){
+        return (this.getAuthorId() == a.getUserId()) || this.getPost().hasAccess(a)
+    }
+
     @Override
     String toString() {
         JSONObject json = new JSONObject()

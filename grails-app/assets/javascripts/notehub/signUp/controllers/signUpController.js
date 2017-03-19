@@ -1,17 +1,13 @@
 //= wrapped
 
 angular
-    .module("notehub.home")
-    .controller("homeController", homeController);
+    .module("notehub.signUp")
+    .controller("SignUpController", signUpController);
 
-function homeController(applicationDataFactory, contextPath, $state,$scope,$window) {
+function signUpController(applicationDataFactory, contextPath, $state,$scope) {
 
     $scope.title = "hello";
-    $scope.changeView = function(){
-        console.log($window.location); // VERY USEFULL
-        var earl = '/editperson/';
-        $window.location.href = earl;
-    };
+
     /* IDK WHAT THIS DOES
      var vm = this;
 

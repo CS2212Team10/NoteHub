@@ -50,6 +50,5 @@
     </div> <!-- /.row -->
 </div> <!-- /.ng-app -->
 
-
 </body>
 </html>

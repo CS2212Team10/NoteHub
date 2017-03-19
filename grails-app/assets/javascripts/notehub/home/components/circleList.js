@@ -29,7 +29,6 @@ angular
             vm.userId = getQueryVariable('user');
             var userData =  null;
             vm.usersCircles = [];
-
             $http.get('/user/?id='+vm.userId).then(function(response) {
                 userData = response.data;
                 console.log(userData.name);

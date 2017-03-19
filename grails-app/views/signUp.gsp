@@ -17,7 +17,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 </style>
 <body>
 
-<div style="width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="CreatePostController">
+<div style="width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="SignUpController">
 
     <h3 style="margin:0 auto 20px auto; width:175px; font-size: 40px">Sign Up</h3>
 

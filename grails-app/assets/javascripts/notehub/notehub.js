@@ -6,6 +6,9 @@
 //= require /notehub/class/notehub.class
 //= require /notehub/createPost/notehub.createPost
 //= require /notehub/docView/notehub.docView
+//= require /notehub/signUp/notehub.signUp
+//= require /notehub/signIn/notehub.signIn
+//= require /notehub/docView/notehub.docView
 //= require /notehub/test/notehub.test
 //= require_self
 //= require_tree services
@@ -21,7 +24,9 @@ var app = angular.module("notehub", [
         "notehub.home",
         "notehub.class",
         "notehub.createPost",
-        "notehub.docView"
+        "notehub.docView",
+        "notehub.signIn",
+        "notehub.signUp"
     ]);
 
 app.config(config);

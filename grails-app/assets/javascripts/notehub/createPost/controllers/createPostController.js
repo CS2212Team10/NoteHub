@@ -30,8 +30,6 @@ function CreatePostController($http, $scope) {
             $scope.headers = response.headers();
         });
     };
-
-
 }
 
 function getQueryVariable(variable) {

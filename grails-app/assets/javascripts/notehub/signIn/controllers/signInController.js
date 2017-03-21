@@ -30,21 +30,9 @@ function SignInController(applicationDataFactory, contextPath, $state,$scope,$ht
             $scope.headers = response.headers();
         });
     };
+
     $scope.resetForm = function(){
         $scope.userLogin = angular.copy($scope.originForm); // Assign clear state to modified form
         $scope.loginForm.$setPristine(); // this line will update status of your form, but will not clean your data, where `registrForm` - name of form.
     };
-    /* IDK WHAT THIS DOES
-     var vm = this;
-
-     vm.contextPath = contextPath;
-
-     applicationDataFactory.get().then(function(response) {
-     vm.applicationData = response.data;
-     });
-
-     vm.stateExists = function(name) {
-     return $state.get(name) != null;
-     };
-     */
 }

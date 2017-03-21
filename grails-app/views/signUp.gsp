@@ -22,7 +22,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
     <h3 style="margin:0 auto 20px auto; width:175px; font-size: 40px">Sign Up</h3>
 
     <div role="alert">
-        <div ng-show="submitted">
+        <div ng-show="submitted" ng-cloak>
         <span class="alert alert-warning" ng-show="error.passwordMatch">
             Passwords don't match!</span>
         <span class="alert alert-warning" ng-show="error.properEmailFormat">

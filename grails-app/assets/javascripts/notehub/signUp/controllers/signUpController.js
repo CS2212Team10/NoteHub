@@ -93,26 +93,7 @@ function signUpController(applicationDataFactory, contextPath, $state,$scope,$ht
         $scope.error = angular.copy($scope.resetError);
 
     }; // Assign clear state to modified form
-    $scope.raiseError = function(error){
-        switch (error){
-            case 0:
-                $scope.notification = "Please fill in all the boxes";
-                break;
-            case 1:
-                $scope.notification = "This email has been used already";
-                break;
-            case 2:
-                $scope.notification = "This username has been used already";
-                break;
-            case 3:
-                $scope.notification = "The passwords don't match";
-                break;
-            case 4:
-                $scope.notification = "Invalid email"
-                break;
-        }
-    };
-
+    //TODO add a proper password validation.
     $scope.equalPassword = function (password1, password2) {
         return (password1 == password2);
     };

@@ -91,7 +91,7 @@ class UserController extends RestfulController {
     @Secured(['permitAll'])
     def save() {
         // validate JSON data
-        if (request.JSON.name == null || request.JSON.email == null || request.JSON.password == null || request.JSON.picture == null){
+        if (request.JSON.name == null || request.JSON.email == null || request.JSON.password == null){
             render (status: 400)
             return
         }

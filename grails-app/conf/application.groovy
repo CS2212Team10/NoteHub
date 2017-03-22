@@ -18,6 +18,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     [pattern: '/**/css/**',      access: ['permitAll']],
     [pattern: '/**/images/**',   access: ['permitAll']],
     [pattern: '/**/favicon.ico', access: ['permitAll']],
+	[pattern: '/*',              access: ['permitAll']],
     [pattern: '/dbconsole/**/', access: ['permitAll']]
 
 ]
@@ -29,7 +30,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
     [pattern: '/**/images/**',   filters: 'none'],
     [pattern: '/**/favicon.ico', filters: 'none'],
     [pattern: '/api/login',      filters: 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
-    [pattern: '/api/**',         filters: 'anonymousAuthenticationFilter,restTokenValidationFilter,restExceptionTranslationFilter,filterInvocationInterceptor'],
-	[pattern: '/**',             filters: 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter']
+    [pattern: '/api/**',         filters: 'anonymousAuthenticationFilter,restTokenValidationFilter,restExceptionTranslationFilter,filterInvocationInterceptor']
 ]
 

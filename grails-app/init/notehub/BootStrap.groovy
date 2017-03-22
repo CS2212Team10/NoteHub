@@ -7,7 +7,7 @@ class BootStrap {
         def userRole = Role.findOrSaveByAuthority("ROLE_USER")
 
         // create first user
-        def testUser = new User("Bob","AAA")
+        def testUser = new User("Bob")
         def testAccount = new Account("bob@bob.com", "password")
         testAccount.setUser(testUser)
         testUser.setAccount(testAccount)
@@ -22,8 +22,8 @@ class BootStrap {
         testUserGroup.save()
 
         // create 100 profiles
-        for (i in (1..2)) {
-            testUser = new User("TestUser ${i}", "TestUser${i}Picture")
+        for (i in (1..100)) {
+            testUser = new User("TestUser ${i}")
 
             testAccount = new Account("TestUser${i}@test.com", "password")
             testAccount.setUser(testUser)
@@ -34,7 +34,7 @@ class BootStrap {
             AccountRole.create(testAccount, userRole, true)
 
             // create 100 posts
-            for (j in (1..5)) {
+            for (j in (1..100)) {
                 def testPost = new Post("TestPost ${i * j}", "TestPost ${i * j} content")
 
                 testPost.setGroup(testUserGroup)
@@ -43,7 +43,7 @@ class BootStrap {
             }
 
             // create 50 stars
-            for (j in (1..5)) {
+            for (j in (1..50)) {
                 def starId = (Long) (Math.random() * (i * 100))
                 def testStar = new UserStar(testUser, Post.findById(starId))
                 if (testStar.validate()) {

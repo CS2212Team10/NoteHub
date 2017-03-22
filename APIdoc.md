@@ -10,11 +10,11 @@ Create User | POST | /api/login | <ul><li>401</li> <li>`{"email":"user@ema.il", 
 ## User
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create User | POST | /api/user/ | <ul><li>400</li> <li>200</li></ul> | `{"name":"userName","email":"user@ema.il","password":"userPassword","picture":"userPictureInBase64"}`
-Get User | GET | /api/user/userID | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","picture":"userPictureInBase64","circles":"listOfUserGroupIds,"posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
-Get User | GET | /api/user/?id=userID | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","picture":"userPictureInBase64","circles":"listOfUserGroupIds,"posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
-Get User from Token | GET | /api/user/ | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","picture":"userPictureInBase64","circles":"listOfUserGroupIds,"Posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
-Delete User | DELETE | /api/user/UserID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
+Create User | POST | /api/user/ | <ul><li>400</li> <li>200</li></ul> | `{"name":"userName","email":"user@ema.il","password":"userPassword"}`
+Get User | GET | /api/user/userID | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","circles":"listOfUserGroupIds,"posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
+Get User | GET | /api/user/?id=userID | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","circles":"listOfUserGroupIds,"posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
+Get User from Token | GET | /api/user/ | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","circles":"listOfUserGroupIds,"Posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
+Delete User | DELETE | /api/user/ | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
 
 ## User Group
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
@@ -32,11 +32,19 @@ Get Post | GET | /api/post/postID | <ul><li>400</li> <li>404</li> <li>401</li><l
 Get Post | GET | /api/post/?id=postID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"postId","title":"postTitle","author":"authorUserId","group":"userGroupId","content":"contentInBase64","time":"timeOfPost","stars":"listOfStarIds"}`</li></ul> | None
 Delete Post | DELETE | /api/post/postID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
 
+## Comment
+Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
+--- | --- | --- | --- | ---
+Create Comment | POST | /api/comment/ | <ul><li>400</li> <li>200</li> <li>401</li></ul> | `{"post":"postId","content":"contentInBase64"}`
+Get Comment | GET | /api/comment/commentID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"commentId","author":"authorUserId","content":"contentInBase64","post":"postId","time":"timeOfPost"}`</li></ul> | None
+Get Comment | GET | /api/comment/?id=commentID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"commentId","author":"authorUserId","content":"contentInBase64","post":"postId","time":"timeOfPost"}`</li></ul> | None
+Delete Comment | DELETE | /api/comment/commentID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
+
 
 ## User Star
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create User Star | POST | /api/userStar/ | <ul><li>400</li> <li>200</li> <li>401</li></ul> | `{"post":"postId"}`
+Create User Star | POST | /api/userStar/ | <ul><li>400</li> <li>401</li> <li>`{"id":"userStarID","post":"postID","time":"timeOfUserStar","user":"userId"}`</li></ul> | `{"post":"postId"}`
 Get User Star | GET | /api/userStar/userStarID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"userStarID","author":"authorUserId","user":"userId","time":"timeOfUserStar"}`</li></ul> | None
 Get User Star | GET | /api/userStar/?id=userStarID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"userStarID","author":"authorUserId","user":"userId","time":"timeOfUserStar"}`</li></ul> | None
 Delete User Star | DELETE | /api/userStar/userStarID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None

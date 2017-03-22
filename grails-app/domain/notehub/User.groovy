@@ -18,7 +18,7 @@ class User {
     String name
 
 
-    static hasMany = [circles: UserGroup, posts: Post, stars: UserStar]
+    static hasMany = [circles: UserGroup, posts: Post, stars: UserStar, comments: Comment]
     static hasOne = [account: Account]
     static belongsTo = [Account]
 
@@ -28,11 +28,13 @@ class User {
         posts(nullable: true)
         stars(nullable: true)
         account(nullable: false)
+        comments(nullable: true)
     }
 
     static mapping = {
         posts(cascade: "all-delete-orphan")
         stars(cascade: "all-delete-orphan")
+        comments(cascade: "all-delete-orphan")
     }
 
     @Override

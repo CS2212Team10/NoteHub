@@ -43,7 +43,7 @@ class PostController extends RestfulController {
     }
 
     /**
-     * Show get action for user(alternate to index) - method renders a json representation of a post
+     * Show get action for post(alternate to index) - method renders a json representation of a post
      * Accessed at /post/id
      * @params id   Id of post
      * @return      Renders post, 404, 401 or 400
@@ -86,7 +86,7 @@ class PostController extends RestfulController {
     /**
      * Default POST action for posts
      * Accessed at /post/
-     * Provide JSON with title, author id, and content (encoded in base64) fields
+     * Provide JSON with title, group id, and content (encoded in base64) fields
      * @return      Renders 200 or 400
      */
     def save(){

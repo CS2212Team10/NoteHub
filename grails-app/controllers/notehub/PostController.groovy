@@ -86,7 +86,7 @@ class PostController extends RestfulController {
     /**
      * Default POST action for posts
      * Accessed at /post/
-     * Provide JSON with title, author id, group id, and content (encoded in base64) fields
+     * Provide JSON with title, group id, and content (encoded in base64) fields
      * @return      Renders 200 or 400
      */
     def save(){

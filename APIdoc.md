@@ -32,6 +32,14 @@ Get Post | GET | /api/post/postID | <ul><li>400</li> <li>404</li> <li>401</li><l
 Get Post | GET | /api/post/?id=postID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"postId","title":"postTitle","author":"authorUserId","group":"userGroupId","content":"contentInBase64","time":"timeOfPost","stars":"listOfStarIds"}`</li></ul> | None
 Delete Post | DELETE | /api/post/postID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
 
+## Comment
+Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
+--- | --- | --- | --- | ---
+Create Comment | POST | /api/comment/ | <ul><li>400</li> <li>200</li> <li>401</li></ul> | `{"post":"postId","content":"contentInBase64"}`
+Get Comment | GET | /api/comment/commentID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"commentId","author":"authorUserId","content":"contentInBase64","post":"postId","time":"timeOfPost"}`</li></ul> | None
+Get Comment | GET | /api/comment/?id=commentID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"commentId","author":"authorUserId","content":"contentInBase64","post":"postId","time":"timeOfPost"}`</li></ul> | None
+Delete Comment | DELETE | /api/comment/commentID | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
+
 
 ## User Star
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request

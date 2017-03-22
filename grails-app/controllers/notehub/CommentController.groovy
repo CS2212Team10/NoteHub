@@ -12,6 +12,7 @@ import grails.converters.*
 @Secured(['ROLE_USER'])
 class CommentController extends RestfulController{
 	static responseFormats = ['json']
+    def springSecurityService
 
     /**
      * Constructor for comment controller
@@ -89,7 +90,7 @@ class CommentController extends RestfulController{
      * @return      Renders 200 or 400
      */
     def save(){
-        //validate data
+        //validate JSON data
         if(request.JSON.post == null || request.JSON.content == null){
             render(status: 400)
             return
@@ -107,18 +108,25 @@ class CommentController extends RestfulController{
             return
         }
 
-        Long author = springSecurityService.currentUser     //author defaults to current user
+        def authorAccount = springSecurityService.currentUser     //author defaults to current user
+        def post = Post.findById(postId)
+
+        if(authorAccount == null || post == null){
+            render(status: 404)
+            return
+        }
         // Does not have access
-        if (!post.hasAccess(author)){
+        if (!post.hasAccess(authorAccount)){
             render(status: 401)
             return
         }
 
-        def post = Post.findById(postId)
-        if(author == null || post == null){
-            render(status: 404)
+        def author = authorAccount.getUser()
+        if(author == null){
+            render(status:404)
             return
         }
+
         def comment = new Comment(content)
         comment.setAuthor(author)
         comment.setPost(post)

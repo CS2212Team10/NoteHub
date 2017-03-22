@@ -148,6 +148,7 @@ class UserStarController extends RestfulController{
         user.save(flush:true)
         post.save(flush:true)
         userStar.save()
+        render(userStar as JSON)
         render(status:200)
 
     }

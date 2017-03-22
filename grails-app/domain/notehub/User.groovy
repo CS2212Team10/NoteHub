@@ -11,13 +11,11 @@ class User {
      * @param name      Name of user
      * @param picture   Profile picture in base 64
      */
-    User(String name, String picture) {
+    User(String name) {
         this.setName(name)
-        this.setPicture(picture)
     }
 
     String name
-    String picture
 
 
     static hasMany = [circles: UserGroup, posts: Post, stars: UserStar]
@@ -26,7 +24,6 @@ class User {
 
     static constraints = {
         name(nullable: false, blank: false)
-        picture(nullable: false)
         circles(nullable: true)
         posts(nullable: true)
         stars(nullable: true)

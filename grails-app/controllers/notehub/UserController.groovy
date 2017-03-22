@@ -100,10 +100,9 @@ class UserController extends RestfulController {
         String name = request.JSON.name
         String email = request.JSON.email
         String password = request.JSON.password
-        String picture = request.JSON.picture.toString()
 
 
-        def newUser = new User(name, picture)
+        def newUser = new User(name)
         def newAccount = new Account(email, password)
         newUser.setAccount(newAccount)
         newAccount.setUser(newUser)

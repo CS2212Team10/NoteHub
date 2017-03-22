@@ -8,7 +8,8 @@ class User {
 
     /**
      * Constructor for User
-     * @param name  Name of user
+     * @param name      Name of user
+     * @param picture   Profile picture in base 64
      */
     User(String name, String picture) {
         this.setName(name)

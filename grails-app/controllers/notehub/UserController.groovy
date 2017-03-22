@@ -154,6 +154,7 @@ class UserController extends RestfulController {
         //success
         user.getCircles().each {
             it.removeFromUsers(user)
+            it.save(flush:true)
             if (it.users.empty){
                 it.delete(flush: true)
             }

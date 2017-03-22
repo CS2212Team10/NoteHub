@@ -44,7 +44,7 @@ Delete Comment | DELETE | /api/comment/commentID | <ul><li>400</li> <li>404</li>
 ## User Star
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create User Star | POST | /api/userStar/ | <ul><li>400</li> <li>200</li> <li>401</li></ul> | `{"post":"postId"}`
+Create User Star | POST | /api/userStar/ | <ul><li>400</li> <li>401</li> <li>`{"id":"userStarID","post":"postID","time":"timeOfUserStar","user":"userId"}`</li></ul> | `{"post":"postId"}`
 Get User Star | GET | /api/userStar/userStarID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"userStarID","author":"authorUserId","user":"userId","time":"timeOfUserStar"}`</li></ul> | None
 Get User Star | GET | /api/userStar/?id=userStarID | <ul><li>400</li> <li>404</li> <li>401</li><li>`{"id":"userStarID","author":"authorUserId","user":"userId","time":"timeOfUserStar"}`</li></ul> | None
 Delete User Star | DELETE | /api/userStar/userStarID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None

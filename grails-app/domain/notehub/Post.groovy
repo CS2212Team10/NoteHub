@@ -25,7 +25,7 @@ class Post {
     String content
 
     static hasOne = [author: User, group: UserGroup]
-    static hasMany = [stars: UserStar]
+    static hasMany = [stars: UserStar, comments: Comment]
 
     /**
      * Checks if a given Account has access
@@ -43,10 +43,12 @@ class Post {
         author(nullable: false)
         group(nullable: false)
         stars(nullable: true)
+        comments(nullable:true)
     }
 
     static mapping = {
         stars(cascade: "all-delete-orphan")
+        comments(cascade: "all-delete-orphan")
     }
 
     @Override

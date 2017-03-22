@@ -7,7 +7,7 @@ class BootStrap {
         def userRole = Role.findOrSaveByAuthority("ROLE_USER")
 
         // create first user
-        def testUser = new User("Bob","AAA")
+        def testUser = new User("Bob")
         def testAccount = new Account("bob@bob.com", "password")
         testAccount.setUser(testUser)
         testUser.setAccount(testAccount)
@@ -23,7 +23,7 @@ class BootStrap {
 
         // create 100 profiles
         for (i in (1..100)) {
-            testUser = new User("TestUser ${i}", "TestUser${i}Picture")
+            testUser = new User("TestUser ${i}")
 
             testAccount = new Account("TestUser${i}@test.com", "password")
             testAccount.setUser(testUser)

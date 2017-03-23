@@ -147,7 +147,7 @@ function DocViewController($http, $scope) {
             }*/
             console.log($scope.group.id);
 
-            $http.get('/userGroup/?id='+$scope.group.id).then(function(response) {
+            $http.get('/api/userGroup/?id='+$scope.group.id).then(function(response) {
                 postData = response.data;
                 $scope.groupName = postData.name;
             });

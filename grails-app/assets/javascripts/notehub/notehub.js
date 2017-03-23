@@ -17,7 +17,6 @@
 var app = angular.module("notehub", [
         "notehub.core",
         "notehub.index",
-        "notehub.test",
         "notehub.home",
         "notehub.class",
         "notehub.createPost",

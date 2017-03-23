@@ -130,27 +130,7 @@ function DocViewController($http, $scope) {
 
         $http.get('/post/?id='+$scope.postId).then(function(response) {
             postData = response.data;
-            $scope.title = postData.title;
-            $scope.author = postData.author;
-            $scope.content = postData.content;
-            $scope.group = postData.group;
-            $scope.starList = postData.stars;
-            $scope.starListCount = postData.stars.length;
 
-            /*this stuff was used to get a bunch of star data
-            var i;
-            var starTotal = 0;
-            var starCount = 0
-            for(i = 0; i < vm.starList.length; i++) {
-                $http.get('/userStar/?id=' + vm.starList[i].id).then(function (response) {
-                });
-            }*/
-            console.log($scope.group.id);
-
-            $http.get('/userGroup/?id='+$scope.group.id).then(function(response) {
-                postData = response.data;
-                $scope.groupName = postData.name;
-            });
         });
 
 }

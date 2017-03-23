@@ -49,9 +49,18 @@ i{
 
 <h2>Student Rating: {{starListCount}}</h2>
 
+    <!--
 <textarea rows="4" cols="50">{{content}}</textarea>
+    -->
+    <div class="row">
+        <div class="col-md-6"> <textarea rows="4" cols="50">{{content}}</textarea> </div>
+        <div class="col-md-6"><comments-list></comments-list></div>
+    </div>
 
     <!--
+    <comments-list></comments-list>
+    <!--
+
 <h2>Your Rating</h2>
 -->
 

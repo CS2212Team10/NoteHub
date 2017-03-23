@@ -52,6 +52,23 @@ function config($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 }
 
+app.factory('authInterceptor', function ($rootScope, $window) {
+    return {
+        request: function (config) {
+            config.headers = config.headers || {};
+            if ($window.sessionStorage.token) {
+                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+                console.log($window.sessionStorage);
+            }else{
+                console.log('AUTHORIZATION WENT WRONG');
+            }
+            return config;
+        }
+    };
+}).config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
+});
+
 //debugging purposes
 try { angular.module("noteList");
     console.log('noteList Loaded');

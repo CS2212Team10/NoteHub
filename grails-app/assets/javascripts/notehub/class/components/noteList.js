@@ -39,14 +39,14 @@ angular
             var classData =  null;
             vm.posts = [];
 
-            $http.get('/userGroup/?id='+vm.id).then(function(response) {
+            $http.get('/api/userGroup/?id='+vm.id).then(function(response) {
                 classData = response.data;
                 var postIdList = classData.posts;
 
                 var i;
                 for (i = 0; i < postIdList.length; i++) {
                     console.log(i);
-                    $http.get('/post/?id='+postIdList[i].id).then(function(response) {
+                    $http.get('/api/post/?id='+postIdList[i].id).then(function(response) {
                         vm.posts.push(response.data);
                     });
                 }

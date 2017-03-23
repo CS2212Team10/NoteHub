@@ -15,11 +15,27 @@ function SignInController(applicationDataFactory, contextPath, $state,$scope,$ht
     $scope.originForm = angular.copy($scope.userLogin);
     $scope.authSignIn = function (user) { //gets user with password and emaill
         console.log("CLICKEDD");
-        $http.get('/user/?email='+user.email+'&password='+user.password).then(function(response) {
+        console.log(JSON.stringify(user));
+        console.log($window.sessionStorage.token)
+
+        $http.post('/api/login', JSON.stringify(user)).then(function(response) {
+            console.log(response.data);
+            console.log(user);
+            $window.sessionStorage.token = response.data.access_token;
+        }, function (response) {
+            console.log(user);
+            $scope.msg = "Service not Exists";
+            console.log($scope.msg);
+            $scope.statusval = response.status;
+            $scope.statustext = response.statusText;
+            $scope.headers = response.headers();
+        });
+
+        $http.get('/api/user/?email='+user.email+'&password='+user.password).then(function(response) {
            console.log(response.data);
+           $window.sessionStorage.token = response.data.access_token;
            $window.location.href="/home?user="+response.data.id;
         }, function (response) {
-
             $scope.valid = false;
             $scope.resetForm();
 

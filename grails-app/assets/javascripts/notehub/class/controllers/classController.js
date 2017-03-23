@@ -9,7 +9,7 @@ function classController($http, $scope) {
     vm.userId = getQueryVariable('user');
     $scope.userId = vm.userId;
     var userData;
-    $http.get('/user/?id='+vm.userId).then(function(response) {
+    $http.get('/api/user/?id='+vm.userId).then(function(response) {
         userData = response.data;
         $scope.title = userData.title;
     });

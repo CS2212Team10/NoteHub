@@ -29,7 +29,7 @@ angular
             vm.userId = getQueryVariable('user');
             var userData =  null;
             vm.usersCircles = [];
-            $http.get('/user/?id='+vm.userId).then(function(response) {
+            $http.get('/api/user/?id='+vm.userId).then(function(response) {
                 userData = response.data;
                 console.log(userData.name);
                 console.log(userData.circles);
@@ -41,7 +41,7 @@ angular
                 var i;
                 for (i = 0; i < circleIdList.length; i++) {
                     console.log(i);
-                    $http.get('/userGroup/?id='+circleIdList[i].id).then(function(response) {
+                    $http.get('/api/userGroup/?id='+circleIdList[i].id).then(function(response) {
                         console.log(response.data);
                         vm.usersCircles.push(response.data);
                     });

@@ -50,7 +50,7 @@ function signUpController(applicationDataFactory, contextPath, $state,$scope,$ht
             return false;
         }
 
-        $http.post('/user/', JSON.stringify(data)).then(function (response) {
+        $http.post('/api/user/', JSON.stringify(data)).then(function (response) {
             console.log(response.data);
             console.log("loaded");
             if (response.data) {

@@ -17,7 +17,7 @@ function CreatePostController($http, $scope) {
         console.log("DID YOU LOAD");
         var data =  $scope.newPost;
 
-        $http.post('/post/', JSON.stringify(data)).then(function (response) {
+        $http.post('/api/post/', JSON.stringify(data)).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";

@@ -6,20 +6,21 @@ angular
 
 function CreateCircleController($http, $scope) {
     $scope.userId = getQueryVariable('user');
-    $scope.newCircle = {          //insecure way of doing thiss
-        title: undefined,
+    $scope.newCircle = {          //insecure way of doing thiss?
+        name: undefined,
         description: undefined
     };
     $scope.uploadCircle = function(circleInfo){
         console.log("DID YOU LOAD");
         var data =  circleInfo;
         console.log(data);
-        $http.post('/userGroup/', JSON.stringify(data)).then(function (response) {
+        $http.post('/api/userGroup/', JSON.stringify(data)).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
         }, function (response) {
+            console.log(data);
             $scope.msg = "Service not Exists";
             console.log($scope.msg);
             $scope.statusval = response.status;

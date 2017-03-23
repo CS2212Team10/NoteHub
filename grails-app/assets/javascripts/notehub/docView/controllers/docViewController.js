@@ -128,7 +128,7 @@ function DocViewController($http, $scope) {
 
     var postData = null;
 
-        $http.get('/post/?id='+$scope.postId).then(function(response) {
+        $http.get('/api/post/?id='+$scope.postId).then(function(response) {
             postData = response.data;
             $scope.title = postData.title;
             $scope.author = postData.author;

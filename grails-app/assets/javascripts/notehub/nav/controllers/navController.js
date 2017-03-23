@@ -10,4 +10,8 @@ function NavController(applicationDataFactory, contextPath, $scope, $window) {
         $scope.auth = false;
         $window.location.href = "/";
     };
+    $scope.home = function () {
+        $scope.auth = false; //check if still auth to navigate website
+        $window.location.href = "/";
+    };
 }

@@ -44,6 +44,7 @@ class UserGroup {
 
     static mapping = {
         posts(cascade: "all-delete-orphan")
+        tableperhierarchy false
     }
 
     @Override

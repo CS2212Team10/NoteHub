@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div ng-controller="classController">
+<div ng-controller="classController" ng-cloak>
 
     <!-- TODO: Link it to create something -->
     <a class="btn btn-default btn-back" href="/home?user={{userId}}">
@@ -49,7 +49,6 @@
 
     </div> <!-- /.row -->
 </div> <!-- /.ng-app -->
-
 
 </body>
 </html>

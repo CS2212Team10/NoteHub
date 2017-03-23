@@ -18,22 +18,21 @@ angular
         templateUrl: '/notehub/docView/commentsList.html',
         controller: function CommentsListController($http){
             var vm = this;
+            var vm = this;
+            $scope.postId = getQueryVariable('post');
+            $scope.id = getQueryVariable('id');
+            $scope.userId = getQueryVariable('user');
 
-            //Dummy Data
-            /*
-             vm.usersCircles =[
-             {
-             name: "Default Circle",
-             desc: "Welcome to notehub!"
-             },{
-             name: "CS2209 Circle",
-             desc: "Logic Logic Logic"
-             },{
-             name: "CS2208 Circle",
-             desc: "1010101000111"
-             }
-             ]
-             */
+
+            $scope.groupName = 'NULL';
+
+            var postData = null;
+
+            $http.get('/post/?id='+$scope.postId).then(function(response) {
+                postData = response.data;
+
+            });
+
         },
         controllerAs: "vm",
         transclude: true,

@@ -128,9 +128,26 @@ function DocViewController($http, $scope) {
 
     var postData = null;
 
-        $http.get('/post/?id='+$scope.postId).then(function(response) {
+        $http.get('/api/post/?id='+$scope.postId).then(function(response) {
             postData = response.data;
 
+<<<<<<< HEAD
+=======
+            /*this stuff was used to get a bunch of star data
+            var i;
+            var starTotal = 0;
+            var starCount = 0
+            for(i = 0; i < vm.starList.length; i++) {
+                $http.get('/userStar/?id=' + vm.starList[i].id).then(function (response) {
+                });
+            }*/
+            console.log($scope.group.id);
+
+            $http.get('/api/userGroup/?id='+$scope.group.id).then(function(response) {
+                postData = response.data;
+                $scope.groupName = postData.name;
+            });
+>>>>>>> 7a5871c15a5e7c82ce84885463163faef729e7c1
         });
 
 }

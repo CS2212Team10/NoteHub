@@ -37,7 +37,7 @@ i{
 
 <body>
 
-<div class="content" ng-controller="DocViewController">
+<div class="content" ng-controller="DocViewController" ng-cloak>
 
     <a class="btn btn-default btn-back" href="/class?id={{id}}&user={{userId}}">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>

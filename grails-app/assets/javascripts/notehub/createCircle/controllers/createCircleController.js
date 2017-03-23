@@ -1,28 +1,26 @@
 //= wrapped
 
 angular
-    .module("notehub.createPost")
-    .controller("CreatePostController", CreatePostController);
+    .module("notehub.createCircle")
+    .controller("CreateCircleController", CreateCircleController);
 
-function CreatePostController($http, $scope) {
-    $scope.id = getQueryVariable('id');
+function CreateCircleController($http, $scope) {
     $scope.userId = getQueryVariable('user');
-    $scope.newPost = {          //insecure way of doing thiss
-        title: undefined,
-        author: $scope.userId,
-        group: $scope.id,
-        content: undefined
+    $scope.newCircle = {          //insecure way of doing thiss?
+        name: undefined,
+        description: undefined
     };
-    $scope.uploadPost = function(){
+    $scope.uploadCircle = function(circleInfo){
         console.log("DID YOU LOAD");
-        var data =  $scope.newPost;
-
-        $http.post('/api/post/', JSON.stringify(data)).then(function (response) {
+        var data =  circleInfo;
+        console.log(data);
+        $http.post('/api/userGroup/', JSON.stringify(data)).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
         }, function (response) {
+            console.log(data);
             $scope.msg = "Service not Exists";
             console.log($scope.msg);
             $scope.statusval = response.status;

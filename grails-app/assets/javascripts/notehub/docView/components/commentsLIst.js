@@ -16,22 +16,34 @@ angular
     .module("notehub.docView")
     .component("commentsList", {
         templateUrl: '/notehub/docView/commentsList.html',
-        controller: function CommentsListController($http){
+        controller: function CommentsListController($http,$scope){
             var vm = this;
-            var vm = this;
-            $scope.postId = getQueryVariable('post');
-            $scope.id = getQueryVariable('id');
-            $scope.userId = getQueryVariable('user');
+            vm.postId = getQueryVariable('post');
+            vm.id = getQueryVariable('id');
+            vm.userId = getQueryVariable('user');
 
 
-            $scope.groupName = 'NULL';
+            vm.groupName = 'NULL';
 
             var postData = null;
 
-            $http.get('/post/?id='+$scope.postId).then(function(response) {
-                postData = response.data;
+            vm.newComment = {
+                post: vm.postId,
+                content: undefined
+            };
 
-            });
+            vm.uploadComment = function(){
+                var data = vm.newComment;
+                console.log(data.content);
+
+                console.log(data);
+
+                $http.post('/api/comment/', JSON.stringify(data)).then(function (response) {
+                    console.log(response.data);
+                });
+
+
+            };
 
         },
         controllerAs: "vm",

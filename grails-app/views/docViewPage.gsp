@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-.button {
+button{
     background-color: #e7e7e7;
     border: none;
     color: black;
@@ -55,10 +55,11 @@ i{
     <div class="row">
         <div class="col-md-6"> <textarea rows="4" cols="50">{{content}}</textarea> </div>
         <div class="col-md-6"><comments-list></comments-list></div>
-    </div>
 
 
 
+
+</div>
     <!--
     <comments-list></comments-list>
     <!--

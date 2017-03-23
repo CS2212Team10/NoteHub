@@ -130,9 +130,6 @@ function DocViewController($http, $scope) {
 
         $http.get('/api/post/?id='+$scope.postId).then(function(response) {
             postData = response.data;
-
-<<<<<<< HEAD
-=======
             /*this stuff was used to get a bunch of star data
             var i;
             var starTotal = 0;
@@ -147,8 +144,14 @@ function DocViewController($http, $scope) {
                 postData = response.data;
                 $scope.groupName = postData.name;
             });
->>>>>>> 7a5871c15a5e7c82ce84885463163faef729e7c1
         });
+
+
+
+
+
+
+
 
 }
 

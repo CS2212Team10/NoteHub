@@ -1,8 +1,8 @@
 
     <!-- Display Comment List -->
     <ul>
-        <li class = "" ng-repeat = "i in [1,2,3,4]">
-            <!--<p>{{i}}</p> -->
+        <li class = "" ng-repeat = "i in [0]">
+            <!--<p>{{i}}</p>
             <form method='post'>
                 Comments:</form>
             <div>
@@ -10,8 +10,20 @@
                 <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder="Great Note!"><br>
             </div>
             </form>
-            <!--Insert Comments -->
-            <button type="button">Submit!</button>
+            Insert Comments -->
+
+
+            <form method='post'>
+                Comments:</form>
+            <div>
+
+                <form ng-submit="vm.uploadComment()">
+                    <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder=" ex. Great Note!" ng-model="vm.newComment.content"><br>
+                    <input class="btn" type="submit"></input>
+                </form>
+                <textarea name="comment" id="comment"></textarea>
+
+            </div>
         </li>
     </ul>
 

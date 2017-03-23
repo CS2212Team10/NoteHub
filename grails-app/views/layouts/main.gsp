@@ -61,6 +61,7 @@
             <li class="disabled"><a href="#">Page 3</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li class=""><span style ="color: white;"class ="navbar-text">Logged In as: {{userName}}</span></li>
             <li class=""><a ng-click="signOut()">Sign Out</a></li>
         </ul>
     </div>

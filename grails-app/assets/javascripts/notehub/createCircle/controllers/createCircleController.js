@@ -4,7 +4,7 @@ angular
     .module("notehub.createCircle")
     .controller("CreateCircleController", CreateCircleController);
 
-function CreateCircleController($http, $scope) {
+function CreateCircleController($http, $scope,$window) {
     $scope.userId = getQueryVariable('user');
     $scope.newCircle = {          //insecure way of doing thiss?
         name: undefined,
@@ -19,6 +19,7 @@ function CreateCircleController($http, $scope) {
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
+            $window.location.href = 'home?&user='+ $scope.userId;
         }, function (response) {
             console.log(data);
             $scope.msg = "Service not Exists";

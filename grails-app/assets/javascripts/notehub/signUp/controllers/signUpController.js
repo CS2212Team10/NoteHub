@@ -4,7 +4,7 @@ angular
     .module("notehub.signUp")
     .controller("SignUpController", signUpController);
 
-function signUpController(applicationDataFactory, contextPath, $state,$scope,$http) {
+function signUpController(applicationDataFactory, contextPath, $window ,$scope,$http) {
 
     $scope.title = "hello";
 
@@ -22,6 +22,7 @@ function signUpController(applicationDataFactory, contextPath, $state,$scope,$ht
         duplicateEmail: false,
         duplicateName: false
     };
+    $window.sessionStorage.token = undefined;
     console.log($scope.error);
     /*
     var newUser = {
@@ -47,6 +48,7 @@ function signUpController(applicationDataFactory, contextPath, $state,$scope,$ht
         console.log("loaded user data");
         //validate the password
         if($scope.checkMatchPass(data.password, user.retypepassword) == false){
+            console.log("loaded user data");
             return false;
         }
 
@@ -66,6 +68,24 @@ function signUpController(applicationDataFactory, contextPath, $state,$scope,$ht
             $scope.statusval = response.status;
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
+        });
+        var user = {
+            email: data.email,
+            password: data.password
+        };
+        $http.post('/api/login', JSON.stringify(user)).then(function(response) {
+            console.log(response.data);
+            console.log(user);
+            $timeout(function(){$window.sessionStorage.token = response.data.access_token},1000);
+            $window.location.href="/home?user="+response.data.id;
+        }, function (response) {
+            console.log(user);
+            $scope.msg = "Service not Exists";
+            console.log($scope.msg);
+            $scope.statusval = response.status;
+            $scope.statustext = response.statusText;
+            $scope.headers = response.headers();
+            return false;
         });
     };
 

@@ -4,7 +4,7 @@ angular
     .module("notehub.createPost")
     .controller("CreatePostController", CreatePostController);
 
-function CreatePostController($http, $scope) {
+function CreatePostController($http, $scope,$window) {
     $scope.id = getQueryVariable('id');
     $scope.userId = getQueryVariable('user');
     $scope.newPost = {          //insecure way of doing thiss
@@ -22,6 +22,7 @@ function CreatePostController($http, $scope) {
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
+            $window.location.href = 'class?id='+$scope.id+'&user='+ $scope.userId;
         }, function (response) {
             $scope.msg = "Service not Exists";
             console.log($scope.msg);

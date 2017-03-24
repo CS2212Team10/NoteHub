@@ -28,6 +28,7 @@ angular
 
             var userData =  null;
             vm.usersCourses = [];
+            console.log($window.sessionStorage.token);
             $http.get('/api/user/',{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                 userData = response.data;
                 console.log(userData.name);

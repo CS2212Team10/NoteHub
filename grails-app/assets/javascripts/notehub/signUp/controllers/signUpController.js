@@ -4,7 +4,7 @@ angular
     .module("notehub.signUp")
     .controller("SignUpController", signUpController);
 
-function signUpController(applicationDataFactory, contextPath, $window ,$scope,$http) {
+function signUpController(applicationDataFactory, contextPath, $window ,$scope,$http,$timeout) {
 
     $scope.title = "hello";
 
@@ -97,40 +97,43 @@ function signUpController(applicationDataFactory, contextPath, $window ,$scope,$
             }
         }); */
 
-        $http.post('/api/user/', JSON.stringify(data),{headers: {'Authorization': ' '}}).then(function (response) {
-            console.log(response.data);
-            console.log("Ay something good happened");
-            if (response.data) {
-                $scope.msg = "Put Data Method Executed Successfully!";
-                $window.sessionStorage.token = response.data.access_token;
-                //$window.location.href = "/home";
-            }
-            console.log($scope.msg);
-        }, function (response) {
-            $scope.msg = "Service not Exists";
-            //$scope.resetForm();
-            console.log(response);
-            console.log($scope.msg);
-        });
+            $http.post('/api/user/', JSON.stringify(data)).then(function (response) {
+                console.log(response.data);
+                console.log("Ay something good happened");
+                if (response.data) {
+                    $scope.msg = "Put Data Method Executed Successfully!";
+                }
+                console.log($scope.msg);
+            }, function (response) {
+                $scope.msg = "Service not Exists";
+                //$scope.resetForm();
+                console.log(response);
+                console.log($scope.msg);
+            });
 
-        /*
+
          var user = {
-         email: data.email,
-         password: data.password
+            email: data.email,
+            password: data.password
          };
+        $timeout(function() {
+            $http.post('/api/login', JSON.stringify(user)).then(function (response) {
+                console.log(response);
+                console.log(response.data.access_token);
 
-         $http.post('/api/login', JSON.stringify(user)).then(function(response) {
-         console.log(response.data);
-         console.log(user);
-         $timeout(function(){$window.sessionStorage.token = response.data.access_token},1000);
-         $window.location.href="/home?user="+response.data.id;
-         }, function (response) {
-         console.log(user);
-         $scope.msg = "Service not Exists";
-         console.log($scope.msg);
-         return false;
-         });
-         */
+                $window.sessionStorage.token = response.data.access_token;
+
+                $timeout(function () {
+                    $window.location.href = "/home";
+                }, 1000);
+            }, function (response) {
+                console.log(user);
+                console.log(response);
+                $scope.msg = "Service not Exists";
+                console.log($scope.msg);
+                return false;
+            });
+        },1000);
     };
 
     $scope.checkMatchPass = function(password1, password2){

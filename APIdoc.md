@@ -16,13 +16,23 @@ Get User | GET | /api/user/?id=userID | <ul><li>400</li> <li>404</li> <li>`{"id"
 Get User from Token | GET | /api/user/ | <ul><li>400</li> <li>404</li> <li>`{"id":"userID","name":"userName","circles":"listOfUserGroupIds,"Posts":"listOfPostIDs","stars":"listOfStarIds"}`</li></ul> | None
 Delete User | DELETE | /api/user/ | <ul><li>400</li> <li>404</li> <li>200</li></ul> | None
 
-## User Group
+## Course
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
 --- | --- | --- | --- | ---
-Create User Group | POST | /api/userGroup/ | <ul><li>400</li> <li>200</li></ul> | `{"name":"userGroupName","description":"userGroupDescription"}`
-Get User Group | GET | /api/userGroup/userGroupID | <ul><li>400</li> <li>404</li> <li>401</li> <li>`{"id":"userGroupID","name":"userGroupName","users":"listOfUserIDs","posts":"listOfPostIDs"}`</li></ul> | None
-Get User Group | GET | /api/userGroup/?id=userGroupID | <ul><li>400</li> <li>404</li> <li>401</li> <li>`{"id":"userGroupID","name":"userGroupName","users":"listOfUserIDs","posts":"listOfPostIDs"}`</li></ul> | None
-Delete User Group | DELETE | /api/userGroup/userGroupID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None
+Create Course | POST | /api/course/ | <ul><li>400</li> <li>200</li></ul> | `{"name":"courseName","description":"courseDescription"}`
+Get Course | GET | /api/course/courseID | <ul><li>400</li> <li>404</li> <li>401</li> <li>`{"id":"courseID","name":"courseName","users":"listOfUserIDs","posts":"listOfPostIDs","circles":"listOfCircleIds"}`</li></ul> | None
+Get Course | GET | /api/course/?id=courseID | <ul><li>400</li> <li>404</li> <li>401</li> <li>`{"id":"courseID","name":"courseName","users":"listOfUserIDs","posts":"listOfPostIDs","circles":"listOfCircleIds"}`</li></ul> | None
+Add User to Course | PATCH | /api/course/courseID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None
+Delete Course | DELETE | /api/course/courseID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None
+
+## Circle
+Action | HTTP Request | Address | Possible Responses | JSON Sent With Request
+--- | --- | --- | --- | ---
+Create Circle | POST | /api/circle/ | <ul><li>400</li> <li>200</li></ul> | `{"name":"circleName","description":"circleDescription"}`
+Get Circle | GET | /api/circle/circleID | <ul><li>400</li> <li>404</li> <li>401</li> <li>`{"id":"circleID","name":"circleName","users":"listOfUserIDs","posts":"listOfPostIDs","course":"courseId"}`</li></ul> | None
+Get Circle | GET | /api/circle/?id=circleID | <ul><li>400</li> <li>404</li> <li>401</li> <li>`{"id":"circleID","name":"circleName","users":"listOfUserIDs","posts":"listOfPostIDs","course":"courseId"}`</li></ul> | None
+Add User to Circle | PATCH | /api/circle/circleID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None
+Delete Circle | DELETE | /api/circle/circleID | <ul><li>400</li> <li>404</li> <li>401</li> <li>200</li></ul> | None
 
 ## Post
 Action | HTTP Request | Address | Possible Responses | JSON Sent With Request

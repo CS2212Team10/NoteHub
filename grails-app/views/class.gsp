@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div ng-controller="classController" ng-cloak>
+<div ng-controller="ClassController">
 
     <!-- TODO: Link it to create something -->
     <a class="btn btn-default btn-back" href="/home?user={{userId}}">
@@ -27,30 +27,31 @@
     <h1>{{title}}</h1> <!-- TODO: controller for this page -->
 
     <!-- Grid System -->
-    <div class="row">
+    <div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;">
+        <div class="row">
 
-        <!-- a list of all the notes in this circle -->
-        <div class="col-md-4">
-            <h2>Posts</h2>
-            <note-list></note-list>
-        </div>
-
-
-        <!-- a list of all the sub-circles in this circle (Not for stage2) -->
-        <div class="col-md-4">
-            <h2>Sub-Circles</h2>
-            <circle-list></circle-list>
-        </div>
+            <!-- a list of all the notes in this circle -->
+            <div class="col-md-4">
+                <note-list></note-list>
+            </div>
 
 
-        <!-- a list of new content -->
-        <div class="col-md-4">
-            <h2>News</h2>
-        </div>
+            <!-- a list of all the sub-circles in this circle (Not for stage2) -->
+            <!-- <div class="col-md-4">
+                <h2>Sub-Circles</h2>
+            </div> -->
 
 
-    </div> <!-- /.row -->
+            <!-- a list of new content -->
+            <!--<div class="col-md-4">
+                <h2>News</h2>
+            </div>-->
+
+
+        </div> <!-- /.row -->
+    </div>
 </div> <!-- /.ng-app -->
+
 
 </body>
 </html>

@@ -48,11 +48,11 @@
     <![endif]-->
 
 
-    <span style="height: 50px;display:inline-block;width:100%;margin-bottom: 10px;"></span>
+    <span style="height: 12px;display:inline-block;width:100%;margin-bottom: 10px;"></span>
 
     <!-- content body -->
     <g:layoutBody/>
-
+    <span style="height: 12px;display:inline-block;width:100%;margin-bottom: 10px;"></span>
 
     <!----------------
     -    Loading     -

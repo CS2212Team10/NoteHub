@@ -43,13 +43,14 @@ i{
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         <span>BACK</span>
     </a>
+<div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;">
+    <h1 style="font-weight: bold">{{ groupName }}</h1>
+    <p style="font-weight: bold">{{title}}</p>
 
-<h1 style="font-weight: bold">{{ groupName }}</h1>
-<p style="font-weight: bold">{{title}}</p>
+    <h2>Student Rating: {{starListCount}}</h2>
 
-<h2>Student Rating: {{starListCount}}</h2>
-
-<textarea rows="4" cols="50">{{content}}</textarea>
+    <textarea class="hvr-fade" style="border-radius: 5px; margin-bottom: 10px" rows="4" cols="50">{{content}}</textarea>
+</div>
 
     <!--
 <h2>Your Rating</h2>

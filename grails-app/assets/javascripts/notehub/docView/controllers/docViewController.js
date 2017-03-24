@@ -147,7 +147,7 @@ function DocViewController($http, $scope) {
          }*/
         console.log(response.data);
 
-        $http.get('/api/userGroup/?id='+$scope.group.id).then(function(response) {
+        $http.get('/api/userGroup/?id='+$scope.group.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
             postData = response.data;
             $scope.groupName = postData.name;
         });

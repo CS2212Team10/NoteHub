@@ -24,7 +24,7 @@
         <span>BACK</span>
     </a>
 
-    <h1>{{title}}</h1> <!-- TODO: controller for this page -->
+    <!--<h1>{{title}}</h1>-->
 
     <!-- Grid System -->
     <div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;">

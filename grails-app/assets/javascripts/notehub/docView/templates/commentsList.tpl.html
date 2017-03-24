@@ -1,29 +1,16 @@
 
     <!-- Display Comment List -->
     <ul>
-        <li class = "" ng-repeat = "i in [0]">
-            <!--<p>{{i}}</p>
-            <form method='post'>
-                Comments:</form>
-            <div>
-            <textarea name="comment" id="comment"></textarea>
-                <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder="Great Note!"><br>
-            </div>
-            </form>
-            Insert Comments -->
+        <li class = "" ng-repeat = "comment in vm.comments | orderBy: 'id'" >
 
 
-            <form method='post'>
-                Comments:</form>
-            <div>
+            {{comment.content}} <span> - {{comment.author}} </span>
 
-                <form ng-submit="vm.uploadComment()">
-                    <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder=" ex. Great Note!" ng-model="vm.newComment.content"><br>
-                    <input class="btn" type="submit"></input>
-                </form>
-                <textarea name="comment" id="comment"></textarea>
-
-            </div>
         </li>
     </ul>
+
+    <form ng-submit="vm.uploadComment()">
+        <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder=" comment here..." ng-model="vm.newComment.content"><br>
+        <input class="btn" type="submit">
+    </form>
 

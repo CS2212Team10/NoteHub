@@ -128,12 +128,16 @@ class CourseController extends RestfulController{
             return
         }
 
-        //Removes circles and users from the User
+        //Removes users from the course
         course.getUsers().each {course.removeFromUsers(it)
         it.save(flush: true)}
+        // removes users from each circle
+        course.getCircles().each {
+            Circle circleToDelete = it
+            it.getUsers().each {circleToDelete.removeFromUsers(it)}}
 
         //Deletes User Group
-        //course.delete(flush:true)
+        course.delete(flush:true)
         render(status:200)
     }
 

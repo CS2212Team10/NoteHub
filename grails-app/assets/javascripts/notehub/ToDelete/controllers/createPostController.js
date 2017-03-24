@@ -1,23 +1,22 @@
 //= wrapped
-
+/*
 angular
     .module("notehub")
     .controller("CreatePostController", CreatePostController);
 
 function CreatePostController($http, $scope) {
-    var vm = this;
-    vm.userId = getQueryVariable('user');
-    vm.id = getQueryVariable('id');
-    $scope.id = vm.id; // for some reason vm.id doesnt work but scope does
-    $scope.userId = vm.userId;
-    $scope.uploadPost = function(title,content){
+    $scope.id = getQueryVariable('id');
+    $scope.userId = getQueryVariable('user');
+    $scope.newPost = {          //insecure way of doing thiss
+        title: undefined,
+        author: $scope.userId,
+        group: $scope.id,
+        content: undefined
+    };
+    $scope.uploadPost = function(){
         console.log("DID YOU LOAD");
-        var data = {
-            title: title,
-            author: vm.userId,
-            group: vm.id,
-            content: content
-        };
+        var data =  $scope.newPost;
+
         $http.post('/post/', JSON.stringify(data)).then(function (response) {
             console.log(response.data);
             if (response.data)
@@ -46,3 +45,4 @@ function getQueryVariable(variable) {
     }
     console.log('Query variable %s not found', variable);
 }
+*/

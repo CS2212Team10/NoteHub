@@ -13,5 +13,6 @@
 *= require style
 *= require mobile
 *= require font-awesome
+*= require hover-min
 *= require_self
 */

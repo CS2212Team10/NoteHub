@@ -1,5 +1,5 @@
 //= wrapped
-
+/*
 angular
     .module("notehub")
     .controller("HomeController", HomeController);
@@ -7,3 +7,4 @@ angular
 function HomeController() {
     var vm = this;
 }
+*/

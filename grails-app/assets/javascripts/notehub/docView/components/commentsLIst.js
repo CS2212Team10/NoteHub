@@ -21,17 +21,18 @@ angular
             };
             vm.comments = [];
             //$http.get('/api/comment/')
-            $http.get('/api/post/?id='+vm.postId).then(function(response) {
+            $http.get('/api/post/?id='+vm.postId,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                 var data = response.data;
                 vm.comments=[];
                 vm.commentids = data.comments;
+
 
                 var i = 0;
                 console.log(vm.commentids[0]);
                 for(i in vm.commentids){
                     console.log(vm.commentids[i].id);
-                    $http.get('/api/comment/?id='+vm.commentids[i].id).then(function(response){
-                        $http.get('/api/user/?id='+response.data.author.id).then(function(response2){
+                    $http.get('/api/comment/?id='+vm.commentids[i].id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response){
+                        $http.get('/api/user/?id='+response.data.author.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response2){
                             vm.x = {
                                 id: response.data.id,
                                 content: response.data.content,
@@ -51,7 +52,7 @@ angular
             });
 
             vm.getAuthor= function(userID){
-                $http.get('/api/user/?id='+userID).then(function(response){
+                $http.get('/api/user/?id='+userID,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response){
                     console.log(response.data.name);
                     return response.data.name;
                 });
@@ -63,7 +64,7 @@ angular
 
                 console.log(data);
                 vm.comments.push(vm.x);
-                $http.post('/api/comment/', JSON.stringify(data)).then(function (response) {
+                $http.post('/api/comment/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
                     console.log(response.data);
                 });
 

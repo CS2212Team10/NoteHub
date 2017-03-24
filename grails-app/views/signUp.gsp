@@ -40,7 +40,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
         <input type="text" name="fullname" value="" placeholder="Full Name" ng-model="newUserInfo.fullname"><br>
 
         <p style="margin:0 auto; width:275px; text-align:left;">Email</p>
-        <input type="text" name="email" value="" placeholder="Email Address" ng-model="newUserInfo.email"><br>
+        <input type="email" name="email" value="" placeholder="Email Address" ng-model="newUserInfo.email"><br>
 
         <p style="margin:0 auto; width:275px; text-align:left;">Password</p>
         <input type="text" name="password" value="" placeholder="Password" ng-model="newUserInfo.password"><br>

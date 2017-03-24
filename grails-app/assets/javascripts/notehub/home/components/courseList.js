@@ -14,9 +14,9 @@
 
 angular
     .module("notehub.home")
-    .component("circleList", {
-        templateUrl: '/notehub/home/circleList.html',
-        controller: function CircleListController($http){
+    .component("courseList", {
+        templateUrl: '/notehub/home/courseList.html',
+        controller: function CourseListController($http,$window){
             var vm = this;
             //used for default ordering of list
             vm.orderProp = 'dateCreated';
@@ -26,24 +26,23 @@ angular
                 return new Array(num);
             };
 
-            vm.userId = getQueryVariable('user');
             var userData =  null;
-            vm.usersCircles = [];
-            $http.get('/api/user/?id='+vm.userId).then(function(response) {
+            vm.usersCourses = [];
+            $http.get('/api/user/',{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                 userData = response.data;
                 console.log(userData.name);
                 console.log(userData.circles);
                 console.log(userData.posts);
                 console.log("hello");
                 //console.log(classData);
-                var circleIdList = userData.circles;
+                var courseIdList = userData.circles;
 
                 var i;
-                for (i = 0; i < circleIdList.length; i++) {
+                for (i = 0; i < courseIdList.length; i++) {
                     console.log(i);
-                    $http.get('/api/userGroup/?id='+circleIdList[i].id).then(function(response) {
+                    $http.get('/api/course/?id='+courseIdList[i].id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                         console.log(response.data);
-                        vm.usersCircles.push(response.data);
+                        vm.usersCourses.push(response.data);
                     });
                 }
             });

@@ -55,7 +55,7 @@
             <a class="navbar-brand" href="#">NoteHub</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="disabled"><a href="#">Home</a></li>
+            <li class=""><a href="#">Home</a></li>
             <li class="disabled"><a href="#">Page 1</a></li>
             <li class="disabled"><a href="#">Page 2</a></li>
             <li class="disabled"><a href="#">Page 3</a></li>

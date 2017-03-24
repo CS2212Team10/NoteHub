@@ -18,7 +18,7 @@ class BootStrap {
         AccountRole.create(testAccount, userRole, true)
 
         // create default group
-        def testUserGroup = new UserGroup("Default Group", "Default Group", testUser)
+        def testUserGroup = new Course("Default Group", "Default Group", testUser)
         testUserGroup.save()
 
         // create 100 profiles
@@ -42,6 +42,7 @@ class BootStrap {
                 testPost.save()
             }
 
+
             // create 50 stars
             for (j in (1..5)) {
                 def starId = (Long) (Math.random() * (i * 100))
@@ -52,7 +53,7 @@ class BootStrap {
 
             }
 
-            def group = new UserGroup("bob", "bob", User.findById(2))
+            def group = new Course("bob", "bob", User.findById(2))
             group.save(flush: true)
         }
     }

@@ -3,11 +3,10 @@
 angular.module("notehub.docView")
     .controller("DocViewController", DocViewController);
 
-function DocViewController($http, $scope) {
+function DocViewController($http, $scope,$window) {
     var vm = this;
     $scope.postId = getQueryVariable('post');
     $scope.id = getQueryVariable('id');
-    $scope.userId = getQueryVariable('user');
 
     $scope.title = 'NULL';
     $scope.author = 'NULL';
@@ -128,7 +127,7 @@ function DocViewController($http, $scope) {
 
     var postData = null;
 
-        $http.get('/api/post/?id='+$scope.postId).then(function(response) {
+        $http.get('/api/post/?id='+$scope.postId,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
             postData = response.data;
             $scope.title = postData.title;
             $scope.author = postData.author;
@@ -147,7 +146,7 @@ function DocViewController($http, $scope) {
             }*/
             console.log($scope.group.id);
 
-            $http.get('/api/userGroup/?id='+$scope.group.id).then(function(response) {
+            $http.get('/api/course/?id='+$scope.group.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                 postData = response.data;
                 $scope.groupName = postData.name;
             });

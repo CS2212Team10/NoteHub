@@ -19,7 +19,7 @@
 <div ng-controller="classController" ng-cloak>
 
     <!-- TODO: Link it to create something -->
-    <a class="btn btn-default btn-back" href="/home?user={{userId}}">
+    <a class="btn btn-default btn-back" href="/home">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         <span>BACK</span>
     </a>

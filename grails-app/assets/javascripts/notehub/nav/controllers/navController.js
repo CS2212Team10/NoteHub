@@ -7,7 +7,7 @@ angular
 function NavController(applicationDataFactory, $http, $scope, $window) {
     $scope.title = "hello";
 
-    $http.get('/api/user/').then(function(response) {
+    $http.get('/api/user/',{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
         var currentUser = response.data;
         $scope.userName = currentUser.name;
         console.log($scope.userName);
@@ -20,6 +20,6 @@ function NavController(applicationDataFactory, $http, $scope, $window) {
     };
     $scope.home = function () {
         $scope.auth = false; //check if still auth to navigate website
-        $window.location.href = "/";
+        $window.location.href = "/home";
     };
 }

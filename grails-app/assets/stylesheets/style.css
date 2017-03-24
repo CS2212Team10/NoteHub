@@ -113,3 +113,7 @@ content-list{
     max-height: 500px;
     overflow: scroll;
 }
+.empty-item{
+    display:inline-block;
+    text-align: center;
+}

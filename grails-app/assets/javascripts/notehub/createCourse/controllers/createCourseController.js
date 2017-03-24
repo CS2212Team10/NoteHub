@@ -1,19 +1,19 @@
 //= wrapped
 
 angular
-    .module("notehub.createCircle")
-    .controller("CreateCircleController", CreateCircleController);
+    .module("notehub.createCourse")
+    .controller("CreateCourseController", CreateCourseController);
 
-function CreateCircleController($http, $scope,$window) {
-    $scope.newCircle = {          //insecure way of doing thiss?
+function CreateCourseController($http, $scope,$window) {
+    $scope.newCourse = {          //insecure way of doing thiss?
         name: undefined,
         description: undefined
     };
-    $scope.uploadCircle = function(circleInfo){
+    $scope.uploadCourse = function(courseInfo){
         console.log("DID YOU LOAD");
-        var data =  circleInfo;
+        var data =  courseInfo;
         console.log(data);
-        $http.post('/api/circle/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
+        $http.post('/api/course/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";

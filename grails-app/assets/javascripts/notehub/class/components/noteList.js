@@ -19,10 +19,9 @@ angular
     .module("notehub.class")
     .component("noteList", {
         templateUrl: "/notehub/class/noteList.html",
-        controller: function NoteListController($http,$scope,$location) {
+        controller: function NoteListController($http,$scope,$location,$window) {
             var vm = this;
 
-            vm.userId = getQueryVariable('user'); // gets query variable
             vm.id = getQueryVariable('id');
             vm.postId;
             //console.log(idNum);
@@ -39,14 +38,14 @@ angular
             var classData =  null;
             vm.posts = [];
 
-            $http.get('/api/userGroup/?id='+vm.id).then(function(response) {
+            $http.get('/api/course/?id='+vm.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                 classData = response.data;
                 var postIdList = classData.posts;
 
                 var i;
                 for (i = 0; i < postIdList.length; i++) {
                     console.log(i);
-                    $http.get('/api/post/?id='+postIdList[i].id).then(function(response) {
+                    $http.get('/api/post/?id='+postIdList[i].id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                         vm.posts.push(response.data);
                     });
                 }

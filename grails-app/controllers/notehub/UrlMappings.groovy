@@ -21,7 +21,7 @@ class UrlMappings {
         "/mainPage"(view: '/mainPage')
         "/signup"(view: '/signUp')
         "/signin"(view: '/signIn')
-        "/test"(view: '/test')
         "/create-circle"(view: '/createCircle')
+        "/create-course"(view: '/createCourse')
     }
 }

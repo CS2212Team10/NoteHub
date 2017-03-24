@@ -8,6 +8,9 @@ function signUpController(applicationDataFactory, contextPath, $window ,$scope,$
 
     $scope.title = "hello";
 
+    //clear users token when they are trying to sign up (AKA LOG THEM OFF)
+
+    //USED TO RESET THE FORM
     var emptyUserInfo = {
         username: "",
         fullname: "",
@@ -16,77 +19,118 @@ function signUpController(applicationDataFactory, contextPath, $window ,$scope,$
         retypepassword: ""
     };
 
+    //TRACK ERRORS
     $scope.error = {
         passwordMatch: false,
         properEmailFormat: false,
         duplicateEmail: false,
         duplicateName: false
     };
-    $window.sessionStorage.token = undefined;
+
+
     console.log($scope.error);
     /*
-    var newUser = {
-        name:"",
-        email:"",
-        password:"",
-        picture:""
-    }; */
+     var newUser = {
+     name:"",
+     email:"",
+     password:"",
+     picture:""
+     }; */
 
-    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+    // $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
     $scope.originForm = angular.copy($scope.emptyUserInfo); //for resetting the form.
     $scope.resetError = angular.copy($scope.error); //for resetting the form.
 
 
     $scope.signUpClick = function(user){
+        console.log('Sign up button was pressed');
+
+        $scope.error = {
+            passwordMatch: false,
+            properEmailFormat: false,
+            duplicateEmail: false,
+            duplicateName: false
+        };
+
         var data ={
             name: user.username,
-            email: user.fullname,
-            password: user.password,
-            picture:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAYAAAA+VemSAAAgAEl...=="
+            email: user.email,
+            password: user.password
         };
         console.log("loaded user data");
-        //validate the password
-        if($scope.checkMatchPass(data.password, user.retypepassword) == false){
-            console.log("loaded user data");
-            return false;
-        }
+        console.log($window.sessionStorage.token);
 
-        $http.post('/api/user/', JSON.stringify(data)).then(function (response) {
+        //validate the password
+        /*
+         if($scope.checkMatchPass(data.password, user.retypepassword) == false){
+         console.log("loaded user data");
+         return false;
+         }*/
+        /*
+         $http({
+         method: 'POST',
+         url: '/api/user/',
+         headers: {
+         'Authorization': undefined
+         },
+         data: data
+         }).then(function successCallback(response) {
+         // this callback will be called asynchronously
+         // when the response is available
+         console.log("Cool it loaded");
+         console.log(response);
+         }, function errorCallback(response) {
+         console.log(response);
+         // called asynchronously if an error occurs
+         // or server returns response with an error status.
+         });*/
+
+        /*
+        fetch('/api/user/',{
+            body: data,
+            method: 'POST'
+        }).then(res=>{
+            if(res.ok){
+                console.log(res);
+                console.log('x');
+            }
+        }); */
+
+        $http.post('/api/user/', JSON.stringify(data),{headers: {'Authorization': ' '}}).then(function (response) {
             console.log(response.data);
-            console.log("loaded");
+            console.log("Ay something good happened");
             if (response.data) {
                 $scope.msg = "Put Data Method Executed Successfully!";
-                $window.location.href = "/home?user=" + response.data;
+                $window.sessionStorage.token = response.data.access_token;
+                //$window.location.href = "/home";
             }
             console.log($scope.msg);
         }, function (response) {
             $scope.msg = "Service not Exists";
-            $scope.resetForm();
+            //$scope.resetForm();
             console.log(response);
             console.log($scope.msg);
-            $scope.statusval = response.status;
-            $scope.statustext = response.statusText;
-            $scope.headers = response.headers();
         });
-        var user = {
-            email: data.email,
-            password: data.password
-        };
-        $http.post('/api/login', JSON.stringify(user)).then(function(response) {
-            console.log(response.data);
-            console.log(user);
-            $timeout(function(){$window.sessionStorage.token = response.data.access_token},1000);
-            $window.location.href="/home?user="+response.data.id;
-        }, function (response) {
-            console.log(user);
-            $scope.msg = "Service not Exists";
-            console.log($scope.msg);
-            $scope.statusval = response.status;
-            $scope.statustext = response.statusText;
-            $scope.headers = response.headers();
-            return false;
-        });
+
+        /*
+         var user = {
+         email: data.email,
+         password: data.password
+         };
+
+         $http.post('/api/login', JSON.stringify(user)).then(function(response) {
+         console.log(response.data);
+         console.log(user);
+         $timeout(function(){$window.sessionStorage.token = response.data.access_token},1000);
+         $window.location.href="/home?user="+response.data.id;
+         }, function (response) {
+         console.log(user);
+         $scope.msg = "Service not Exists";
+         console.log($scope.msg);
+         return false;
+         });
+         */
     };
 
     $scope.checkMatchPass = function(password1, password2){
@@ -94,7 +138,7 @@ function signUpController(applicationDataFactory, contextPath, $window ,$scope,$
             console.log("passwords don't match");
             $scope.error.passwordMatch = true;
             $scope.resetForm();
-            return false; //TODO fix what ever this is supposta do (spit our error)
+            return false;
 
         }else{
             console.log("passwords matched");
@@ -105,7 +149,7 @@ function signUpController(applicationDataFactory, contextPath, $window ,$scope,$
 
     //TODO fix reset
     $scope.resetForm = function(){
-        console.log("wtf");
+        console.log("resetted form");
         $scope.newUserInfo = angular.copy($scope.originForm); // Assign clear state to modified form
         $scope.signUpForm.$setPristine(); // this line will update status of your form, but will not clean your data, where `registrForm` - name of form.
     };

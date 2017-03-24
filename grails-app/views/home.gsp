@@ -34,10 +34,9 @@
 
         <!-- User's Circles -->
         <div class="col-md-6">
-            <h2>Your Circles</h2>
-            <circle-list></circle-list>
+            <h2>Your Courses</h2>
+            <course-list></course-list>
         </div> <!-- /.col1/1-->
-        <button ng-click="changeView()">hello</button>
         <!-- Circle News -->
         <div class="col-md-6">
             <h2>Circle News</h2>

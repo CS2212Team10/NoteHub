@@ -18,18 +18,18 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 </style>
 <body>
 
-<div style="width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="CreateCircleController">
+<div style="width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="CreateCourseController">
 
     <h3 style="margin:0 auto 20px auto; width:175px;">Create New Course</h3>
 
     <p style="margin:0 auto; width:275px; text-align:left;">Title</p>
     <!-- TODO fix texts -->
-    <form ng-submit="uploadCircle(circleInfo)">
-        <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Note Name" value="" placeholder="ex: Class 2212B" ng-model="circleInfo.name"><br>
+    <form ng-submit="uploadCourse(courseInfo)">
+        <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Note Name" value="" placeholder="ex: Class 2212B" ng-model="courseInfo.name"><br>
         <p style="margin:0 auto; width:275px; text-align:left; padding-top:10px;">Create Course</p>
         <div style="border:1px solid #000000; width:275px; padding:5px 0;
         margin:0px auto;text-align:center;">
-            <textarea rows="4" cols="50" ng-model="circleInfo.description">
+            <textarea rows="4" cols="50" ng-model="courseInfo.description">
 
             </textarea>
         </div><br>

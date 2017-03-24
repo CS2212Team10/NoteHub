@@ -27,6 +27,15 @@ class Post {
     static hasOne = [author: User, group: UserGroup]
     static hasMany = [stars: UserStar]
 
+    /**
+     * Checks if a given Account has access
+     * @param a Account to check
+     * @return  Whether a Account has access of not
+     */
+    boolean hasAccess(Account a){
+        return (this.getAuthorId() == a.getUserId()) || this.getGroup().hasAccess(a)
+    }
+
     static constraints = {
         time(nullable: false)
         title(nullable: false)

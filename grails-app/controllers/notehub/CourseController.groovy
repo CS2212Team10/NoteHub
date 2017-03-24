@@ -109,7 +109,7 @@ class CourseController extends RestfulController{
             return
         }
 
-        def course
+        Course course
         try {
             course = Course.findById(Long.parseLong(params.id.toString()))
         } catch (NumberFormatException e){
@@ -129,12 +129,19 @@ class CourseController extends RestfulController{
         }
 
         //Removes users from the course
-        course.getUsers().each {course.removeFromUsers(it)
-        it.save(flush: true)}
+        def users = course.getUsers()
+        for (user in users){
+            user.removeFromCircles(course)
+        }
+
         // removes users from each circle
         course.getCircles().each {
-            Circle circleToDelete = it
-            it.getUsers().each {circleToDelete.removeFromUsers(it)}}
+            users = it.getUsers()
+            for (user in users){
+                user.removeFromCircles(it)
+            }
+        }
+
 
         //Deletes User Group
         course.delete(flush:true)

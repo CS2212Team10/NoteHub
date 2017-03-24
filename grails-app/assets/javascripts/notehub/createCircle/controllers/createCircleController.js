@@ -5,20 +5,23 @@ angular
     .controller("CreateCircleController", CreateCircleController);
 
 function CreateCircleController($http, $scope,$window) {
+    $scope.id = getQueryVariable('id');
     $scope.newCircle = {          //insecure way of doing thiss?
         name: undefined,
-        description: undefined
+        description: undefined,
+        course: undefined
     };
     $scope.uploadCircle = function(circleInfo){
         console.log("DID YOU LOAD");
         var data =  circleInfo;
+        data.course = getQueryVariable('id');
         console.log(data);
         $http.post('/api/circle/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
-            $window.location.href = 'home';
+            $window.location.href = '/class?id='+$scope.id;
         }, function (response) {
             console.log(data);
             $scope.msg = "Service not Exists";
@@ -27,6 +30,14 @@ function CreateCircleController($http, $scope,$window) {
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
         });
+    };
+
+    $scope.redirect = function(){
+        if($scope.iscircle == 1){
+            $window.location.href = 'circle?id='+$scope.id+'&circle=1';
+        }else{
+            $window.location.href = 'class?id='+$scope.id;
+        }
     };
 }
 

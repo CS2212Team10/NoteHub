@@ -7,6 +7,7 @@ function DocViewController($http, $scope,$window) {
     var vm = this;
     $scope.postId = getQueryVariable('post');
     $scope.id = getQueryVariable('id');
+    $scope.iscircle = getQueryVariable('circle');
 
     $scope.title = 'NULL';
     $scope.author = 'NULL';
@@ -145,13 +146,26 @@ function DocViewController($http, $scope,$window) {
                 });
             }*/
             console.log($scope.group.id);
-
-            $http.get('/api/course/?id='+$scope.group.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
-                postData = response.data;
-                $scope.groupName = postData.name;
-            });
+            if($scope.iscircle == undefined) {
+                $http.get('/api/course/?id=' + $scope.group.id, {headers: {'Authorization': 'Bearer ' + $window.sessionStorage.token}}).then(function (response) {
+                    postData = response.data;
+                    $scope.groupName = postData.name;
+                });
+            }else{
+                $http.get('/api/circle/?id=' + $scope.group.id, {headers: {'Authorization': 'Bearer ' + $window.sessionStorage.token}}).then(function (response) {
+                    postData = response.data;
+                    $scope.groupName = postData.name;
+                });
+            }
         });
 
+    $scope.redirect = function(){
+        if($scope.iscircle == 1){
+            $window.location.href = 'circle?id='+$scope.id+'&circle=1';
+        }else{
+            $window.location.href = 'class?id='+$scope.id;
+        }
+    };
 }
 
 

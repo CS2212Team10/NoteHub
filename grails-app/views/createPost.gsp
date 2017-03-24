@@ -47,7 +47,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
             <input style="border:0; width:275px; height:30px; margin-bottom: 10px; background-color:#3399FF; color:#FFF;" type="button" value="Upload" ng-click="uploadPost(title, content)">
         </a>​-->
 
-        <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="/class?id={{id}}&user={{userId}}" class="btn">
+        <a style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" ng-click='redirect()' class="btn">
             cancel
         </a>​
     </form>

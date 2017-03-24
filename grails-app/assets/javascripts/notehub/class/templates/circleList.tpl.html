@@ -5,7 +5,7 @@
             <h2></h2> <!-- TODO WHAT GOES HERE? -->
         </div>
         <div class="col-md-6">
-            <a type="button" class="btn btn-default btn-block btn-create hvr-back-pulse" href="/create-circle?user={{ vm.getCoureID}}">
+            <a type="button" class="btn btn-default btn-block btn-create hvr-back-pulse" href="/create-circle?id={{ vm.id }}">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span>Create Circle</span></a>
         </div>
@@ -32,9 +32,9 @@
 
     <!-- Display Circle Content-->
     <ul class= "content-list">
-        <li ng-show="!vm.usersCourses.length" class="empty-item" style="padding: 20px">No Circles</li>
+        <li ng-show="!vm.usersCircles.length" class="empty-item" style="padding: 20px">No Circles</li>
         <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-            <a class="hvr-bounce-to-bottom" href="/class?id={{ circle.id }}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+            <a class="hvr-bounce-to-bottom" href="/circle?id={{ circle.id }}&circle=1"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
                 <h2>{{circle.name}}</h2>
                 <small class = "description">{{circle.desc}}</small>
             </a>

@@ -4,6 +4,7 @@
 //= require /notehub/index/notehub.index
 //= require /notehub/home/notehub.home
 //= require /notehub/class/notehub.class
+//= require /notehub/circle/notehub.circle
 //= require /notehub/createPost/notehub.createPost
 //= require /notehub/createCircle/notehub.createCircle
 //= require /notehub/createCourse/notehub.createCourse
@@ -24,6 +25,7 @@ var app = angular.module("notehub", [
         "notehub.index",
         "notehub.home",
         "notehub.class",
+        "notehub.circle",
         "notehub.createPost",
         "notehub.createCircle",
         "notehub.createCourse",

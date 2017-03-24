@@ -16,6 +16,7 @@ class UrlMappings {
         "500"(view: '/error')
         "404"(view: '/notFound')
         "/class"(view: '/class')
+        "/circle"(view: '/circle')
         "/home"(view: '/home')
         "/document"(view: '/docViewPage')
         "/mainPage"(view: '/mainPage')

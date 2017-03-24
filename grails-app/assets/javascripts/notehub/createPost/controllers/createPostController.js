@@ -6,6 +6,7 @@ angular
 
 function CreatePostController($http, $scope,$window) {
     $scope.id = getQueryVariable('id');
+    $scope.iscircle = getQueryVariable('circle');
     $scope.newPost = {          //insecure way of doing thiss
         title: undefined,
         group: $scope.id,
@@ -20,7 +21,8 @@ function CreatePostController($http, $scope,$window) {
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
-            $window.location.href = 'class?id='+$scope.id;
+            $scope.redirect();
+
         }, function (response) {
             $scope.msg = "Service not Exists";
             console.log($scope.msg);
@@ -30,6 +32,14 @@ function CreatePostController($http, $scope,$window) {
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
         });
+    };
+
+    $scope.redirect = function(){
+        if($scope.iscircle == 1){
+            $window.location.href = 'circle?id='+$scope.id+'&circle=1';
+        }else{
+            $window.location.href = 'class?id='+$scope.id;
+        }
     };
 }
 

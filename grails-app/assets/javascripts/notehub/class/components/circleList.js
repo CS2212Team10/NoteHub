@@ -20,7 +20,7 @@ angular
             var vm = this;
             //used for default ordering of list
             vm.orderProp = 'dateCreated';
-            vm.getCoureID = getQueryVariable('id');
+            vm.id = getQueryVariable('id');
 
             // used for ng-repeat num number of times.
             vm.getNumber = function(num) {
@@ -29,7 +29,7 @@ angular
 
             var userData =  null;
             vm.usersCircles = [];
-            $http.get('/api/course/?id='+vm.getCoureID,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
+            $http.get('/api/course/?id='+vm.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                 userData = response.data;
                 console.log(userData.name);
                 console.log(userData.circles);
@@ -37,11 +37,11 @@ angular
                 console.log("hello");
                 //console.log(classData);
                 var circleIdList = userData.circles;
-
+                console.log(circleIdList);
                 var i;
                 for (i = 0; i < circleIdList.length; i++) {
                     console.log(i);
-                    $http.get('/api/circles/?id='+circleIdList[i].id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
+                    $http.get('/api/circle/?id='+circleIdList[i].id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
                         console.log(response.data);
                         vm.usersCircles.push(response.data);
                     });

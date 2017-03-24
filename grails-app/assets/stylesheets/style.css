@@ -117,3 +117,12 @@ content-list{
     display:inline-block;
     text-align: center;
 }
+.nav-item{
+    height: 100%;
+    font-size: 1.3em;
+    color: orange;
+}
+.navbar-text{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

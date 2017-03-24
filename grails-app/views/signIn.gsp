@@ -23,7 +23,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 
         <form name="loginForm" ng-submit="authSignIn(userLogin)">
 
-        <span ng-hide="valid">INVALID EMAIL OR PASSWORD</span>
+        <span ng-hide="valid" ng-cloak>INVALID EMAIL OR PASSWORD</span>
 
         <p style="margin:0 auto; width:275px; text-align:left;">Email</p>
 

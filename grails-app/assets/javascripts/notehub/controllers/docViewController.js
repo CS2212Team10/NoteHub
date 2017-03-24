@@ -18,7 +18,7 @@ function DocViewController($http, $scope) {
 
     $scope.groupName = 'NULL';
 
-    /*
+
     $scope.ratePost = function(){
         console.log("Rated Post!");
         //fetches up to date, data on the post
@@ -32,13 +32,13 @@ function DocViewController($http, $scope) {
             $scope.starListCount = postData.stars.length;
         });
 
-        /*
+
         $http.get('/post/?id='+$scope.postId).then(function(response) {
             postData = response.data;
             $scope.theAuthor = postData.author;
-        });*/
+        });
 
-    /*
+
         // Find if they are in there
         var pos;
         var found = false;
@@ -123,7 +123,7 @@ function DocViewController($http, $scope) {
             $scope.headers = response.headers();
         });
     };
-    */
+
 
 
     var postData = null;

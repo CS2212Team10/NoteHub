@@ -51,9 +51,9 @@ i{
 
 <textarea rows="4" cols="50">{{content}}</textarea>
 
-    <!--
-<h2>Your Rating</h2>
--->
+<button type="btn btn-default" ng-click="ratePost()" onclick="location.reload()">
+    <i class="fa fa-star" aria-hidden="true"></i>
+</button>
 
 
 <!-- TODO: fix download functionality

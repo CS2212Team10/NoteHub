@@ -41,6 +41,7 @@
 
 
 <body ng-app="notehub">
+    <!--<img src=".../assets/images/skin/linedPaper.jpg">-->
 
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please

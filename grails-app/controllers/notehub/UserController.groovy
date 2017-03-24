@@ -91,7 +91,7 @@ class UserController extends RestfulController {
     @Secured(['permitAll'])
     def save() {
         // validate JSON data
-        if (request.JSON.name == null || request.JSON.email == null || request.JSON.password == null || request.JSON.picture == null){
+        if (request.JSON.name == null || request.JSON.email == null || request.JSON.password == null){
             render (status: 400)
             return
         }
@@ -100,10 +100,9 @@ class UserController extends RestfulController {
         String name = request.JSON.name
         String email = request.JSON.email
         String password = request.JSON.password
-        String picture = request.JSON.picture.toString()
 
 
-        def newUser = new User(name, picture)
+        def newUser = new User(name)
         def newAccount = new Account(email, password)
         newUser.setAccount(newAccount)
         newAccount.setUser(newUser)
@@ -155,6 +154,7 @@ class UserController extends RestfulController {
         //success
         user.getCircles().each {
             it.removeFromUsers(user)
+            it.save(flush:true)
             if (it.users.empty){
                 it.delete(flush: true)
             }

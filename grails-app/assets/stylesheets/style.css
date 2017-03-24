@@ -15,12 +15,17 @@
     padding: 0;
     margin-top: 10px;
 }
-.content li{
+.content-list li{
     margin: 0;
+    display: block;
     background-color: white;
-    padding: 10px 20px;
-    margin-top: 10px;
-    box-shadow: 0 2px 2px #888888;
+    padding: 0px 0px;
+    margin-top: 0px;
+}
+.content-list li a{
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 1px 2px #888888;
 
 }
 .content h3{
@@ -30,9 +35,9 @@
     text-align: center;
 
 }
-.content h2{
+.content-list h2{
 }
-.content .details{
+.content-list .details{
     width: 50%;
     float: right;
     display: inline-block;
@@ -98,5 +103,6 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
     color: gold;
 
 }
-
-
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

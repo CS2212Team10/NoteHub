@@ -1,5 +1,5 @@
 //= wrapped
-
+/*
 angular
     .module("notehub")
     .controller("ClassController", ClassController);
@@ -25,3 +25,4 @@ function getQueryVariable(variable) {
     }
     console.log('Query variable %s not found', variable);
 }
+    */

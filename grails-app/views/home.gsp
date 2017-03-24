@@ -18,7 +18,7 @@
 
 <body>
 
-<div ng-controller="HomeController">
+<div ng-controller="homeController">
     <!-- TODO: Link it to create post-->
     <!-- DONT need a back button on the home page yet
     <a class="btn btn-default btn-back" href="/home">
@@ -36,12 +36,14 @@
         <div class="col-md-6">
             <h2 style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:20px auto 20px auto; width:175px; font-size: 30px">Your Circles</h2>
             <circles></circles>
+            <h2>Your Circles</h2>
+            <circle-list></circle-list>
         </div> <!-- /.col1/1-->
-
+        <button ng-click="changeView()">hello</button>
         <!-- Circle News -->
-        <!--<div class="col-md-6">
+        <div class="col-md-6">
             <h2>Circle News</h2>
-            TODO-->
+            TODO
         <!--
         <div class="rating">
             <i class="ratings_stars fa fa-star fa-2x" aria-hidden="true" data-rating="1" onclick='console.log("Hello")'></i>

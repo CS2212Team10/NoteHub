@@ -14,11 +14,13 @@ button{
 
 h1{
     color: black;
+    font-size: 30px;
 
 }
 
 p{
     color: black;
+    font-size: 36px;
 }
 
 i{
@@ -44,20 +46,19 @@ i{
         <span>BACK</span>
     </a>
 
-<h1 style="font-weight: bold">{{ groupName }}</h1>
-<p style="font-weight: bold">{{title}}</p>
+<h1 style="font-weight: bold; font-size: 24px">{{ groupName }} : {{title}}</h1>
+<!-- <p style="font-weight: bold; font-size: 28px"; >{{title}}</p> -->
 
-<h2>Student Rating: {{starListCount}}</h2>
 
     <!--
 <textarea rows="4" cols="50">{{content}}</textarea>
     -->
     <div class="row">
-        <div class="col-md-6"> <textarea rows="4" cols="50">{{content}}</textarea> </div>
+
+        <div class="col-md-6"> <textarea rows="4" cols="50">{{content}}</textarea>
+    <h2 style="font-size: 20px">Student Rating: {{starListCount}}</h2>
+</div>
         <div class="col-md-6"><comments-list></comments-list></div>
-
-
-
 
 </div>
     <!--

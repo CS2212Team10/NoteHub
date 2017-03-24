@@ -49,7 +49,7 @@
 
 
     <!-- Nav Bar --> <!-- TODO: Fix LOGO and Nav Bar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="NavController">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">NoteHub</a>
@@ -61,7 +61,8 @@
             <li class="disabled"><a href="#">Page 3</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class="disabled"><a href="#">Sign Out</a></li>
+            <li class=""><span style ="color: white;"class ="navbar-text">Logged In as: {{userName}}</span></li>
+            <li class=""><a ng-click="signOut()">Sign Out</a></li>
         </ul>
     </div>
 </nav>

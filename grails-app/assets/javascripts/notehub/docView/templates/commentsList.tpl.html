@@ -1,0 +1,16 @@
+
+    <!-- Display Comment List -->
+    <ul>
+        <li class = "" ng-repeat = "comment in vm.comments | orderBy: 'id'" >
+
+
+            {{comment.content}} <span> - {{comment.author}} </span>
+
+        </li>
+    </ul>
+
+    <form ng-submit="vm.uploadComment()">
+        <input style="width:275px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder=" comment here..." ng-model="vm.newComment.content"><br>
+        <input class="btn" type="submit">
+    </form>
+

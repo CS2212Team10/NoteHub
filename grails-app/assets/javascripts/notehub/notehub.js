@@ -70,6 +70,16 @@ app.factory('authInterceptor', function ($rootScope, $window) {
             return config;
         }
     };
+}).service('authInterceptor', function($q) {
+    var service = this;
+
+    service.responseError = function(response) {
+        if (response.status == 401){
+
+            window.location = "/signin";
+        }
+        return $q.reject(response);
+    };
 }).config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });

@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <ul style="border-radius: 5px" class= "hvr-fade content-list">
+    <ul style="background-color: white; margin-bottom: 20px; border-radius: 5px" class= "hvr-glow hvr-fade content-list">
         <!--<li>{{wow}}</li>-->
         <li ng-show="!vm.posts.length" class="empty-item" style="padding: 20px">No Posts</li>
         <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp">

@@ -27,7 +27,7 @@
     <h1>{{title}}</h1> <!-- TODO: controller for this page -->
 
     <!-- Grid System -->
-    <div class="hvr-grow-2 row" style="margin-left: 25px; margin-right: 25px; border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3)"">
+    <div class="hvr-grow-2 row" style="margin-left: 25px; margin-right: 25px; border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3)">
 
         <!-- a list of all the notes in this circle -->
         <div class="col-md-6">

@@ -12,7 +12,9 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title> NoteHub </title>
+
+    <title> NoteHub - Circle Page</title>
+
 </head>
 <body>
 

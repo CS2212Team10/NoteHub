@@ -11,6 +11,7 @@
 <html>
 <head>
     <meta name="layout" content="mainPlain"/>
+    <title> NoteHub - Main Page</title>
 </head>
 
 <body>

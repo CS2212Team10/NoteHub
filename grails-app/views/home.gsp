@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title> NoteHub - Home Page</title>
+    <title> NoteHub - Home</title>
 </head>
 
 

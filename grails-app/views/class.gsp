@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title> NoteHub - CLASS NAME HERE</title>
+    <title> NoteHub - Class Page</title>
 </head>
 <body>
 

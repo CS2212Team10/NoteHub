@@ -1,0 +1,67 @@
+<div class="content">
+    <!-- header for notes content -->
+    <div class="row">
+        <div class="col-md-6" style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:20px auto 20px auto; width:175px; font-size: 40px">
+            <h2 style="margin-top: 5px">Notes</h2>
+        </div>
+        <div class="col-md-6">
+            <a type="button" class="btn btn-default btn-block btn-create" href="/create-post?id={{vm.id}}&user={{vm.userId}}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span>Create Note</span></a>
+        </div>
+    </div>
+
+
+    <!-- List Filtering Features -->
+    <div class="row options">
+        <!-- Search Feature -->
+        <div class="col-md-6">
+            <!-- <span class="mobile-hide" >Search: </span>  --><!-- TODO: need a subtitle? -->
+            <input placeholder="Search" ng-model="$ctrl.query" class="hvr-glow ng-pristine ng-untouched ng-valid ng-empty">
+        </div>
+
+        <!-- Ordering Feature -->
+        <div class="col-md-6">
+            <!-- <span class="mobile-hide" >Order by:</span> --> <!-- TODO: need a subtitle? -->
+            <select placeholder="Sort By" ng-model="$ctrl.orderProp" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <option value="" disabled selected hidden>Sort By...</option>
+                <option value="title">Title (ascending)</option>
+                <option value="-title">Title (descending)</option>
+                <!-- <option value="author">First Name (ascending)</option>
+                <option value="-author">First Name (descending)</option> -->
+                <option value="-rating">Highest Rating</option>
+                <option value="rating">Lowest Rating</option>
+                <option value="-time">Newest</option>
+                <option value="time">Oldest</option>
+            </select>
+        </div>
+    </div>
+
+    <ul class= "content-list hvr-fade" style="margin-bottom: 10px; border-radius: 5px">
+        <!--<li>{{wow}}</li>-->
+        <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+            <a href="/document?id={{vm.id}}&user={{vm.userId}}&post={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+            <h3>{{post.title}}</h3>
+            <div class="details">
+                <!--By: <span>{{ post.author.id }}</span> <br> TODO: figure out a proper way to get author title-->
+                Created: <span>{{ post.time }}</span><br>
+                <span>
+                    <i class="fa fa-star" aria-hidden="true"></i> - {{post.stars.length}}</span>
+                    <!-- TODO: can implement half stars -->
+                <!--
+
+                <div ng-repeat = "a in vm.getNumber(post.rating) track by $index">
+
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div ng-repeat = "a in vm.getNumber(5 - post.rating) track by $index">
+                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                    </div>-->
+
+            </div>
+        </a>
+        </li>
+    </ul>
+
+    {{vm.getId}}
+</div>

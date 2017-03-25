@@ -1,0 +1,31 @@
+<div class="content">
+
+    <!-- List Filtering Features -->
+    <div class="row options">
+        <!-- Search Feature -->
+        <div class="col-md-6">
+            <!-- <span class="mobile-hide" >Search: </span>  --><!-- TODO: need a subtitle? -->
+            <input style="border-radius: 5px" placeholder="Search" ng-model="$ctrl.query" class="hvr-glow ng-pristine ng-untouched ng-valid ng-empty">
+        </div>
+
+        <!-- Ordering Feature -->
+        <div class="col-md-6">
+            <!-- <span class="mobile-hide" >Order by:</span> --> <!-- TODO: need a subtitle? -->
+            <select placeholder="Sort By" ng-model="$ctrl.orderProp" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+                <option value="" disabled selected hidden>Sort By...</option>
+                <option value="name">Name (ascending)</option>
+                <option value="-name">Name (descending)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Display Circle Content-->
+    <ul style="margin-bottom: 20px; border-radius: 5px" class="hvr-fade content-list">
+        <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+            <a href="/class?id={{ circle.id }}&user={{vm.userId}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
+            <h2>{{circle.name}}</h2>
+            <small class = "descrption">{{circle.desc}}</small>
+        </a>
+        </li>
+    </ul>
+</div>

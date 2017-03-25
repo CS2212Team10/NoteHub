@@ -14,13 +14,19 @@
     list-style: none;
     padding: 0;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
-.content li{
+.content-list li{
     margin: 0;
+    display: block;
     background-color: white;
-    padding: 10px 20px;
-    margin-top: 10px;
-    box-shadow: 0 2px 2px #888888;
+    padding: 0px 0px;
+    margin-top: 0px;
+}
+.content-list li a{
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 1px 2px #888888;
 
 }
 .content h3{
@@ -30,9 +36,9 @@
     text-align: center;
 
 }
-.content h2{
+.content-list h2{
 }
-.content .details{
+.content-list .details{
     width: 50%;
     float: right;
     display: inline-block;
@@ -98,5 +104,33 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
     color: gold;
 
 }
-
-
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+.empty-item{
+    display:inline-block;
+    text-align: center;
+}
+.nav-item{
+    height: 100%;
+    font-size: 1.3em;
+    color: orange;
+}
+.navbar-text{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.fa-star{
+    color: yellow;
+    text-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+}
+.fa-star-o{
+    cursor: pointer;
+}
+.vote-icon{
+    display: inline-block;
+    width: 100%;
+    float: left;
+    font-size: 2em;
+    padding-bottom: 15px;
+}

@@ -25,7 +25,16 @@ class Post {
     String content
 
     static hasOne = [author: User, group: UserGroup]
-    static hasMany = [stars: UserStar]
+    static hasMany = [stars: UserStar, comments: Comment]
+
+    /**
+     * Checks if a given Account has access
+     * @param a Account to check
+     * @return  Whether a Account has access of not
+     */
+    boolean hasAccess(Account a){
+        return (this.getAuthorId() == a.getUserId()) || this.getGroup().hasAccess(a)
+    }
 
     static constraints = {
         time(nullable: false)
@@ -34,10 +43,12 @@ class Post {
         author(nullable: false)
         group(nullable: false)
         stars(nullable: true)
+        comments(nullable:true)
     }
 
     static mapping = {
         stars(cascade: "all-delete-orphan")
+        comments(cascade: "all-delete-orphan")
     }
 
     @Override

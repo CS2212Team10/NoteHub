@@ -23,6 +23,15 @@ class UserStar {
 
     static hasOne = [post: Post, user: User]
 
+    /**
+     * Checks if a given Account has access
+     * @param a Account to check
+     * @return  Whether a Account has access of not
+     */
+    boolean hasAccess(Account a){
+        return (this.getUserId() == a.getUserId()) || this.getPost().hasAccess(a)
+    }
+
     static constraints = {
         time(nullable: false)
         post(nullable: false)

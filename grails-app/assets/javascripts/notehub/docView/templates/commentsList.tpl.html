@@ -1,7 +1,7 @@
 
     <!-- Display Comment List -->
-    <ul>
-        <li class = "" ng-repeat = "comment in vm.comments | orderBy: 'id'" >
+    <ul style="list-style: none; margin-top: 20px">
+        <li class = "" style=" margin-bottom: 10px"ng-repeat = "comment in vm.comments | orderBy: 'id'" >
 
 
             {{comment.content}} <span> - {{comment.author}} </span>

@@ -26,14 +26,14 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 
     <p style="margin:0 auto; width:275px; text-align:left;">Title</p>
 
-    <form method="post" enctype="multipart/form-data">
-        <input class="hvr-glow" style="width:275px; margin:0 auto; padding:0;" type="text" name="Note Name" value="" placeholder="ex: lecture 3" ng-model="title"><br>
+    <form ng-submit="uploadPost()">
+        <input class="hvr-glow" style="width:275px; margin:0 auto; padding:0;" type="text" name="Note Name" value="" placeholder="ex: lecture 3" ng-model="newPost.title"><br>
 
         <p style="margin:0 auto; width:275px; text-align:left; padding-top:10px;">Upload Note</p>
 
         <div class="hvr-fade hvr-glow" style="border-radius: 5px; border:1px solid #000000; width:275px; padding:5px 0;
         margin:0px auto;text-align:center;">
-            <textarea rows="4" cols="50" ng-model="content">
+            <textarea rows="4" cols="50" ng-model="newPost.content">
 
             </textarea>
             <!-- TODO: fix fileupload

@@ -30,7 +30,7 @@
     <div class="row">
 
         <!-- a list of all the notes in this circle -->
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2>Posts</h2>
             <note-list-circle></note-list-circle>
         </div>

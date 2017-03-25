@@ -30,22 +30,16 @@
     <div class="row">
 
         <!-- a list of all the notes in this circle -->
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h2>Posts</h2>
             <note-list></note-list>
         </div>
 
 
         <!-- a list of all the sub-circles in this circle (Not for stage2) -->
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h2>Sub-Circles</h2>
             <circle-list></circle-list>
-        </div>
-
-
-        <!-- a list of new content -->
-        <div class="col-md-4">
-            <h2>News</h2>
         </div>
 
 

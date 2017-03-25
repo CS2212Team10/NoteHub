@@ -23,11 +23,11 @@
 
     <form method="post" enctype="multipart/form-data">
 
-        <a style="text-decoration: none; border:0; width:275px; height:30px; margin-bottom: 20px; background-color:#3399FF; color:#FFF;" href="signin" class="hvr-grow-shadow btn">
+        <a style="text-decoration: none; border:0; width:275px; height:30px; margin-bottom: 20px; background-color:#3399FF; color:#FFF;" href="/signin" class="hvr-grow-shadow btn">
             Sign In
         </a>​
         <br>
-        <a style="text-decoration: none; border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="signup" class="hvr-grow-shadow btn">
+        <a style="text-decoration: none; border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" href="/signup" class="hvr-grow-shadow btn">
             Sign Up
         </a>​
     </form>

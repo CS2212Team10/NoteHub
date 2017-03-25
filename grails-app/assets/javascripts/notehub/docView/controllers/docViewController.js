@@ -4,7 +4,6 @@ angular.module("notehub.docView")
     .controller("DocViewController", DocViewController);
 
 function DocViewController($http, $scope,$window) {
-    var vm = this;
     $scope.postId = getQueryVariable('post');
     $scope.id = getQueryVariable('id');
     $scope.iscircle = getQueryVariable('circle');
@@ -15,9 +14,41 @@ function DocViewController($http, $scope,$window) {
     $scope.group = 0;
     $scope.starList = [];
     $scope.starListCount = 0;
-
+    $scope.disableButton = false;
     $scope.groupName = 'NULL';
+    $scope.starData = {
+        post: undefined
+    };
 
+        $http.get('/api/post/?id='+$scope.postId,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
+            var temp = response.data;
+            var list = temp.stars;
+            var x = 0;
+            for (x in list) {
+                $http.get('/api/userStar/?id='+list[x].id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response2) {
+                    $http.get('/api/user/',{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response3) {
+                        if(response3.data.id == response2.data.user.id){
+                            $scope.disableButton = true;
+                        }
+                    });
+                });
+            }
+        });
+
+
+    $scope.incrementStar = function(){
+        var addStar = $scope.starData;
+        addStar.post = $scope.postId;
+        var postData = undefined;
+
+        $http.post('/api/userStar/', JSON.stringify(addStar),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
+            console.log(response.data);
+            postData = response.data;
+        });
+
+
+        $window.location.reload();
+    };
     /*
     $scope.ratePost = function(){
         console.log("Rated Post!");

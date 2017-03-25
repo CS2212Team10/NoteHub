@@ -58,6 +58,8 @@ i{
     <div class="row">
 
         <div class="col-md-12">
+        <div class="col-md-12">
+            <button ng-disabled="disableButton" ng-click="incrementStar()">Upvote!</button>
     <h2 style="font-size: 20px">Student Rating: {{starListCount}}</h2>
 </div>
         <div class="col-md-12"><comments-list></comments-list></div>

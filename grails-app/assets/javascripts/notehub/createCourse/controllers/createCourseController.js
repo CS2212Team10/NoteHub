@@ -10,7 +10,6 @@ function CreateCourseController($http, $scope,$window) {
         description: undefined
     };
     $scope.uploadCourse = function(courseInfo){
-        console.log("DID YOU LOAD");
         var data =  courseInfo;
         console.log(data);
         $http.post('/api/course/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {

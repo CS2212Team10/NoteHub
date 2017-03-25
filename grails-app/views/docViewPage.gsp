@@ -59,7 +59,12 @@ i{
 
         <div class="col-md-12">
         <div class="col-md-12">
-            <button ng-disabled="disableButton" ng-click="incrementStar()">Upvote!</button>
+            <!--<button ng-disabled="disableButton" ng-click="incrementStar()">Upvote!</button>-->
+
+
+            <span ng-show="disableButton" ><i class="vote-icon fa fa-star" aria-hidden="true"></i></span>
+            <span ng-show="!disableButton" ng-click="incrementStar()"><i class="vote-icon fa fa-star-o" aria-hidden="true"></i></span>
+
     <h2 style="font-size: 20px">Student Rating: {{starListCount}}</h2>
 </div>
         <div class="col-md-12"><comments-list></comments-list></div>

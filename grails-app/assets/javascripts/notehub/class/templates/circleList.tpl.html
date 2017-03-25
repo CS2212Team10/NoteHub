@@ -1,6 +1,6 @@
 <div class="content">
 
-    <div class="row">
+    <div style="margin-bottom: 10px" class="row">
         <div class="col-md-6">
 
         </div>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Display Circle Content-->
-    <ul class= "hvr-fade content-list" style="margin-bottom: 10px; border-radius: 5px">
+    <ul style="border-radius: 5px" class= "hvr-fade content-list" style="margin-bottom: 10px; border-radius: 5px">
         <li ng-show="!vm.usersCircles.length" class="empty-item" style="padding: 20px">No Circles</li>
         <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
             <a class="hvr-bounce-to-bottom" href="/circle?id={{ circle.id }}&circle=1"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->

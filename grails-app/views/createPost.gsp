@@ -12,6 +12,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
+    <title> NoteHub - Create Post</title>
     <link href="css/hover.css" rel="stylesheet" media="all">
 
 </head>

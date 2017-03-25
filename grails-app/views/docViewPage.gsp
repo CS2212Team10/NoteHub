@@ -32,7 +32,7 @@ i{
 
 <head>
     <meta name="layout" content="main"/>
-    <title> NoteHub - CLASS NAME HERE</title>
+    <title> NoteHub - Document View</title>
 </head>
 
 

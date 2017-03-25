@@ -12,6 +12,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
+    <title> NoteHub - Create Course</title>
 </head>
 <style>
 input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }

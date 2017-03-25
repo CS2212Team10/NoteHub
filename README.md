@@ -10,8 +10,8 @@ NoteHub is a note-sharing web application that enables students to post text not
 
 ## Installation/Run Instructions
 
-1. Assuming that JDK and a grails framework is installed, clone the NoteHub repository from https://github.com/CS2212Team10/NoteHub
-2. Open the project from a VCS source a
+1. Install JDK and a grails framework, if not already installed
+2. Open the project from a VCS source at: https://github.com/CS2212Team10/NoteHub, and clone it.
 3. Run the application on IntelliJ
 
 ## Contributors

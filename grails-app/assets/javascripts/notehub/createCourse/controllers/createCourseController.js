@@ -1,27 +1,24 @@
 //= wrapped
 
 angular
-    .module("notehub.createCircle")
-    .controller("CreateCircleController", CreateCircleController);
+    .module("notehub.createCourse")
+    .controller("CreateCourseController", CreateCourseController);
 
-function CreateCircleController($http, $scope,$window) {
-    $scope.id = getQueryVariable('id');
-    $scope.newCircle = {          //insecure way of doing thiss?
+function CreateCourseController($http, $scope,$window) {
+    $scope.newCourse = {          //insecure way of doing thiss?
         name: undefined,
-        description: undefined,
-        course: undefined
+        description: undefined
     };
-    $scope.uploadCircle = function(circleInfo){
+    $scope.uploadCourse = function(courseInfo){
         console.log("DID YOU LOAD");
-        var data =  circleInfo;
-        data.course = getQueryVariable('id');
+        var data =  courseInfo;
         console.log(data);
-        $http.post('/api/circle/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
+        $http.post('/api/course/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
-            $window.location.href = '/class?id='+$scope.id;
+            $window.location.href = 'home';
         }, function (response) {
             console.log(data);
             $scope.msg = "Service not Exists";
@@ -30,14 +27,6 @@ function CreateCircleController($http, $scope,$window) {
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
         });
-    };
-
-    $scope.redirect = function(){
-        if($scope.iscircle == 1){
-            $window.location.href = 'circle?id='+$scope.id+'&circle=1';
-        }else{
-            $window.location.href = 'class?id='+$scope.id;
-        }
     };
 }
 

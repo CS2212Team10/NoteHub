@@ -9,7 +9,7 @@
 //= require_tree components
 //= require_tree templates
 
-var app = angular.module("notehub.signUp", [
+angular.module("notehub.createCourse", [
     "notehub.core",
     "ui.bootstrap.dropdown",
     "ui.bootstrap.collapse",

@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div ng-controller="classController" ng-cloak>
+<div ng-controller="circleController" ng-cloak>
 
     <!-- TODO: Link it to create something -->
     <a class="btn btn-default btn-back" href="/home">
@@ -30,16 +30,9 @@
     <div class="row">
 
         <!-- a list of all the notes in this circle -->
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2>Posts</h2>
-            <note-list></note-list>
-        </div>
-
-
-        <!-- a list of all the sub-circles in this circle (Not for stage2) -->
-        <div class="col-md-6">
-            <h2>Sub-Circles</h2>
-            <circle-list></circle-list>
+            <note-list-circle></note-list-circle>
         </div>
 
 

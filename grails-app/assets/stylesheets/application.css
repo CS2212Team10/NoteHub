@@ -10,10 +10,10 @@
 *= require /bootstrap/bootstrap
 *= require grails
 *= require main
-*= require style
 *= require mobile
 *= require font-awesome
 *= require hover-min
+*= require style
 *= require_self
 *= require hover
 */

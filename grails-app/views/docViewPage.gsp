@@ -41,7 +41,7 @@ i{
 
 <div class="content" ng-controller="DocViewController" ng-cloak>
 
-    <a class="btn btn-default btn-back" href="/class?id={{id}}&user={{userId}}">
+    <a class="btn btn-default btn-back" ng-click="redirect()">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         <span>BACK</span>
     </a>
@@ -54,16 +54,13 @@ i{
 
 
     <textarea class="hvr-fade" style="border-radius: 5px; margin-bottom: 10px" rows="4" cols="50">{{content}}</textarea>
-</div>
-    <!--
-<textarea rows="4" cols="50">{{content}}</textarea>
-    -->
+
     <div class="row">
 
-        <div class="col-md-6"> <textarea rows="4" cols="50">{{content}}</textarea>
+        <div class="col-md-12">
     <h2 style="font-size: 20px">Student Rating: {{starListCount}}</h2>
 </div>
-        <div class="col-md-6"><comments-list></comments-list></div>
+        <div class="col-md-12"><comments-list></comments-list></div>
 
 </div>
     <!--
@@ -79,6 +76,7 @@ i{
     <!-- TODO: fix the data structure and relation between
     <button class="btn" ng-click="ratePost()"><i class="fa fa-star" aria-hidden="true"></i></button>
 -->
+</div>
 </div>
 
 </body>

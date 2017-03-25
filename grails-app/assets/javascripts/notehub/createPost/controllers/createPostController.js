@@ -4,12 +4,11 @@ angular
     .module("notehub.createPost")
     .controller("CreatePostController", CreatePostController);
 
-function CreatePostController($http, $scope) {
+function CreatePostController($http, $scope,$window) {
     $scope.id = getQueryVariable('id');
-    $scope.userId = getQueryVariable('user');
+    $scope.iscircle = getQueryVariable('circle');
     $scope.newPost = {          //insecure way of doing thiss
         title: undefined,
-        author: $scope.userId,
         group: $scope.id,
         content: undefined
     };
@@ -17,18 +16,30 @@ function CreatePostController($http, $scope) {
         console.log("DID YOU LOAD");
         var data =  $scope.newPost;
 
-        $http.post('/api/post/', JSON.stringify(data)).then(function (response) {
+        $http.post('/api/post/', JSON.stringify(data),{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function (response) {
             console.log(response.data);
             if (response.data)
                 $scope.msg = "Put Data Method Executed Successfully!";
                 console.log($scope.msg);
+            $scope.redirect();
+
         }, function (response) {
             $scope.msg = "Service not Exists";
             console.log($scope.msg);
+            console.log(response.data);
+            console.log(response);
             $scope.statusval = response.status;
             $scope.statustext = response.statusText;
             $scope.headers = response.headers();
         });
+    };
+
+    $scope.redirect = function(){
+        if($scope.iscircle == 1){
+            $window.location.href = 'circle?id='+$scope.id+'&circle=1';
+        }else{
+            $window.location.href = 'class?id='+$scope.id;
+        }
     };
 }
 

@@ -9,10 +9,11 @@ describe("notehub module", function() {
     }));
 
     describe("noteList directive", function() {
+
         var element;
 
         beforeEach(angular.mock.inject(function ($compile) {
-            element = angular.element('<note-list></note-list>');
+            element = angular.element('<div note-list></div>');
             $compile(element)(scope);
             scope.$digest();
         }));

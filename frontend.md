@@ -11,7 +11,7 @@
         *       templates/circleList.tgl.html (html template for component)
     +   class/notehub.class (module)
         *       classController
-        *       components/noteList.js (COMPONENT<note-list></note-list>)
+        *       components/noteListCircles.js (COMPONENT<note-list></note-list>)
         *       templates/noteList.tgl.html (html template for component)
     +   createPost/notehub.createPost (module)
         *       createPostController

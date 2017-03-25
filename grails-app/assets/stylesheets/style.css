@@ -10,6 +10,8 @@
 .content-list{
     width: 100%;
     min-height: 500px;
+    max-height: 800px;
+    overflow-y: scroll;
     border: solid 1px black;
     list-style: none;
     padding: 0;
@@ -105,4 +107,17 @@ html{ /*Fixes Nav bar issues*/ /*TODO find a better solution*/
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
+}
+.empty-item{
+    display:inline-block;
+    text-align: center;
+}
+.nav-item{
+    height: 100%;
+    font-size: 1.3em;
+    color: orange;
+}
+.navbar-text{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }

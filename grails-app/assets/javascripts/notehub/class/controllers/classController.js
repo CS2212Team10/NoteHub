@@ -4,12 +4,12 @@ angular
     .module("notehub.class")
     .controller("classController", classController);
 
-function classController($http, $scope) {
+function classController($http, $scope,$window) {
     var vm = this;
     vm.userId = getQueryVariable('user');
     $scope.userId = vm.userId;
     var userData;
-    $http.get('/api/user/?id='+vm.userId).then(function(response) {
+    $http.get('/api/user/',{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
         userData = response.data;
         $scope.title = userData.title;
     });

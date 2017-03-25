@@ -26,6 +26,7 @@
         <style type="text/css">
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;  }
+
         </style>
 
         <!-- Load the stylesheets -->
@@ -52,17 +53,11 @@
 <nav class="navbar navbar-default" ng-controller="NavController">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">NoteHub</a>
+            <a class="nav-item navbar-brand" href="/home">NoteHub</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="disabled"><a href="#">Home</a></li>
-            <li class="disabled"><a href="#">Page 1</a></li>
-            <li class="disabled"><a href="#">Page 2</a></li>
-            <li class="disabled"><a href="#">Page 3</a></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li class=""><span style ="color: white;"class ="navbar-text">Logged In as: {{userName}}</span></li>
-            <li class=""><a ng-click="signOut()">Sign Out</a></li>
+            <li class=""><span style ="color: white;"class =" nav-item navbar-text">Logged In as: {{userName}}</span></li>
+            <li class=""><a class="nav-item" ng-click="signOut()">Sign Out</a></li>
         </ul>
     </div>
 </nav>

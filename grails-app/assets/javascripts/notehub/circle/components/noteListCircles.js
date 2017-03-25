@@ -16,14 +16,13 @@
 
 console.log('hello');
 angular
-    .module("notehub.class")
-    .component("noteList", {
-        templateUrl: "/notehub/class/noteList.html",
-        controller: function NoteListController($http,$scope,$location,$window) {
+    .module("notehub.circle")
+    .component("noteListCircle", {
+        templateUrl: "/notehub/circle/noteListCircle.html",
+        controller: function NoteListCircleController($http,$scope,$location,$window) {
             var vm = this;
 
             vm.id = getQueryVariable('id');
-            vm.postId;
             //console.log(idNum);
 
             vm.orderProp = 'dateCreated';
@@ -35,12 +34,12 @@ angular
 
 
 
-            var classData =  null;
+            var circleData =  null;
             vm.posts = [];
 
-            $http.get('/api/course/?id='+vm.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
-                classData = response.data;
-                var postIdList = classData.posts;
+            $http.get('/api/circle/?id='+vm.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
+                circleData = response.data;
+                var postIdList = circleData.posts;
 
                 var i;
                 for (i = 0; i < postIdList.length; i++) {

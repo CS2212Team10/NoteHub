@@ -4,14 +4,15 @@
 //= require /notehub/index/notehub.index
 //= require /notehub/home/notehub.home
 //= require /notehub/class/notehub.class
+//= require /notehub/circle/notehub.circle
 //= require /notehub/createPost/notehub.createPost
 //= require /notehub/createCircle/notehub.createCircle
+//= require /notehub/createCourse/notehub.createCourse
 //= require /notehub/docView/notehub.docView
 //= require /notehub/signUp/notehub.signUp
 //= require /notehub/signIn/notehub.signIn
 //= require /notehub/docView/notehub.docView
 //= require /notehub/nav/notehub.nav
-//= require /notehub/test/notehub.test
 //= require_self
 //= require_tree services
 //= require_tree controllers
@@ -24,8 +25,10 @@ var app = angular.module("notehub", [
         "notehub.index",
         "notehub.home",
         "notehub.class",
+        "notehub.circle",
         "notehub.createPost",
         "notehub.createCircle",
+        "notehub.createCourse",
         "notehub.docView",
         "notehub.signIn",
         "notehub.signUp",
@@ -54,15 +57,30 @@ function config($stateProvider, $urlRouterProvider) {
 app.factory('authInterceptor', function ($rootScope, $window) {
     return {
         request: function (config) {
+            /*
             config.headers = config.headers || {};
+
+
+
             if ($window.sessionStorage.token) {
                 config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
                 console.log($window.sessionStorage);
             }else{
+
                 console.log('AUTHORIZATION WENT WRONG');
-            }
+            }*/
             return config;
         }
+    };
+}).service('authInterceptor', function($q) {
+    var service = this;
+
+    service.responseError = function(response) {
+        if (response.status == 401){
+
+            window.location = "/signin";
+        }
+        return $q.reject(response);
     };
 }).config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');

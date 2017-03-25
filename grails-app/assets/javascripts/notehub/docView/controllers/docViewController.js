@@ -3,11 +3,11 @@
 angular.module("notehub.docView")
     .controller("DocViewController", DocViewController);
 
-function DocViewController($http, $scope) {
+function DocViewController($http, $scope,$window) {
     var vm = this;
     $scope.postId = getQueryVariable('post');
     $scope.id = getQueryVariable('id');
-    $scope.userId = getQueryVariable('user');
+    $scope.iscircle = getQueryVariable('circle');
 
     $scope.title = 'NULL';
     $scope.author = 'NULL';
@@ -128,37 +128,44 @@ function DocViewController($http, $scope) {
 
     var postData = null;
 
-    $http.get('/api/post/?id='+$scope.postId).then(function(response) {
-        postData = response.data;
-        $scope.title = postData.title;
-        $scope.author = postData.author;
-        $scope.content = postData.content;
-        $scope.group = postData.group;
-        $scope.starList = postData.stars;
-        $scope.starListCount = postData.stars.length;
-
-        /*this stuff was used to get a bunch of star data
-         var i;
-         var starTotal = 0;
-         var starCount = 0
-         for(i = 0; i < vm.starList.length; i++) {
-         $http.get('/userStar/?id=' + vm.starList[i].id).then(function (response) {
-         });
-         }*/
-        console.log(response.data);
-
-        $http.get('/api/userGroup/?id='+$scope.group.id,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
+        $http.get('/api/post/?id='+$scope.postId,{headers: {'Authorization': 'Bearer '+ $window.sessionStorage.token}}).then(function(response) {
             postData = response.data;
-            $scope.groupName = postData.name;
+            $scope.title = postData.title;
+            $scope.author = postData.author;
+            $scope.content = postData.content;
+            $scope.group = postData.group;
+            $scope.starList = postData.stars;
+            $scope.starListCount = postData.stars.length;
+
+            /*this stuff was used to get a bunch of star data
+            var i;
+            var starTotal = 0;
+            var starCount = 0
+            for(i = 0; i < vm.starList.length; i++) {
+                $http.get('/userStar/?id=' + vm.starList[i].id).then(function (response) {
+                });
+            }*/
+            console.log($scope.group.id);
+            if($scope.iscircle == undefined) {
+                $http.get('/api/course/?id=' + $scope.group.id, {headers: {'Authorization': 'Bearer ' + $window.sessionStorage.token}}).then(function (response) {
+                    postData = response.data;
+                    $scope.groupName = postData.name;
+                });
+            }else{
+                $http.get('/api/circle/?id=' + $scope.group.id, {headers: {'Authorization': 'Bearer ' + $window.sessionStorage.token}}).then(function (response) {
+                    postData = response.data;
+                    $scope.groupName = postData.name;
+                });
+            }
         });
-    });
 
-
-
-
-
-
-
+    $scope.redirect = function(){
+        if($scope.iscircle == 1){
+            $window.location.href = 'circle?id='+$scope.id+'&circle=1';
+        }else{
+            $window.location.href = 'class?id='+$scope.id;
+        }
+    };
 }
 
 

@@ -31,7 +31,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 
         <p style="margin:0 auto; width:275px; text-align:left;">Password</p>
 
-        <input style="width:275px; margin:0 auto; padding:0;" type="text" name="password" required ng-minlength="3" placeholder="Password" ng-model="userLogin.password"><br>
+        <input style="width:275px; margin:0 auto; padding:0;" type="password" name="password" required ng-minlength="3" placeholder="Password" ng-model="userLogin.password"><br>
 
         <br>
         <button style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" class="btn" type="submit" value="Upload" ng-click="submitted = true" ng-disabled="loginForm.email.$invalid || loginForm.password.$invalid">Sign In</button>​

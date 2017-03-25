@@ -18,7 +18,7 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 <body>
 
 <div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="SignInController">
-
+    <br>
     <h3 style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:0 auto 20px auto; width:175px; font-size: 40px">Sign In</h3>
 
         <form name="loginForm" ng-submit="authSignIn(userLogin)">
@@ -35,7 +35,9 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 
         <br>
         <button style="border:0; width:275px; height:30px; background-color:#3399FF; color:#FFF;" class="btn" type="submit" value="Upload" ng-click="submitted = true" ng-disabled="loginForm.email.$invalid || loginForm.password.$invalid">Sign In</button>​
-    </form>
+            <br>
+            <br>
+        </form>
 </div>
 </body>
 </html>

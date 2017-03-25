@@ -20,13 +20,13 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 
 <div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="CreateCourseController">
     <br>
-    <h3 class="a" style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:0 auto 20px auto; margin-top: 10px; width:175px; font-size: 25px">Create Note</h3>
+    <h3 class="a" style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:0 auto 20px auto; margin-top: 10px; width:175px; font-size: 25px">Create Course</h3>
 
 
     <p style="margin:0 auto; width:275px; text-align:left;">Title</p>
     <!-- TODO fix texts -->
     <form ng-submit="uploadCourse(courseInfo)">
-        <input style="width:275px; margin:0 auto; padding:0;" class="hvr-glow" type="text" name="Note Name" value="" placeholder="ex: Class 2212B" ng-model="courseInfo.name"><br>
+        <input style="padding: 2px; width:275px; margin:0 auto;"  class="hvr-glow" type="text" name="Note Name" value="" placeholder="ex: Class 2212B" ng-model="courseInfo.name"><br>
         <p style="margin:0 auto; width:275px; text-align:left; padding-top:10px;">Create Course</p>
         <div class="hvr-fade hvr-glow" style="border:1px solid #000000; width:275px; padding:5px 0;
         margin:0px auto;text-align:center;">

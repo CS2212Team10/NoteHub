@@ -21,13 +21,13 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 <body>
 
 <div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;" ng-controller ="CreatePostController">
-
-    <h3 class="a" style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:0 auto 20px auto; margin-top: 20px; width:175px; font-size: 33px">Create Note</h3>
+    <br>
+    <h3 class="a" style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:0 auto 20px auto; margin-top: 10px; width:175px; font-size: 25px">Create Note</h3>
 
     <p style="margin:0 auto; width:275px; text-align:left;">Title</p>
 
     <form ng-submit="uploadPost()">
-        <input class="hvr-glow" style="width:275px; margin:0 auto; padding:0;" type="text" name="Note Name" value="" placeholder="ex: lecture 3" ng-model="newPost.title"><br>
+        <input class="hvr-glow" style="padding: 2px; width:275px; margin:0 auto;" type="text" name="Note Name" value="" placeholder="ex: lecture 3" ng-model="newPost.title"><br>
 
         <p style="margin:0 auto; width:275px; text-align:left; padding-top:10px;">Upload Note</p>
 
@@ -46,11 +46,13 @@ input,label { font-size:10pt; font-family:Arial, Helvetica, sans-serif; }
 
         <!-- Default Author and Group to 1 TODO: FIX -->
         <!-- class defaults to ID 1 TODO: FIX -->
-        <input class="hvr-grow-shadow" style="border:0; width:275px; height:30px; margin-bottom: 10px; background-color:#3399FF; color:#FFF;" type="submit" value="Upload">
+        <br>
+        <input class="hvr-grow-shadow" style="border:0; width:255px; height:30px; margin-bottom: 10px; background-color:#3399FF; color:#FFF;" type="submit" value="Upload">
 
-        <a class="hvr-grow-shadow" style="text-decoration: none; border-radius: 5px; margin-bottom: 10px; border:0; width:245px; height:30px; background-color:#3399FF; color:#FFF;" ng-click='redirect()' class="btn">
+        <a class="hvr-grow-shadow" style="text-decoration: none; border-radius: 5px; margin-bottom: 10px; border:0; width:255px; height:30px; background-color:#3399FF; color:#FFF;" ng-click='redirect()' class="btn">
             cancel
         </a>​
+        <br>
     </form>
 
 </div>

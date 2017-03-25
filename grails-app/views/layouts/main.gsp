@@ -56,7 +56,7 @@
             <a class="nav-item navbar-brand" href="/home">NoteHub</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li class=""><span style ="color: white;"class =" nav-item navbar-text">Logged In as: {{userName}}</span></li>
+            <li class=""><span style ="color: white;"class =" nav-item navbar-text" ng-cloak>Logged In as: {{userName}}</span></li>
             <li class=""><a class="nav-item" ng-click="signOut()">Sign Out</a></li>
         </ul>
     </div>

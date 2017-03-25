@@ -14,11 +14,13 @@
 
 h1{
     color: black;
+    font-size: 30px;
 
 }
 
 p{
     color: black;
+    font-size: 36px;
 }
 
 i{
@@ -43,15 +45,28 @@ i{
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
         <span>BACK</span>
     </a>
+<div class="hvr-grow-2" style="border-radius: 20px; box-shadow: 8px -8px 0 rgba(32, 152, 209, 0.6); background-color: rgba(32, 152, 209, 0.3); width:300px; text-align:center; margin:0 auto; padding:0; border:0px solid #000; font-size:12pt;">
+    <h1 style="font-weight: bold">{{ groupName }}</h1>
+    <p style="font-weight: bold">{{title}}</p>
 
-<h1 style="font-weight: bold">{{ groupName }}</h1>
-<p style="font-weight: bold">{{title}}</p>
+<h1 style="font-weight: bold; font-size: 24px">{{ groupName }} : {{title}}</h1>
+<!-- <p style="font-weight: bold; font-size: 28px"; >{{title}}</p> -->
 
-<h2>Student Rating: {{starListCount}}</h2>
 
-<textarea rows="4" cols="50">{{content}}</textarea>
+    <textarea class="hvr-fade" style="border-radius: 5px; margin-bottom: 10px" rows="4" cols="50">{{content}}</textarea>
 
+    <div class="row">
+
+        <div class="col-md-6">
+    <h2 style="font-size: 20px">Student Rating: {{starListCount}}</h2>
+</div>
+        <div class="col-md-6"><comments-list></comments-list></div>
+
+</div>
     <!--
+    <comments-list></comments-list>
+    <!--
+
 <h2>Your Rating</h2>
 -->
 
@@ -61,6 +76,7 @@ i{
     <!-- TODO: fix the data structure and relation between
     <button class="btn" ng-click="ratePost()"><i class="fa fa-star" aria-hidden="true"></i></button>
 -->
+</div>
 </div>
 
 </body>

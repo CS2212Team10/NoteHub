@@ -15,4 +15,5 @@
 *= require hover-min
 *= require style
 *= require_self
+*= require hover
 */

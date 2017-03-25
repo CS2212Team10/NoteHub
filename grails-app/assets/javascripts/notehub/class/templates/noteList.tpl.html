@@ -1,9 +1,11 @@
 <div class="content">
     <!-- header for notes content -->
     <div class="row">
-        <div class="col-md-12">
-
-            <a type="button" class="btn btn-default btn-block btn-create hvr-back-pulse" href="/create-post?id={{vm.id}}">
+        <div class="col-md-6">
+            <h2 style="text-shadow: 1px -1px 2px rgba(0,0,0,0.5); margin:10px auto 20px auto; font-size: 33px">Notes</h2>
+        </div>
+        <div class="col-md-6">
+            <a type="button" class="btn btn-default btn-block btn-create hvr-back-pulse" href="/create-post?id={{vm.id}}&user={{vm.userId}}">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span>Create Note</span></a>
         </div>
@@ -15,7 +17,7 @@
         <!-- Search Feature -->
         <div class="col-md-6">
             <!-- <span class="mobile-hide" >Search: </span>  --><!-- TODO: need a subtitle? -->
-            <input placeholder="Search" ng-model="$ctrl.query" class="ng-pristine ng-untouched ng-valid ng-empty">
+            <input style="border-radius: 5px" placeholder="Search" ng-model="$ctrl.query" class="hvr-glow ng-pristine ng-untouched ng-valid ng-empty">
         </div>
 
         <!-- Ordering Feature -->
@@ -35,7 +37,8 @@
         </div>
     </div>
 
-    <ul class= "content-list">
+    <ul style="border-radius: 5px" class= "hvr-fade content-list">
+        <!--<li>{{wow}}</li>-->
         <li ng-show="!vm.posts.length" class="empty-item" style="padding: 20px">No Posts</li>
         <li class = "clearfix" ng-repeat= "post in vm.posts  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
             <a class="hvr-bounce-to-bottom" href="/document?id={{vm.id}}&post={{post.id}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->

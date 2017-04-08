@@ -1,0 +1,17 @@
+
+    <!-- Display Comment List -->
+    <br>
+    <ul style="list-style: none; margin-top: 20px">
+        <li class = "" style=" margin-bottom: 10px"ng-repeat = "comment in vm.comments | orderBy: 'id'" >
+
+
+            {{comment.content}} <span> - {{comment.author}} </span>
+
+        </li>
+    </ul>
+
+    <form style="margin-bottom: 20px" ng-submit="vm.uploadComment()">
+        <input class="hvr-glow" style="border-radius: 5px; width:245px; margin:0 auto; padding:0;" type="text" name="Comment" value="" placeholder=" comment here..." ng-model="vm.newComment.content"><br>
+        <input class="hvr-grow-shadow btn" type="submit">
+    </form>
+

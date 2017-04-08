@@ -16,10 +16,13 @@ class UrlMappings {
         "500"(view: '/error')
         "404"(view: '/notFound')
         "/class"(view: '/class')
+        "/circle"(view: '/circle')
         "/home"(view: '/home')
         "/document"(view: '/docViewPage')
         "/mainPage"(view: '/mainPage')
-        "/signUp"(view: '/signUp')
-        "/signIn"(view: '/signIn')
+        "/signup"(view: '/signUp')
+        "/signin"(view: '/signIn')
+        "/create-circle"(view: '/createCircle')
+        "/create-course"(view: '/createCourse')
     }
 }

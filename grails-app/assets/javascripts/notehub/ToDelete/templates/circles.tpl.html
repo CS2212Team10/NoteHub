@@ -5,7 +5,7 @@
         <!-- Search Feature -->
         <div class="col-md-6">
             <!-- <span class="mobile-hide" >Search: </span>  --><!-- TODO: need a subtitle? -->
-            <input placeholder="Search" ng-model="$ctrl.query" class="ng-pristine ng-untouched ng-valid ng-empty">
+            <input style="border-radius: 5px" placeholder="Search" ng-model="$ctrl.query" class="hvr-glow ng-pristine ng-untouched ng-valid ng-empty">
         </div>
 
         <!-- Ordering Feature -->
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Display Circle Content-->
-    <ul class= content-list>
+    <ul style="margin-bottom: 20px; border-radius: 5px" class="hvr-fade content-list">
         <li class = "clearfix" ng-repeat= "circle in vm.usersCircles  | filter:$ctrl.query | orderBy:$ctrl.orderProp">
             <a href="/class?id={{ circle.id }}&user={{vm.userId}}"> <!-- TODO: PROPERLY LINK TO SPECIFIC CLASS ID -->
             <h2>{{circle.name}}</h2>

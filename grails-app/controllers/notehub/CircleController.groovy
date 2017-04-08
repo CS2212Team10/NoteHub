@@ -114,7 +114,7 @@ class CircleController extends RestfulController{
             return
         }
 
-        def circle
+        Circle circle
         try {
             circle = Circle.findById(Long.parseLong(params.id.toString()))
         } catch (NumberFormatException e){
@@ -134,7 +134,10 @@ class CircleController extends RestfulController{
         }
 
         //Removes users from the Circle
-        circle.getUsers().each {circle.removeFromUsers(it)}
+        def users = circle.getUsers()
+        for (user in users){
+            user.removeFromCircles(circle)
+        }
 
         //Deletes User Group
         circle.delete(flush:true)

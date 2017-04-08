@@ -1,18 +1,31 @@
+# NoteHub
 ## Synopsis
 
-NoteHub is a note-sharing web application that enables students to post text notes from peers. Users create profiles, sign in, post text notes, and join courses. Users can "star" individual notes.
+NoteHub is a note-sharing web application that enables students to post text notes from peers.
+- Users create profiles, sign in, and post text notes.
+- Users can "star" individual notes.
+- Users can create courses and circles within courses.
 
-## Repository Organization
-
-- To navigate to the sign up page, go to http://localhost:8080/signup
-- To navigate to the sign in page, go to http://localhost:8080/signin
-
+External Api's and Frameworks used are:
+- [Hover API](http://ianlunn.github.io/Hover/)
+- [Bootstrap](http://getbootstrap.com/)
+- [AngularJS](https://angularjs.org/)
 
 ## Installation/Run Instructions
 
-1. Install JDK and a grails framework, if not already installed
-2. Open the project from a VCS source at: https://github.com/CS2212Team10/NoteHub, and clone it.
-3. Run the application on IntelliJ
+1. Install JDK and a grails framework (The Dependencies should be resolved automatically when it is run)
+2. Open IntelliJ checkout the project from a Version Control (GitHub) using the repository URL: https://github.com/CS2212Team10/NoteHub. Hit 'Clone'.
+3. Click the 'Run' button on IntelliJ, or navigate to the Project's directory using the terminal and type 'grails run-app'
+
+## Repository Organization
+
+- Once you run the project, you will be redirected to the home page.
+- To navigate to the sign up page, click the 'sign up' button.
+- To navigate to the sign in page, of an already-existing account, click the 'sign in' button.
+
+## Usage Example
+
+You can view our video demonstration [here](https://www.youtube.com/watch?v=PebcfiGmSSc).
 
 ## Contributors
 
